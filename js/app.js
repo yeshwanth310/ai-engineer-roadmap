@@ -42,7 +42,7 @@ function overview(){
     const range = ph.optional ? `sessions ${ws[0].label}–${ws[ws.length - 1].label}` : `weeks ${ws[0].id}–${ws[ws.length - 1].id}`;
     let grid;
     if (ph.optional) {
-      const groups = [["Python", ws.filter(w => w.id <= 108)], ["Shell", ws.filter(w => w.id >= 109 && w.id <= 110)], ["Git", ws.filter(w => w.id >= 111)]];
+      const groups = [["Python", ws.filter(w => w.id <= 108)], ["Shell", ws.filter(w => w.id >= 109 && w.id <= 110)], ["Git", ws.filter(w => w.id >= 111 && w.id <= 112)], ["GitHub API", ws.filter(w => w.id >= 113)]].filter(([, list]) => list.length);
       grid = groups.map(([g, list]) => `<div class="tk-group"><div class="tk-group-h mono small">${g}</div><div class="week-grid">${list.map(w => weekCard(w, nt)).join("")}</div></div>`).join("");
     } else grid = `<div class="week-grid">${ws.map(w => weekCard(w, nx)).join("")}</div>`;
     return `<div class="phase ${cls}" id="phase-${ph.id}"><div class="phase-dot">${all ? "✓" : ph.id}</div>
@@ -55,7 +55,7 @@ function overview(){
     <span class="eyebrow">// python → ai engineer · ${R.core.length} weeks · 2h each · no maths</span>
     <h1>Build LLM apps &amp; AI agents, one 2-hour session a week.</h1>
     <p class="lead">A practical roadmap for Python developers: prompting, APIs, structured output, tools, RAG, agents, frameworks, evals, safety and deployment. Every week has a plain-English lesson, a quiz, an in-browser Python exercise and a mini project with Gemini (free), OpenAI and Claude code.</p>
-    <p class="lead small-lead">New to Python, the terminal or git? The optional <a href="#/week/p1">Phase 0 toolkit</a> (${R.toolkit.length} sessions) gets you ready first.</p>
+    <p class="lead small-lead">New to Python, the terminal, git or the GitHub API? The optional <a href="#/week/p1">Phase 0 toolkit</a> (${R.toolkit.length} sessions) gets you ready first.</p>
     <div class="btn-row" style="margin-top:1.4rem">
       ${nx ? `<a class="btn primary" href="${href(nx)}">${s.done ? "Continue" : "Start"}: Week ${nx.id} →</a>` : `<a class="btn primary" href="#/progress">🎉 All done — see progress</a>`}
       ${nt ? `<a class="btn" href="${href(nt)}">${s.tk.done ? "Continue" : "Start"} toolkit: ${nt.label}</a>` : ""}

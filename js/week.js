@@ -1,12 +1,12 @@
 /* Week page: lesson, quiz, Pyodide exercise, mini project. */
 (function(){
 const { R, Store, esc, highlight, highlightShell, codeBlock, toast, QUIZ_PASS, href } = App;
-const TABS = [["gemini","Gemini (free)"],["openai","OpenAI"],["anthropic","Claude"],["python","Python"],["bash","bash (Linux/macOS)"],["powershell","PowerShell (Windows)"],["terminal","Terminal (bash or PowerShell)"]];
+const TABS = [["gemini","Gemini (free)"],["openai","OpenAI"],["anthropic","Claude"],["python","Python"],["bash","bash (Linux/macOS)"],["powershell","PowerShell (Windows)"],["terminal","Terminal (bash or PowerShell)"],["requests","requests"],["pygithub","PyGithub"],["gh","gh CLI / curl"]];
 const PROVIDERS = ["gemini","openai","anthropic"], SHELLS = ["bash","powershell"];
-const isShell = (k) => k === "bash" || k === "powershell" || k === "terminal";
+const isShell = (k) => k === "bash" || k === "powershell" || k === "terminal" || k === "gh";
 
 function studyBuddy(w){
-  const cmdTip = w.id >= 109 && w.id <= 112;
+  const cmdTip = w.id >= 109 && w.id <= 113;
   const c1 = w.concepts[0] ? w.concepts[0][0] : w.title;
   const c2 = w.concepts[1] ? w.concepts[1][0] : "";
   return `<div class="callout buddy"><b>🤝 Study buddy tip</b> — you already have chat apps (ChatGPT, Claude, Gemini, Grok). Use them as a patient tutor:

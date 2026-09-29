@@ -313,3 +313,10 @@ table.cs td{width:33%} .cs-cmd{cursor:pointer;word-break:break-word} .cs-cmd:hov
   table.cs td:first-child:before{display:none}
   table.cs tr[hidden]{display:none}
 }
+
+/* long unbreakable tokens (code, URLs) must never widen the glossary grid on phones */
+.gloss .concept{min-width:0;overflow-wrap:anywhere}
+/* keep the line-number gutter exactly as tall as the editor (long solutions used to stretch the box) */
+.editor-wrap .gutter{position:absolute;top:0;bottom:0;left:0;width:3.4rem;min-width:0;box-sizing:border-box}
+.editor-wrap textarea.editor{margin-left:3.4rem}
+@media (max-width:720px){ .editor-wrap textarea.editor{margin-left:0} }

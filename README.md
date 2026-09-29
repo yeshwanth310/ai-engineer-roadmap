@@ -1,6 +1,6 @@
 # AI Engineer Roadmap
 
-A self-paced, **no-maths** roadmap from Python developer to AI engineer. It has **27 weekly two-hour sessions across 10 phases**: LLM basics, prompting, APIs, structured output, tools, RAG, agents, frameworks, evals, safety and deployment. There is also an **optional Phase 0 "Engineer's Toolkit"** for anyone who needs Python, the terminal or git first.
+A self-paced, **no-maths** roadmap from Python developer to AI engineer. It has **27 weekly two-hour sessions across 10 phases**: LLM basics, prompting, APIs, structured output, tools, RAG, agents, frameworks, evals, safety and deployment. There is also an **optional Phase 0 "Engineer's Toolkit"** (13 sessions) for anyone who needs Python, the terminal, git or the GitHub API first.
 
 **Live site:** https://yeshwanth310.github.io/ai-engineer-roadmap/
 
@@ -16,7 +16,7 @@ Every session includes:
 
 Progress is saved in your browser.
 
-### Phase 0: Engineer's Toolkit (optional, skippable)
+### Phase 0: Engineer's Toolkit (13 optional, skippable sessions)
 
 Take each session's quiz; if you score 5/5, skip it.
 
@@ -34,6 +34,7 @@ Take each session's quiz; if you score 5/5, skip it.
 | P10 | Shell II: Linux & bash commands for AI work |
 | P11 | Git I: version control, commits, GitHub & keeping secrets out |
 | P12 | Git II: branches, merging, conflicts, pull requests & AI project workflow |
+| P13 | GitHub API: automate repos, issues & pull requests with Python (requests, PyGithub, gh CLI) |
 
 - The shell and git exercises use command-matching checkers and a small git simulator, because real shells can't run in the browser.
 - The **Cheat sheet** page (`#/cheatsheet`) puts common PowerShell and bash commands side by side.
@@ -43,7 +44,8 @@ Weeks 1–27 across Phases 1–10. Open the site's overview for the full phase m
 
 ## Progress & URLs
 - Core weeks: `#/week/1` … `#/week/27`.
-- Toolkit sessions: `#/week/p1` … `#/week/p12`. Internally these are ids 101–112, so they never collide with core week numbers.
+- Toolkit sessions: `#/week/p1` … `#/week/p13`. Internally these are ids 101–113, so they never collide with core week numbers.
+- P13 was added later with the new key `113`. Existing keys are unchanged, so no further migration was needed.
 - Progress lives in `localStorage` (`air-progress-v1`).
   - Storage schema v2 keeps every existing week key unchanged.
   - The first time v2 loads, it writes a one-time backup to `air-progress-v1-backup-v1`.

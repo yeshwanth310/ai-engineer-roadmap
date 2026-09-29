@@ -112,4 +112,11 @@ window.GLOSSARY = [
 ["Merge conflict","When two branches change the same lines differently; you pick the final text and remove the <<<<<<< ======= >>>>>>> markers.",112],
 ["Pull request (PR)","A GitHub proposal to merge a branch, with the diff, review comments and automated checks.",112],
 ["Workflow vs agent","A workflow follows a path you wrote in code; an agent picks its own path. Prefer workflows when the steps are known.",18],
+["Personal access token (PAT)","A password-like key that lets a script use the GitHub API as you. Prefer fine-grained tokens with minimal permissions and an expiry, kept in GITHUB_TOKEN and never committed.",113],
+["Endpoint","One “counter window” of an API: an HTTP method plus a path, like GET /repos/{owner}/{repo}/issues.",113],
+["Pagination","Returning a long list in pages. On GitHub, you follow the link header's rel=\"next\" URL until there isn't one (per_page up to 100).",113],
+["Rate limit (GitHub API)","GitHub allows 60 requests an hour without a token and 5,000 with one. Watch x-ratelimit-remaining and wait for x-ratelimit-reset after a 403/429.",113],
+["Webhook","The reverse of calling an API: GitHub (or another service) sends an HTTP request to your URL when an event happens, such as an issue being opened.",113],
+["PyGithub","A Python library for the GitHub REST API: you write g.get_repo(\"owner/repo\").get_issues() instead of building URLs, and pagination is handled for you.",113],
+["GITHUB_TOKEN","The conventional environment-variable name for a GitHub token. Inside GitHub Actions it is also a short-lived token created automatically for each workflow run.",113],
 ];

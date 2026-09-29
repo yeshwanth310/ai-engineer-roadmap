@@ -2,7 +2,7 @@
 (function(){
 const R = window.ROADMAP;
 // Order: Phase 0 (optional toolkit) first, then the core weeks. Week ids never change
-// (core 1..27, toolkit 101..112), so saved progress keys stay valid.
+// (core 1..27, toolkit 101..113), so saved progress keys stay valid.
 R.weeks.sort((a,b)=> (a.phase - b.phase) || (a.id - b.id));
 for (const w of R.weeks) {
   const tk = w.phase === 0;

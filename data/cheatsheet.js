@@ -51,7 +51,9 @@ window.CHEATSHEET = [
  ["Call a JSON API", "Invoke-RestMethod https://api.github.com/users/octocat", "curl -s https://api.github.com/users/octocat"],
  ["Pick a field from JSON", "(Invoke-RestMethod URL).name", "curl -s URL | jq -r .name"],
  ["Download a file", "Invoke-WebRequest URL -OutFile data.zip", "wget URL   ·   curl -LO URL"],
- ["Real curl on Windows", "curl.exe -s URL", "curl -s URL"]
+ ["Real curl on Windows", "curl.exe -s URL", "curl -s URL"],
+ ["GitHub API with your token", "Invoke-RestMethod https://api.github.com/repos/OWNER/REPO -Headers @{Authorization = \"Bearer $env:GITHUB_TOKEN\"; \"X-GitHub-Api-Version\" = \"2026-03-10\"}", "curl -s -H \"Authorization: Bearer $GITHUB_TOKEN\" -H \"X-GitHub-Api-Version: 2026-03-10\" https://api.github.com/repos/OWNER/REPO"],
+ ["GitHub API via gh (any shell)", "gh api repos/OWNER/REPO/issues --paginate", "gh api repos/OWNER/REPO/issues --paginate"]
 ]],
 ["Processes & system", [
  ["Running processes", "Get-Process python", "ps aux | grep python"],

@@ -22,7 +22,7 @@ with sync_playwright() as p:
     ctx = b.new_context(viewport={"width": 1366, "height": 900})
     pg = ctx.new_page(); watch(pg, "desktop")
     pg.goto(BASE); pg.wait_for_selector(".week-card")
-    n = pg.locator(".week-card").count(); ok("overview renders 39 week cards (27 core + 12 toolkit)", n == 39, str(n))
+    n = pg.locator(".week-card").count(); ok("overview renders 40 week cards (27 core + 13 toolkit)", n == 40, str(n))
     ok("overview has 11 phases incl. Phase 0", pg.locator(".phase").count() == 11 and "Phase 0" in pg.inner_text("#phase-0"))
     ok("Phase 0 marked optional", pg.locator("#phase-0 .badge.optbadge").count() == 1)
     time.sleep(0.9); pg.screenshot(path=SS + "overview.png", full_page=False)
@@ -41,7 +41,7 @@ with sync_playwright() as p:
         good = c["q"] == 5 and c["tabs"] == 3 and c["buddy"] and c["analogy"] and c["why"] and c["res"] >= 2 and c["concepts"] >= 3
         ok(f"week {i} page complete", good, json.dumps(c) if not good else "")
     ok("week 1 still maps to the same content", "What an LLM really is" in (pg.goto(BASE + "#/week/1") or pg.wait_for_selector(".week-title") and pg.inner_text(".week-title")))
-    for i in range(1, 13):
+    for i in range(1, 14):
         pg.goto(BASE + f"#/week/p{i}"); pg.wait_for_selector(".week-title")
         c = pg.evaluate("""() => ({q: document.querySelectorAll('.q').length, tabs: document.querySelectorAll('.tabs .tab').length,
             buddy: !!document.querySelector('.callout.buddy'), analogy: !!document.querySelector('.callout.analogy'), why: !!document.querySelector('.callout.why'),
@@ -56,6 +56,21 @@ with sync_playwright() as p:
     pg.fill("#csearch", ""); time.sleep(0.9); pg.screenshot(path=SS + "cheatsheet.png")
     pg.goto(BASE + "#/glossary"); pg.fill("#gsearch", "merge conflict"); time.sleep(0.2)
     ok("glossary has new git terms", pg.locator("#gloss .concept:visible").count() >= 1)
+    pg.fill("#gsearch", "personal access token"); time.sleep(0.2)
+    ok("glossary has GitHub API terms (PAT)", pg.locator("#gloss .concept:visible").count() >= 1)
+    # --- P13 GitHub API page ---
+    pg.goto(BASE + "#/week/p13"); pg.wait_for_selector(".week-title")
+    ok("P13 is the GitHub API session", "GitHub API" in pg.inner_text(".week-title") and "P13" in pg.inner_text(".crumbs"))
+    tabs = pg.locator(".tabs .tab").all_inner_texts(); ok("P13 has requests / PyGithub / gh tabs", tabs == ["requests", "PyGithub", "gh CLI / curl"], str(tabs))
+    pg.locator(".tab[data-tab=pygithub]").click(); ok("PyGithub tab shows PyGithub code", "Auth.Token" in pg.locator(".tab-panel:not([hidden])").inner_text())
+    pg.wait_for_selector("#py-status.ready", timeout=120000)
+    pg.click("#btn-check"); pg.wait_for_selector("#console .err", timeout=60000); ok("P13 starter fails with a helpful message", "build_headers" in pg.inner_text("#console"))
+    pg.evaluate("""() => { const w = window.ROADMAP.weeks.find(w=>w.id===113); const ed = document.getElementById('editor'); ed.value = w.exercise.solution; ed.dispatchEvent(new Event('input')); }""")
+    pg.click("#btn-check"); pg.wait_for_selector("#console .ok", timeout=60000); ok("P13 solution passes in the browser", "All checks passed" in pg.inner_text("#console"))
+    st13 = pg.evaluate("JSON.parse(localStorage.getItem('air-progress-v1')).weeks['113']"); ok("P13 progress saved under new key 113", st13 and st13.get("ex"))
+    pg.locator("#sec-exercise").scroll_into_view_if_needed(); time.sleep(0.3)
+    ok("P13 editor gutter never taller than the editor", pg.evaluate("document.getElementById('gutter').getBoundingClientRect().height <= document.getElementById('editor').getBoundingClientRect().height + 1"))
+    pg.evaluate("window.scrollTo({top: 0, behavior: 'instant'})"); time.sleep(3); pg.screenshot(path=SS + "p13.png")
     # Quiz on week 1
     pg.goto(BASE + "#/week/1"); pg.wait_for_selector(".q")
     answers = pg.evaluate("window.ROADMAP.weeks.find(w=>w.id===1).quiz.map(q=>q.a)")
@@ -97,7 +112,7 @@ with sync_playwright() as p:
         const r = await Py.run(w.exercise.solution, w.exercise.tests); const s = await Py.run(w.exercise.starter, w.exercise.tests);
         out.push([w.id, r.ok, s.ok, r.ok ? '' : r.error]); } return out; }""")
     bad = [r for r in res if not r[1] or r[2]]
-    ok(f"all {len(res)} solutions pass & starters fail in Pyodide", not bad and len(res) == 39, json.dumps(bad)[:600])
+    ok(f"all {len(res)} solutions pass & starters fail in Pyodide", not bad and len(res) == 40, json.dumps(bad)[:600])
     # Reload persistence
     pg.reload(); pg.wait_for_selector(".week-title")
     st = pg.evaluate("JSON.parse(localStorage.getItem('air-progress-v1')).weeks['1']")
@@ -130,7 +145,8 @@ with sync_playwright() as p:
     ok("toolkit progress saved under its own key (101)", st.get("done") and st.get("ex"), json.dumps({k: st[k] for k in st if k != 'code'}))
     ok("core % unaffected by toolkit progress", pg.evaluate("App.stats().pct") == core_pct_before and pg.evaluate("App.stats().tk.done") == 1)
     pg.goto(BASE); pg.wait_for_selector("#phase-0")
-    ok("overview toolkit line shows 1/12", "1/12 done" in pg.inner_text(".tk-line"))
+    ok("overview toolkit line shows 1/13", "1/13 done" in pg.inner_text(".tk-line"))
+    ok("Phase 0 has a GitHub API group with P13", "GitHub API" in pg.inner_text("#phase-0") and pg.locator("#phase-0 .week-card").count() == 13)
     pg.evaluate("window.scrollTo({top: document.getElementById('phase-0').getBoundingClientRect().top + window.scrollY - 90, behavior: 'instant'})"); time.sleep(0.9); pg.screenshot(path=SS + "phase0.png")
     ctx.close()
 
@@ -164,6 +180,10 @@ with sync_playwright() as p:
         time.sleep(0.4); box = m.locator(f".side-nav a[data-jump={k}]").bounding_box()
         m.touchscreen.tap(box["x"] + box["width"] / 2, box["y"] + box["height"] / 2); time.sleep(1.2)
         top = m.evaluate(f"document.getElementById('sec-{k}').getBoundingClientRect().top")
+        for _ in range(10):  # long pages: let the smooth scroll finish
+            time.sleep(0.3); t2 = m.evaluate(f"document.getElementById('sec-{k}').getBoundingClientRect().top")
+            if t2 == top: break
+            top = t2
         ok(f"mobile pill '{k}' jumps to section", 0 <= top < 200, str(top))
     no_hscroll("overview"); time.sleep(0.9); m.screenshot(path=SS + "mobile-overview.png")
     ok("mobile nav hidden by default", not m.is_visible("#topnav a[data-nav=setup]"))
@@ -207,7 +227,7 @@ with sync_playwright() as p:
     m.goto(BASE); m.wait_for_selector("#phase-0")
     m.evaluate("window.scrollTo({top: document.getElementById('phase-0').getBoundingClientRect().top + window.scrollY - 90, behavior: 'instant'})")
     time.sleep(0.9); m.screenshot(path=SS + "mobile-phase0.png")
-    for r in ["#/week/p1", "#/week/p4", "#/week/p9", "#/week/p10", "#/week/p12", "#/cheatsheet"]:
+    for r in ["#/week/p1", "#/week/p4", "#/week/p9", "#/week/p10", "#/week/p12", "#/week/p13", "#/cheatsheet"]:
         m.goto(BASE + r); m.wait_for_selector("h1"); time.sleep(0.3); no_hscroll(r)
     m.goto(BASE + "#/cheatsheet"); m.wait_for_selector(".cs")
     ok("cheat sheet stacks into cards on mobile", m.evaluate("getComputedStyle(document.querySelector('table.cs td')).display") == "block")
@@ -218,6 +238,12 @@ with sync_playwright() as p:
     m.tap("#btn-check"); m.wait_for_selector("#console .ok", timeout=60000); ok("mobile P2 Python exercise passes", True)
     m.locator(".ex-bar").scroll_into_view_if_needed(); m.evaluate("window.scrollBy(0, 200)")
     time.sleep(0.9); m.screenshot(path=SS + "mobile-python-exercise.png")
+    m.goto(BASE + "#/week/p13"); m.wait_for_selector("#py-status.ready", timeout=120000)
+    m.evaluate("window.scrollTo({top: 0, behavior: 'instant'})"); time.sleep(3); m.screenshot(path=SS + "mobile-p13.png")
+    pill_tap("exercise")
+    m.evaluate("""() => { const w = window.ROADMAP.weeks.find(w=>w.id===113); const ed = document.getElementById('editor'); ed.value = w.exercise.solution; ed.dispatchEvent(new Event('input')); }""")
+    m.tap("#btn-check"); m.wait_for_selector("#console .ok", timeout=60000); ok("mobile P13 GitHub API exercise passes", True); no_hscroll("p13 exercise")
+    m.locator(".tab[data-tab=gh]").tap(); ok("mobile P13 gh tab renders", "gh issue list" in m.inner_text(".tab-panel:not([hidden])")); no_hscroll("p13 gh tab")
     m.goto(BASE + "#/week/p9"); m.wait_for_selector(".tabs")
     ok("PowerShell project tab renders", "Activate.ps1" in m.inner_text(".tab-panel:not([hidden])"))
     mctx.close(); b.close()

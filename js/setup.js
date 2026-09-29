@@ -9,7 +9,7 @@ function render(){
   <span class="eyebrow">// one-time setup · about 30 minutes</span>
   <h1>Setup</h1>
   <p class="lead">Everything you need to run the mini projects on your own computer. The in-browser exercises need nothing — they run Python right in the page.</p>
-  <div class="callout optional" style="margin-top:1.2rem"><b>New to any of this?</b> The optional <b>Phase 0 toolkit</b> covers it step by step: <a href="#/week/p1">Python from scratch (P1–P8)</a>, <a href="#/week/p9">PowerShell (P9)</a>, <a href="#/week/p10">Linux / bash (P10)</a> and <a href="#/week/p11">git &amp; GitHub (P11–P12)</a>. Keep the <a href="#/cheatsheet">PowerShell ↔ bash cheat sheet</a> handy while you set up.</div>
+  <div class="callout optional" style="margin-top:1.2rem"><b>New to any of this?</b> The optional <b>Phase 0 toolkit</b> covers it step by step: <a href="#/week/p1">Python from scratch (P1–P8)</a>, <a href="#/week/p9">PowerShell (P9)</a>, <a href="#/week/p10">Linux / bash (P10)</a> and <a href="#/week/p11">git &amp; GitHub (P11–P12)</a>, <a href="#/week/p13">the GitHub API (P13)</a>. Keep the <a href="#/cheatsheet">PowerShell ↔ bash cheat sheet</a> handy while you set up.</div>
 
   <div class="steps-list" style="margin-top:2rem">
   <div class="step"><h3>Install Python 3.11+ and an editor</h3>
