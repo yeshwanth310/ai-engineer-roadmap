@@ -1,8 +1,21 @@
 /* Core helpers: data merge, storage, highlighting, small UI utilities. */
 (function(){
 const R = window.ROADMAP;
+// Order: Phase 0 (optional toolkit) first, then the core weeks. Week ids never change
+// (core 1..27, toolkit 101..112), so saved progress keys stay valid.
+R.weeks.sort((a,b)=> (a.phase - b.phase) || (a.id - b.id));
+for (const w of R.weeks) {
+  const tk = w.phase === 0;
+  w.toolkit = tk;
+  w.label = tk ? "P" + (w.id - 100) : String(w.id);
+  w.slug = tk ? "p" + (w.id - 100) : String(w.id);
+  w.name = tk ? "Toolkit " + w.label : "Week " + w.id;
+}
+R.core = R.weeks.filter(w => !w.toolkit);
+R.toolkit = R.weeks.filter(w => w.toolkit);
+const weekBySlug = (s) => { s = String(s).toLowerCase(); return R.weeks.find(w => w.slug === s) || R.weeks.find(w => String(w.id) === s) || null; };
+const href = (w) => "#/week/" + w.slug;
 // Merge Claude code, analogies and extra sections into the weeks
-R.weeks.sort((a,b)=>a.id-b.id);
 for (const w of R.weeks) {
   const p = (R.patches || {})[w.id]; if (!p) continue;
   if (p.anthropic && !w.project.code.anthropic) w.project.code.anthropic = p.anthropic;
@@ -12,10 +25,22 @@ for (const w of R.weeks) {
 }
 
 const KEY = "air-progress-v1";
-const blank = () => ({ version: 1, weeks: {}, tab: "gemini", updated: null });
+const VERSION = 2;
+const blank = () => ({ version: VERSION, weeks: {}, tab: "gemini", shellTab: "bash", updated: null });
+// v1 -> v2: week ids/keys are unchanged (core weeks 1..27); v2 only adds toolkit weeks (101..112)
+// and the shellTab preference. We keep a one-time backup of the old data just in case.
+function migrate(d){
+  if (!d.version || d.version < 2) {
+    try { if (!localStorage.getItem(KEY + "-backup-v1")) localStorage.setItem(KEY + "-backup-v1", JSON.stringify(d)); } catch(e) {}
+    d.version = VERSION;
+    if (!d.shellTab) d.shellTab = "bash";
+    d._migrated = true;
+  }
+  return d;
+}
 const Store = {
   data: blank(),
-  load(){ try { const d = JSON.parse(localStorage.getItem(KEY) || "null"); if (d && typeof d === "object" && d.weeks) this.data = Object.assign(blank(), d); } catch(e) { this.data = blank(); } },
+  load(){ try { const d = JSON.parse(localStorage.getItem(KEY) || "null"); if (d && typeof d === "object" && d.weeks) { this.data = Object.assign(blank(), migrate(d)); if (this.data._migrated) { delete this.data._migrated; try { localStorage.setItem(KEY, JSON.stringify(this.data)); } catch(e) {} } } } catch(e) { this.data = blank(); } },
   save(){ this.data.updated = new Date().toISOString(); try { localStorage.setItem(KEY, JSON.stringify(this.data)); } catch(e) {} App.refreshTop && App.refreshTop(); },
   wk(id){ return this.data.weeks[id] || (this.data.weeks[id] = {}); },
   set(id, patch){ Object.assign(this.wk(id), patch); this.save(); },
@@ -23,6 +48,7 @@ const Store = {
   import(obj){
     if (!obj || typeof obj !== "object" || typeof obj.weeks !== "object") throw new Error("Not a progress file");
     const d = blank(); d.tab = ["gemini","openai","anthropic"].includes(obj.tab) ? obj.tab : "gemini";
+    d.shellTab = ["bash","powershell"].includes(obj.shellTab) ? obj.shellTab : "bash";
     for (const [k, v] of Object.entries(obj.weeks)) {
       const id = parseInt(k, 10); if (!R.weeks.some(w => w.id === id) || typeof v !== "object") continue;
       d.weeks[id] = { done: !!v.done, ex: !!v.ex, quizBest: Number.isFinite(v.quizBest) ? Math.max(0, Math.min(5, v.quizBest)) : undefined,
@@ -34,12 +60,13 @@ const Store = {
 Store.load();
 
 const QUIZ_PASS = 4;
-function stats(){
-  const n = R.weeks.length; let done = 0, quiz = 0, ex = 0;
-  for (const w of R.weeks) { const s = Store.data.weeks[w.id] || {}; if (s.done) done++; if ((s.quizBest || 0) >= QUIZ_PASS) quiz++; if (s.ex) ex++; }
-  const pct = Math.round(((done + quiz + ex) / (3 * n)) * 100);
-  return { n, done, quiz, ex, pct };
+function count(list){
+  const n = list.length; let done = 0, quiz = 0, ex = 0;
+  for (const w of list) { const s = Store.data.weeks[w.id] || {}; if (s.done) done++; if ((s.quizBest || 0) >= QUIZ_PASS) quiz++; if (s.ex) ex++; }
+  return { n, done, quiz, ex, pct: n ? Math.round(((done + quiz + ex) / (3 * n)) * 100) : 0 };
 }
+// Main progress = the 27 core weeks. The optional toolkit is tracked separately (stats().tk).
+function stats(){ const c = count(R.core); c.tk = count(R.toolkit); return c; }
 
 const esc = (s) => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 
@@ -64,9 +91,19 @@ function highlight(code){
   }
   return out + esc(code.slice(last));
 }
+function highlightShell(code){
+  return code.split("\n").map(line => {
+    const m = line.match(/^(\s*)(#.*)$/);
+    if (m) return esc(m[1]) + `<span class="tok-c">${esc(m[2])}</span>`;
+    const i = line.search(/\s#\s/);
+    if (i > 0) return esc(line.slice(0, i)) + `<span class="tok-c">${esc(line.slice(i))}</span>`;
+    return esc(line);
+  }).join("\n");
+}
 function codeBlock(code, lang){
   const isPy = !lang || lang === "python";
-  return `<div class="code-wrap"><button class="copy" data-copy>copy</button><pre class="code"><code>${isPy ? highlight(code) : esc(code)}</code></pre></div>`;
+  const body = isPy ? highlight(code) : (lang === "shell" ? highlightShell(code) : esc(code));
+  return `<div class="code-wrap"><button class="copy" data-copy>copy</button><pre class="code"><code>${body}</code></pre></div>`;
 }
 
 let toastT;
@@ -88,5 +125,5 @@ document.addEventListener("click", (e) => {
 });
 
 window.App = window.App || {};
-Object.assign(window.App, { R, Store, stats, esc, highlight, codeBlock, toast, copyText, QUIZ_PASS });
+Object.assign(window.App, { R, Store, stats, esc, highlight, codeBlock, toast, copyText, QUIZ_PASS, weekBySlug, href, highlightShell });
 })();

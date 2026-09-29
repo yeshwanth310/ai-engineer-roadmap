@@ -1,8 +1,12 @@
 import json, sys, time
 from playwright.sync_api import sync_playwright
 
-BASE = "http://localhost:8080/"
+BASE = sys.argv[1] if len(sys.argv) > 1 else "http://localhost:8080/"
+SHOTS = "--no-shots" not in sys.argv
 SS = "/workspace/ai-roadmap/screenshots/"
+import os
+if not SHOTS:
+    SS = "/tmp/live-shots/"; os.makedirs(SS, exist_ok=True)
 errors = []
 results = []
 def ok(name, cond, extra=""):
@@ -18,10 +22,11 @@ with sync_playwright() as p:
     ctx = b.new_context(viewport={"width": 1366, "height": 900})
     pg = ctx.new_page(); watch(pg, "desktop")
     pg.goto(BASE); pg.wait_for_selector(".week-card")
-    n = pg.locator(".week-card").count(); ok("overview renders 27 week cards", n == 27, str(n))
-    ok("overview has 10 phases", pg.locator(".phase").count() == 10)
+    n = pg.locator(".week-card").count(); ok("overview renders 39 week cards (27 core + 12 toolkit)", n == 39, str(n))
+    ok("overview has 11 phases incl. Phase 0", pg.locator(".phase").count() == 11 and "Phase 0" in pg.inner_text("#phase-0"))
+    ok("Phase 0 marked optional", pg.locator("#phase-0 .badge.optbadge").count() == 1)
     time.sleep(0.9); pg.screenshot(path=SS + "overview.png", full_page=False)
-    for route in ["#/setup", "#/glossary", "#/progress"]:
+    for route in ["#/setup", "#/glossary", "#/progress", "#/cheatsheet"]:
         pg.goto(BASE + route); pg.wait_for_selector("h1"); ok(f"{route} renders", pg.locator("h1").first.inner_text() != "")
     pg.goto(BASE + "#/setup"); pg.wait_for_selector("#subscriptions")
     ok("setup has subscriptions + xAI snippet", "api.x.ai/v1" in pg.inner_text("#subscriptions") and "SuperGrok" in pg.inner_text("#subscriptions"))
@@ -35,6 +40,22 @@ with sync_playwright() as p:
             res: document.querySelectorAll('.res').length, concepts: document.querySelectorAll('.concept').length})""")
         good = c["q"] == 5 and c["tabs"] == 3 and c["buddy"] and c["analogy"] and c["why"] and c["res"] >= 2 and c["concepts"] >= 3
         ok(f"week {i} page complete", good, json.dumps(c) if not good else "")
+    ok("week 1 still maps to the same content", "What an LLM really is" in (pg.goto(BASE + "#/week/1") or pg.wait_for_selector(".week-title") and pg.inner_text(".week-title")))
+    for i in range(1, 13):
+        pg.goto(BASE + f"#/week/p{i}"); pg.wait_for_selector(".week-title")
+        c = pg.evaluate("""() => ({q: document.querySelectorAll('.q').length, tabs: document.querySelectorAll('.tabs .tab').length,
+            buddy: !!document.querySelector('.callout.buddy'), analogy: !!document.querySelector('.callout.analogy'), why: !!document.querySelector('.callout.why'),
+            opt: !!document.querySelector('.callout.optional'), res: document.querySelectorAll('.res').length, concepts: document.querySelectorAll('.concept').length,
+            crumbs: document.querySelector('.crumbs').innerText, ed: !!document.getElementById('editor')})""")
+        good = c["q"] == 5 and c["tabs"] >= 1 and c["buddy"] and c["analogy"] and c["why"] and c["opt"] and c["res"] >= 4 and c["concepts"] >= 5 and c["ed"] and f"P{i}" in c["crumbs"]
+        ok(f"toolkit P{i} page complete", good, json.dumps(c) if not good else "")
+    pg.goto(BASE + "#/cheatsheet"); pg.wait_for_selector(".cs")
+    rows = pg.locator("table.cs tr[data-q]").count(); ok("cheat sheet has PowerShell vs bash rows", rows >= 40, str(rows))
+    pg.fill("#csearch", "venv"); time.sleep(0.2)
+    vis = pg.locator("table.cs tr[data-q]:visible").count(); ok("cheat sheet filter works", 0 < vis < 8, str(vis))
+    pg.fill("#csearch", ""); time.sleep(0.9); pg.screenshot(path=SS + "cheatsheet.png")
+    pg.goto(BASE + "#/glossary"); pg.fill("#gsearch", "merge conflict"); time.sleep(0.2)
+    ok("glossary has new git terms", pg.locator("#gloss .concept:visible").count() >= 1)
     # Quiz on week 1
     pg.goto(BASE + "#/week/1"); pg.wait_for_selector(".q")
     answers = pg.evaluate("window.ROADMAP.weeks.find(w=>w.id===1).quiz.map(q=>q.a)")
@@ -76,7 +97,7 @@ with sync_playwright() as p:
         const r = await Py.run(w.exercise.solution, w.exercise.tests); const s = await Py.run(w.exercise.starter, w.exercise.tests);
         out.push([w.id, r.ok, s.ok, r.ok ? '' : r.error]); } return out; }""")
     bad = [r for r in res if not r[1] or r[2]]
-    ok("all 27 solutions pass & starters fail in Pyodide", not bad, json.dumps(bad)[:600])
+    ok(f"all {len(res)} solutions pass & starters fail in Pyodide", not bad and len(res) == 39, json.dumps(bad)[:600])
     # Reload persistence
     pg.reload(); pg.wait_for_selector(".week-title")
     st = pg.evaluate("JSON.parse(localStorage.getItem('air-progress-v1')).weeks['1']")
@@ -89,8 +110,46 @@ with sync_playwright() as p:
     # export
     pg.goto(BASE + "#/progress"); pg.wait_for_selector("#p-export")
     with pg.expect_download() as dl: pg.click("#p-export")
-    path = dl.value.path(); data = json.load(open(path)); ok("export JSON works", data["weeks"]["1"]["done"] is True)
+    path = dl.value.path(); data = json.load(open(path)); ok("export JSON works", data["weeks"]["1"]["done"] is True and data.get("version") == 2)
+    # --- Toolkit exercise via the UI (P1) ---
+    core_pct_before = pg.evaluate("App.stats().pct")
+    pg.goto(BASE + "#/week/p1"); pg.wait_for_selector("#py-status.ready", timeout=120000)
+    pg.click("#btn-check"); pg.wait_for_selector("#console .err", timeout=60000)
+    ok("P1 starter fails with a helpful message", "clean_prompt" in pg.inner_text("#console"))
+    pg.evaluate("""() => { const w = window.ROADMAP.weeks.find(w=>w.id===101); const ed = document.getElementById('editor'); ed.value = w.exercise.solution; ed.dispatchEvent(new Event('input')); }""")
+    pg.click("#btn-check"); pg.wait_for_selector("#console .ok", timeout=60000); ok("P1 solution passes in the browser", True)
+    time.sleep(0.9); pg.locator("#sec-exercise").scroll_into_view_if_needed(); pg.screenshot(path=SS + "python-exercise.png")
+    pg.click("#btn-done")
+    pg.goto(BASE + "#/week/p8"); pg.wait_for_selector("#py-status.ready", timeout=120000)
+    pg.evaluate("""() => { const w = window.ROADMAP.weeks.find(w=>w.id===108); const ed = document.getElementById('editor'); ed.value = w.exercise.solution; ed.dispatchEvent(new Event('input')); }""")
+    pg.click("#btn-check"); pg.wait_for_selector("#console .ok", timeout=120000)
+    ok("P8 (async + pydantic) passes in the browser", "Loading" not in pg.inner_text("#console"), pg.inner_text("#console")[:200])
+    pg.goto(BASE + "#/week/p10"); pg.wait_for_selector(".tabs")
+    pg.reload(); pg.wait_for_selector(".week-title")
+    st = pg.evaluate("JSON.parse(localStorage.getItem('air-progress-v1')).weeks['101']")
+    ok("toolkit progress saved under its own key (101)", st.get("done") and st.get("ex"), json.dumps({k: st[k] for k in st if k != 'code'}))
+    ok("core % unaffected by toolkit progress", pg.evaluate("App.stats().pct") == core_pct_before and pg.evaluate("App.stats().tk.done") == 1)
+    pg.goto(BASE); pg.wait_for_selector("#phase-0")
+    ok("overview toolkit line shows 1/12", "1/12 done" in pg.inner_text(".tk-line"))
+    pg.evaluate("window.scrollTo({top: document.getElementById('phase-0').getBoundingClientRect().top + window.scrollY - 90, behavior: 'instant'})"); time.sleep(0.9); pg.screenshot(path=SS + "phase0.png")
     ctx.close()
+
+    # --- Migration: a v1 progress object from before Phase 0 existed ---
+    mig = b.new_context(viewport={"width": 1366, "height": 900}); mp = mig.new_page(); watch(mp, "migration")
+    mp.goto(BASE); mp.wait_for_selector(".week-card")
+    v1 = {"weeks": {"1": {"done": True, "ex": True, "quizBest": 5, "code": "print('mine')"}, "12": {"quizBest": 3}, "27": {"done": True}}, "tab": "openai", "updated": "2026-09-28T10:00:00Z"}
+    mp.evaluate("d => { localStorage.clear(); localStorage.setItem('air-progress-v1', JSON.stringify(d)); }", v1)
+    mp.reload(); mp.wait_for_selector(".week-card")
+    d2 = mp.evaluate("JSON.parse(localStorage.getItem('air-progress-v1'))")
+    ok("v1 data migrated to v2 in place", d2.get("version") == 2 and d2["weeks"]["1"]["done"] and d2["weeks"]["27"]["done"] and d2["weeks"]["12"]["quizBest"] == 3)
+    ok("v1 backup kept", mp.evaluate("!!localStorage.getItem('air-progress-v1-backup-v1')"))
+    ok("old progress shows on overview", mp.locator(".week-card.done").count() == 2 and "2/27" in mp.inner_text(".stat-grid"))
+    mp.goto(BASE + "#/week/1"); mp.wait_for_selector(".week-title")
+    ok("old week 1 progress + saved code intact", mp.is_visible("#ex-passed") and "best: 5/5" in mp.inner_text("#quiz-best") and "print('mine')" in mp.input_value("#editor"))
+    ok("old provider tab preference kept", mp.locator(".tab.active").inner_text() == "OpenAI")
+    mp.goto(BASE + "#/week/12"); mp.wait_for_selector(".week-title"); ok("old quiz score on week 12 intact", "best: 3/5" in mp.inner_text("#quiz-best"))
+    mp.goto(BASE + "#/week/p1"); mp.wait_for_selector(".week-title"); ok("toolkit starts empty after migration", not mp.is_visible("#ex-passed"))
+    mig.close()
 
     # ---------------- Mobile ----------------
     mctx = b.new_context(viewport={"width": 390, "height": 844}, device_scale_factor=2, is_mobile=True, has_touch=True,
@@ -144,6 +203,23 @@ with sync_playwright() as p:
     time.sleep(0.9); m.screenshot(path=SS + "mobile-exercise.png")
     m.reload(); m.wait_for_selector(".week-title")
     ok("mobile progress survives reload", m.is_visible("#ex-passed"))
+    # --- Mobile: Phase 0 + a Python exercise + shell/git pages ---
+    m.goto(BASE); m.wait_for_selector("#phase-0")
+    m.evaluate("window.scrollTo({top: document.getElementById('phase-0').getBoundingClientRect().top + window.scrollY - 90, behavior: 'instant'})")
+    time.sleep(0.9); m.screenshot(path=SS + "mobile-phase0.png")
+    for r in ["#/week/p1", "#/week/p4", "#/week/p9", "#/week/p10", "#/week/p12", "#/cheatsheet"]:
+        m.goto(BASE + r); m.wait_for_selector("h1"); time.sleep(0.3); no_hscroll(r)
+    m.goto(BASE + "#/cheatsheet"); m.wait_for_selector(".cs")
+    ok("cheat sheet stacks into cards on mobile", m.evaluate("getComputedStyle(document.querySelector('table.cs td')).display") == "block")
+    time.sleep(0.6); m.screenshot(path=SS + "mobile-cheatsheet.png")
+    m.goto(BASE + "#/week/p2"); m.wait_for_selector("#py-status.ready", timeout=120000)
+    pill_tap("exercise")
+    m.evaluate("""() => { const w = window.ROADMAP.weeks.find(w=>w.id===102); const ed = document.getElementById('editor'); ed.value = w.exercise.solution; ed.dispatchEvent(new Event('input')); }""")
+    m.tap("#btn-check"); m.wait_for_selector("#console .ok", timeout=60000); ok("mobile P2 Python exercise passes", True)
+    m.locator(".ex-bar").scroll_into_view_if_needed(); m.evaluate("window.scrollBy(0, 200)")
+    time.sleep(0.9); m.screenshot(path=SS + "mobile-python-exercise.png")
+    m.goto(BASE + "#/week/p9"); m.wait_for_selector(".tabs")
+    ok("PowerShell project tab renders", "Activate.ps1" in m.inner_text(".tab-panel:not([hidden])"))
     mctx.close(); b.close()
 
 real = [e for e in errors if "fonts.g" not in e and "favicon" not in e]

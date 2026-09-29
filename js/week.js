@@ -1,27 +1,34 @@
 /* Week page: lesson, quiz, Pyodide exercise, mini project. */
 (function(){
-const { R, Store, esc, highlight, codeBlock, toast, QUIZ_PASS } = App;
-const TABS = [["gemini","Gemini (free)"],["openai","OpenAI"],["anthropic","Claude"]];
+const { R, Store, esc, highlight, highlightShell, codeBlock, toast, QUIZ_PASS, href } = App;
+const TABS = [["gemini","Gemini (free)"],["openai","OpenAI"],["anthropic","Claude"],["python","Python"],["bash","bash (Linux/macOS)"],["powershell","PowerShell (Windows)"],["terminal","Terminal (bash or PowerShell)"]];
+const PROVIDERS = ["gemini","openai","anthropic"], SHELLS = ["bash","powershell"];
+const isShell = (k) => k === "bash" || k === "powershell" || k === "terminal";
 
 function studyBuddy(w){
+  const cmdTip = w.id >= 109 && w.id <= 112;
   const c1 = w.concepts[0] ? w.concepts[0][0] : w.title;
   const c2 = w.concepts[1] ? w.concepts[1][0] : "";
   return `<div class="callout buddy"><b>🤝 Study buddy tip</b> — you already have chat apps (ChatGPT, Claude, Gemini, Grok). Use them as a patient tutor:
   <ul>
     <li>“Explain <i>${esc(c1)}</i>${c2 ? ` and <i>${esc(c2)}</i>` : ""} to me with an everyday analogy, then ask me 3 questions to check I understood.”</li>
-    <li>After the exercise: “Here is my Python solution — review it for bugs, edge cases and readability. Explain your suggestions instead of just rewriting it.”</li>
+    ${cmdTip ? `<li>Before running a command you're unsure about: “Explain each part of this command, what it will change, and what could go wrong: <i>…paste command…</i>”</li>` : ""}
+    <li>After the exercise: “Here is my ${cmdTip ? "answer" : "Python solution"} — review it for mistakes, edge cases and readability. Explain your suggestions instead of just rewriting it.”</li>
   </ul>
   Double-check anything important against the resources below, and never paste API keys or private data into a chat.</div>`;
 }
 
 function tabsHtml(code){
-  const cur = TABS.some(([k]) => k === Store.data.tab && code[k]) ? Store.data.tab : "gemini";
+  const keys = TABS.map(([k]) => k).filter(k => code[k]);
+  const pref = keys.includes(Store.data.tab) ? Store.data.tab : keys.includes(Store.data.shellTab) ? Store.data.shellTab : null;
+  const cur = pref || keys[0];
+  const paid = keys.includes("openai") || keys.includes("anthropic");
   return `<div class="tabs" role="tablist">
     <div class="tab-bar">${TABS.filter(([k]) => code[k]).map(([k, l]) => `<button class="tab${k === cur ? " active" : ""}" role="tab" aria-selected="${k === cur}" data-tab="${k}">${l}</button>`).join("")}
       <button class="copy" data-copy>copy</button></div>
-    ${TABS.filter(([k]) => code[k]).map(([k]) => `<div class="tab-panel" data-panel="${k}" ${k === cur ? "" : "hidden"}><pre class="code"><code>${highlight(code[k].replace(/^\n/, ""))}</code></pre></div>`).join("")}
+    ${TABS.filter(([k]) => code[k]).map(([k]) => `<div class="tab-panel" data-panel="${k}" ${k === cur ? "" : "hidden"}><pre class="code"><code>${isShell(k) ? highlightShell(code[k].replace(/^\n/, "")) : highlight(code[k].replace(/^\n/, ""))}</code></pre></div>`).join("")}
   </div>
-  <p class="small muted" style="margin-top:.6rem">Gemini works with a free AI Studio key. OpenAI and Claude API calls need paid API credits (a ChatGPT Plus or Claude Pro subscription does not include API usage) — see <a href="#/setup">Setup</a>.</p>`;
+  ${paid ? `<p class="small muted" style="margin-top:.6rem">Gemini works with a free AI Studio key. OpenAI and Claude API calls need paid API credits (a ChatGPT Plus or Claude Pro subscription does not include API usage) — see <a href="#/setup">Setup</a>.</p>` : ""}`;
 }
 
 function render(id){
@@ -34,12 +41,13 @@ function render(id){
   const ex = w.exercise;
   const saved = typeof s.code === "string" ? s.code : ex.starter;
   return `<div class="wrap fade-in"><div class="week-layout">
-  <nav class="side-nav" aria-label="Sections"><div class="side-title">Week ${w.id}</div>
-    ${sections.map(([k, l]) => `<a href="#/week/${w.id}" data-jump="${k}">${l}</a>`).join("")}
+  <nav class="side-nav" aria-label="Sections"><div class="side-title">${w.name}</div>
+    ${sections.map(([k, l]) => `<a href="${href(w)}" data-jump="${k}">${l}</a>`).join("")}
   </nav>
   <article>
-    <div class="crumbs"><a href="#/">Roadmap</a><span>/</span><span>Phase ${ph.id} · ${esc(ph.short || ph.title || "")}</span><span>/</span><span>Week ${w.id} of ${R.weeks.length}</span></div>
+    <div class="crumbs"><a href="#/">Roadmap</a><span>/</span><span>Phase ${ph.id} · ${esc(ph.short || ph.title || "")}</span><span>/</span><span>${w.toolkit ? `Toolkit session ${w.label} of ${R.toolkit.length} · optional` : `Week ${w.id} of ${R.core.length}`}</span></div>
     <h1 class="week-title">${esc(w.title)}</h1>
+    ${w.toolkit ? `<div class="callout optional"><b>Optional session.</b> Skip it if ${w.skip || "you already know this topic."} Quick self-test: take the quiz below. If you score 5/5, mark the session complete and move on.</div>` : ""}
     <div class="plan">${w.plan.map(([t, l]) => `<span><b>${esc(t)}</b> ${esc(l)}</span>`).join("")}<span><b>≈2h</b> total</span></div>
 
     <section class="section" id="sec-goal"><div class="section-h"><span class="num">01</span><h2>Goal</h2></div>
@@ -89,9 +97,9 @@ function render(id){
 
     <section class="section" id="sec-finish"><div class="section-h"><span class="num">08</span><h2>Finish the week</h2></div>
       <div class="complete-box"><div><div class="checklist" id="checklist"></div></div>
-        <button class="btn ${s.done ? "" : "primary"}" id="btn-done">${s.done ? "✓ Completed — undo" : "Mark week complete"}</button></div>
-      <div class="pager">${prev ? `<a href="#/week/${prev.id}"><small>← Week ${prev.id}</small>${esc(prev.title)}</a>` : `<span></span>`}
-        ${next ? `<a class="next" href="#/week/${next.id}"><small>Week ${next.id} →</small>${esc(next.title)}</a>` : `<a class="next" href="#/progress"><small>Finished →</small>See your progress</a>`}</div>
+        <button class="btn ${s.done ? "" : "primary"}" id="btn-done">${s.done ? "✓ Completed — undo" : (w.toolkit ? "Mark session complete" : "Mark week complete")}</button></div>
+      <div class="pager">${prev ? `<a href="${href(prev)}"><small>← ${prev.name}</small>${esc(prev.title)}</a>` : `<span></span>`}
+        ${next ? `<a class="next" href="${href(next)}"><small>${next.name} →</small>${esc(next.title)}</a>` : `<a class="next" href="#/progress"><small>Finished →</small>See your progress</a>`}</div>
     </section>
   </article></div></div>`;
 }
@@ -214,6 +222,8 @@ function mount(id){
     if (st === "error") statusEl.title = detail || "";
   }));
   Py.start();
+  Py.onStatus((msg) => { con.innerHTML = `<span class="info">${esc(msg)} (first time only)</span>`; });
+  cleanups.push(() => Py.onStatus(null));
   let busy = false;
   async function doRun(check){
     if (busy) return; busy = true;
@@ -243,7 +253,7 @@ function mount(id){
   // ---------- Tabs ----------
   root.querySelectorAll(".tabs").forEach(t => t.addEventListener("click", (e) => {
     const b = e.target.closest(".tab"); if (!b) return; const k = b.dataset.tab;
-    Store.data.tab = k; Store.save();
+    if (PROVIDERS.includes(k)) { Store.data.tab = k; Store.save(); } else if (SHELLS.includes(k)) { Store.data.shellTab = k; Store.save(); }
     t.querySelectorAll(".tab").forEach(x => { x.classList.toggle("active", x === b); x.setAttribute("aria-selected", x === b); });
     t.querySelectorAll(".tab-panel").forEach(p => p.hidden = p.dataset.panel !== k);
   }));
@@ -259,8 +269,8 @@ function mount(id){
   updateChecklist();
   document.getElementById("btn-done").onclick = (e) => {
     const s = Store.wk(w.id); const done = !s.done; Store.set(w.id, { done });
-    e.currentTarget.textContent = done ? "✓ Completed — undo" : "Mark week complete"; e.currentTarget.classList.toggle("primary", !done);
-    updateChecklist(); toast(done ? `Week ${w.id} complete 🎉` : "Marked as not complete");
+    e.currentTarget.textContent = done ? "✓ Completed — undo" : (w.toolkit ? "Mark session complete" : "Mark week complete"); e.currentTarget.classList.toggle("primary", !done);
+    updateChecklist(); toast(done ? `${w.name} complete 🎉` : "Marked as not complete");
   };
 
   return () => cleanups.forEach(fn => fn());

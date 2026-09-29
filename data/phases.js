@@ -1,4 +1,5 @@
 window.ROADMAP = { phases: [
+  { id:0, title:"Engineer's Toolkit: Python, Shell & Git", short:"Toolkit", optional:true, desc:"Optional prerequisites. Eight Python sessions (from variables to async and Pydantic), two terminal sessions (PowerShell and bash) and two git sessions. Already comfortable? Take each week's quiz, and if you score 5/5, skip it." },
   { id:1, title:"Foundations of LLMs & Prompting", short:"Foundations", desc:"What a large language model actually does (in plain English), and how to write prompts that get reliable results." },
   { id:2, title:"Calling LLM APIs from Python", short:"APIs", desc:"Move from the chat window to code: your first API calls, conversations, streaming, errors, retries and cost awareness." },
   { id:3, title:"Structured Output & Tool Calling", short:"Structure & tools", desc:"Make the model return clean data your code can use, validate it, and let the model ask your code to run functions." },

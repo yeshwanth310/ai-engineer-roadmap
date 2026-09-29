@@ -290,3 +290,26 @@ table.tbl{width:100%;border-collapse:collapse;font-size:.9rem}
 pre.code,textarea.editor,.console,code{font-variant-ligatures:none;font-feature-settings:"liga" 0,"calt" 0}
 pre code,pre.code code{background:none;border:0;padding:0;border-radius:0;font-size:inherit;color:inherit;white-space:inherit;word-break:normal}
 @media (max-width:720px){ .step .code-wrap,.step .table-scroll{margin-left:-2.2rem} }
+
+/* Phase 0 toolkit + cheat sheet */
+.tk-line{display:flex;align-items:center;gap:.7rem;margin-top:.8rem}
+.tk-line .bar{flex:1;height:6px}
+.tk-group{margin-bottom:1rem}
+.tk-group-h{color:var(--dim);text-transform:uppercase;letter-spacing:.08em;margin:0 0 .45rem}
+.badge.optbadge{color:var(--warn);border-color:rgba(255,207,92,.4);background:rgba(255,207,92,.06)}
+.phase.optional .phase-dot{border-style:dashed}
+.callout.optional{border-color:rgba(255,207,92,.35);color:#cfd3d9}
+.small-lead{font-size:.95rem;margin-top:.6rem}
+.tbl-group td{font:500 .72rem var(--mono);color:var(--accent);text-transform:uppercase;letter-spacing:.06em;background:var(--accent-dd)}
+.cs-sec{margin:1.6rem 0} .cs-sec h2{font-size:1.05rem;margin-bottom:.6rem}
+table.cs td{width:33%} .cs-cmd{cursor:pointer;word-break:break-word} .cs-cmd:hover{border-color:var(--accent)}
+@media (max-width:720px){
+  table.cs, table.cs tbody, table.cs tr, table.cs td{display:block;width:100%}
+  table.cs tr:first-child{display:none}
+  table.cs tr{border:1px solid var(--border);border-radius:10px;margin-bottom:.6rem;padding:.4rem .2rem;background:var(--surface)}
+  table.cs td{border:none;padding:.3rem .7rem}
+  table.cs td:before{content:attr(data-l);display:block;font:500 .66rem var(--mono);color:var(--dim);text-transform:uppercase;letter-spacing:.06em}
+  table.cs td:first-child{font-weight:600}
+  table.cs td:first-child:before{display:none}
+  table.cs tr[hidden]{display:none}
+}

@@ -5,6 +5,7 @@ const PYODIDE_URLS = [
 ];
 let pyodide = null;
 let out = [];
+const loaded = new Set();
 
 async function boot() {
   let lastErr;
@@ -22,15 +23,20 @@ async function boot() {
 }
 
 const HARNESS = `
-import traceback, sys
-def __air_run(code, tests):
+import traceback, sys, ast, inspect
+_FLAGS = ast.PyCF_ALLOW_TOP_LEVEL_AWAIT
+async def _exec(src, name, ns):
+    r = eval(compile(src, name, "exec", flags=_FLAGS), ns)
+    if inspect.iscoroutine(r):
+        await r
+async def __air_run(code, tests):
     ns = {"__name__": "__main__"}
     stage = "your code"
     try:
-        exec(compile(code, "<your code>", "exec"), ns)
+        await _exec(code, "<your code>", ns)
         if tests:
             stage = "the checks"
-            exec(compile(tests, "<checks>", "exec"), ns)
+            await _exec(tests, "<checks>", ns)
         return {"ok": True, "error": ""}
     except AssertionError as e:
         msg = str(e) or "A check failed (no message)."
@@ -69,8 +75,15 @@ onmessage = async (ev) => {
     await ready;
     if (!pyodide) throw new Error("Python failed to load (are you offline?)");
     out = [];
+    const t = typeof tests === "string" ? tests : "";
+    // Load any extra packages (e.g. pydantic) the code imports - downloaded once from the CDN
+    try {
+      const imports = pyodide.pyimport("pyodide.code").find_imports(code + "\n" + t).toJs();
+      const missing = imports.filter(n => !loaded.has(n) && !["asyncio","json","math","re","os","sys","time","random","dataclasses","typing","pathlib","collections","itertools","functools","fnmatch","string","datetime","inspect","ast","textwrap","statistics","urllib","http","enum","abc","copy","io","base64","hashlib","shlex","traceback","contextlib","operator"].includes(n));
+      if (missing.length) { postMessage({ type: "status", id, msg: "Loading packages: " + missing.join(", ") + "…" }); await pyodide.loadPackagesFromImports(code + "\n" + t, { messageCallback: () => {} }); missing.forEach(n => loaded.add(n)); postMessage({ type: "status-done", id }); }
+    } catch (e) { /* unknown packages simply fail at import time with a clear error */ }
     const fn = pyodide.globals.get("__air_run");
-    const res = fn(code, typeof tests === "string" ? tests : "");
+    const res = await fn(code, t);
     const js = res.toJs({ dict_converter: Object.fromEntries });
     res.destroy(); fn.destroy();
     postMessage({ type: "result", id, ok: js.ok, error: js.error, kind: js.kind || "", stdout: out.join("\n") });

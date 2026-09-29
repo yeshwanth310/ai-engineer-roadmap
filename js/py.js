@@ -6,6 +6,8 @@ const pending = new Map();
 const listeners = new Set();
 let state = "idle"; // idle | loading | ready | error
 
+let statusCb = null;
+function statusMsg(msg){ if (statusCb) statusCb(msg); }
 function setState(s, detail){ state = s; listeners.forEach(fn => fn(s, detail)); }
 
 function start(){
@@ -17,6 +19,8 @@ function start(){
       const m = ev.data;
       if (m.type === "ready") { isReady = true; setState("ready"); resolve(); }
       else if (m.type === "boot-error") { setState("error", m.error); reject(new Error(m.error)); }
+      else if (m.type === "status") { const p = pending.get(m.id); if (p) { clearTimeout(p.timer); p.timer = setTimeout(() => { if (pending.has(m.id)) restart(); }, 90000); } statusMsg(m.msg); }
+      else if (m.type === "status-done") { const p = pending.get(m.id); if (p) { clearTimeout(p.timer); p.timer = setTimeout(() => { if (pending.has(m.id)) restart(); }, TIMEOUT_MS); } }
       else if (m.type === "result") { const p = pending.get(m.id); if (p) { pending.delete(m.id); clearTimeout(p.timer); p.resolve(m); } }
     };
     worker.onerror = (e) => { setState("error", e.message); reject(new Error(e.message || "Worker error")); };
@@ -43,5 +47,5 @@ async function run(code, tests){
   });
 }
 
-window.Py = { start, run, onState(fn){ listeners.add(fn); fn(state); return () => listeners.delete(fn); }, get state(){ return state; } };
+window.Py = { start, run, onStatus(fn){ statusCb = fn; }, onState(fn){ listeners.add(fn); fn(state); return () => listeners.delete(fn); }, get state(){ return state; } };
 })();
