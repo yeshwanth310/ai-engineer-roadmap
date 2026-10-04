@@ -5,19 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Forward-Deployed Engineer (43 weeks) · AI Engineer Roadmap</title>
   <meta name="description" content="A 43-week, 2-hours-a-week roadmap to becoming a forward-deployed engineer (AI): primer, Basics/Intermediate/Advanced tiers, timestamped videos, diagrams and optional paid courses." />
-  <meta name="theme-color" content="#0a0b0d" />
+  <meta name="theme-color" content="#10151d" />
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body class="fde-page" data-page="fde">
+  <a class="skip-link" href="#app">Skip to content</a>
   <header class="topbar">
     <a class="brand" href="./#/" aria-label="Home">
       <span class="brand-mark">&gt;_</span>
       <span class="brand-name">ai-engineer<span class="accent">.roadmap</span></span>
     </a>
+    <button type="button" class="menu-btn" id="menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="sidebar"><span aria-hidden="true">☰</span></button>
+  </header>
+  <div class="backdrop" id="backdrop" hidden></div>
+  <aside class="sidebar" id="sidebar" aria-label="Site navigation">
+    <div class="sb-head">
+      <a class="brand" href="./#/" aria-label="Home">
+        <span class="brand-mark">&gt;_</span>
+        <span class="brand-name">ai-engineer<span class="accent">.roadmap</span></span>
+      </a>
+      <button type="button" class="drawer-close" id="drawer-close" aria-label="Close menu"><span aria-hidden="true">✕</span></button>
+    </div>
     <nav class="topnav" id="topnav" aria-label="Main">
       <div class="nav-group" id="nav-roadmap">
         <button type="button" class="nav-parent" id="nav-roadmap-btn" aria-expanded="false" aria-controls="nav-roadmap-menu">Roadmap <span class="caret" aria-hidden="true">▾</span></button>
@@ -31,11 +43,16 @@
       <a href="./#/cheatsheet" data-nav="cheatsheet">Cheat sheet</a>
       <a href="./#/progress" data-nav="progress">Progress</a>
     </nav>
-    <button class="menu-btn" id="menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="topnav">☰</button>
-  </header>
+    <div class="sb-progress top-progress" title="Overall progress">
+      <div class="sb-progress-row"><span>Core roadmap progress</span><span class="sb-pct" id="top-progress-label">0%</span></div>
+      <div class="bar"><div class="fill" id="top-progress-fill"></div></div>
+      <p class="sb-note">27 core weeks · saved in this browser</p>
+    </div>
+  </aside>
 
+  <div class="workspace">
   <main id="app" tabindex="-1">
-  <div class="wrap fade-in">
+  <div class="wrap wrap-wide fade-in">
     <div class="crumbs"><span>Roadmap</span><span>/</span><span>Forward-Deployed Engineer (43 weeks)</span><span class="muted">·</span><a href="./#/">← AI Engineer (27 weeks)</a></div>
     <span class="eyebrow">// roadmap 2 of 2 · forward-deployed engineer · 43 weeks · 2h each · no maths</span>
     <h1 class="week-title" id="top">Forward-Deployed Engineer (AI) — Learning Roadmap</h1>
@@ -934,6 +951,7 @@
   <footer class="footer">
     <span class="mono small muted">// built for 2 hours a week · no maths required · <a href="./#/">AI Engineer (27 weeks) roadmap</a></span>
   </footer>
+  </div>
 
   <script src="js/nav.js"></script>
   <script>
@@ -943,7 +961,7 @@
       const heads = links.map(a => document.getElementById(a.dataset.jump));
       let cur = null;
       function onScroll(){
-        let idx = 0; const y = window.innerWidth <= 960 ? 140 : 100;
+        let idx = 0; const y = window.innerWidth <= 900 ? 150 : (window.innerWidth <= 1100 ? 90 : 40);
         heads.forEach((h, i) => { if (h.getBoundingClientRect().top < y) idx = i; });
         if (cur === idx) return; cur = idx;
         links.forEach((a, i) => a.classList.toggle("active", i === idx));

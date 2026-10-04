@@ -164,19 +164,19 @@ with sync_playwright() as p:
     ok("FDE page highlights Roadmap + its FDE entry", pg.evaluate("""(() => { const b = document.getElementById('nav-roadmap-btn'), a = document.querySelector('#nav-roadmap-menu a[data-nav=fde]');
         return b.classList.contains('active') && a.classList.contains('active') && a.getAttribute('aria-current') === 'page'; })()"""))
     exp = lambda: pg.get_attribute("#nav-roadmap-btn", "aria-expanded")
-    ok("submenu closed by default", exp() == "false" and not pg.is_visible("#nav-roadmap-menu"))
-    pg.hover("#nav-roadmap-btn"); time.sleep(0.2); ok("submenu opens on hover", exp() == "true" and pg.is_visible("#nav-roadmap-menu a[data-nav=home]"))
-    pg.mouse.move(700, 600); time.sleep(0.2); ok("submenu closes when the mouse leaves", exp() == "false" and not pg.is_visible("#nav-roadmap-menu"))
-    pg.click("#nav-roadmap-btn"); time.sleep(0.2); ok("submenu opens on click", exp() == "true")
-    pg.keyboard.press("Escape"); time.sleep(0.1)
-    ok("Esc closes submenu and returns focus", exp() == "false" and pg.evaluate("document.activeElement.id") == "nav-roadmap-btn")
-    pg.mouse.move(700, 600); pg.evaluate("document.activeElement.blur()"); pg.focus("#nav-roadmap-btn"); time.sleep(0.1)
-    ok("submenu opens on keyboard focus", exp() == "true")
+    ok("desktop: fixed left sidebar holds the nav", pg.evaluate("getComputedStyle(document.getElementById('sidebar')).position") == "fixed" and pg.is_visible("#topnav a[data-nav=setup]") and not pg.is_visible("#menu-btn"))
+    ok("desktop: Roadmap submenu expanded in the sidebar by default", exp() == "true" and pg.is_visible("#nav-roadmap-menu a[data-nav=home]") and pg.is_visible("#nav-roadmap-menu a[data-nav=fde]"))
+    pg.click("#nav-roadmap-btn"); time.sleep(0.1); ok("desktop: click collapses the submenu", exp() == "false" and not pg.is_visible("#nav-roadmap-menu"))
+    pg.click("#nav-roadmap-btn"); time.sleep(0.1); ok("desktop: click expands it again", exp() == "true")
+    pg.focus("#nav-roadmap-btn"); pg.keyboard.press("Escape"); time.sleep(0.1)
+    ok("desktop: Esc collapses the submenu and keeps focus on Roadmap", exp() == "false" and pg.evaluate("document.activeElement.id") == "nav-roadmap-btn")
+    pg.keyboard.press("Enter"); time.sleep(0.1); ok("desktop: Enter re-opens the submenu (keyboard)", exp() == "true")
     pg.keyboard.press("ArrowDown"); ok("ArrowDown moves into the submenu", pg.evaluate("document.activeElement.dataset.nav") == "home")
     pg.keyboard.press("Enter"); pg.wait_for_selector(".week-card")
     ok("'AI Engineer (27 weeks)' entry opens the roadmap overview", pg.url.rstrip("/").endswith("#") and pg.locator(".week-card").count() == 40, pg.url)
     ok("overview highlights Roadmap + AI Engineer entry", pg.evaluate("document.getElementById('nav-roadmap-btn').classList.contains('active') && document.querySelector('#nav-roadmap-menu a[data-nav=home]').classList.contains('active')"))
-    pg.click("#nav-roadmap-btn"); pg.click("#nav-roadmap-menu a[data-nav=fde]"); pg.wait_for_url("**/fde.html")
+    ok("desktop: submenu stays expanded after navigating", pg.get_attribute("#nav-roadmap-btn", "aria-expanded") == "true")
+    pg.click("#nav-roadmap-menu a[data-nav=fde]"); pg.wait_for_url("**/fde.html")
     ok("'Forward-Deployed Engineer (43 weeks)' entry opens fde.html", "Forward-Deployed Engineer" in pg.inner_text("h1"))
     pg.goto(BASE + "#/setup"); pg.wait_for_selector("#subscriptions")
     ok("Setup page: Roadmap not highlighted", not pg.evaluate("document.getElementById('nav-roadmap-btn').classList.contains('active')") and pg.locator("#topnav a.active[data-nav=setup]").count() == 1)
@@ -291,9 +291,56 @@ with sync_playwright() as p:
     ok("mobile: FDE entry opens fde.html", "Forward-Deployed Engineer" in m.inner_text("h1"))
     m.tap("#menu-btn"); m.tap("#nav-roadmap-btn"); time.sleep(0.2); m.tap("#nav-roadmap-menu a[data-nav=home]"); m.wait_for_selector(".week-card")
     ok("mobile: AI Engineer entry opens the roadmap overview", m.locator(".week-card").count() == 40 and not m.is_visible("#nav-roadmap-menu"))
+    # --- Drawer accessibility (<=900px) ---
+    ok("mobile: drawer is inert and hidden when closed", m.evaluate("document.getElementById('sidebar').inert") and not m.is_visible("#topnav a[data-nav=setup]"))
+    m.tap("#menu-btn"); time.sleep(0.3)
+    ok("mobile: drawer opens with aria-expanded, backdrop and scroll lock", m.get_attribute("#menu-btn", "aria-expanded") == "true" and m.is_visible("#backdrop") and m.evaluate("getComputedStyle(document.body).overflow") == "hidden" and not m.evaluate("document.getElementById('sidebar').inert"))
+    ok("mobile: focus moves into the drawer", m.evaluate("document.getElementById('sidebar').contains(document.activeElement)"))
+    for _ in range(12): m.keyboard.press("Tab")
+    ok("mobile: Tab focus stays trapped in the drawer", m.evaluate("document.getElementById('sidebar').contains(document.activeElement)"))
+    m.keyboard.press("Escape"); time.sleep(0.3)
+    ok("mobile: Esc closes the drawer and restores focus to the menu button", m.get_attribute("#menu-btn", "aria-expanded") == "false" and m.evaluate("document.activeElement.id") == "menu-btn" and not m.is_visible("#topnav a[data-nav=setup]"))
+    m.tap("#menu-btn"); time.sleep(0.3); m.mouse.click(380, 600); time.sleep(0.3)
+    ok("mobile: tapping the backdrop closes the drawer", m.get_attribute("#menu-btn", "aria-expanded") == "false")
+    ok("mobile: header and menu button are 44px+", m.evaluate("(() => { const b = document.getElementById('menu-btn').getBoundingClientRect(); return b.width >= 44 && b.height >= 44 && document.querySelector('.topbar').getBoundingClientRect().height >= 64; })()"))
     m.goto(BASE + "#/week/p9"); m.wait_for_selector(".tabs")
     ok("PowerShell project tab renders", "Activate.ps1" in m.inner_text(".tab-panel:not([hidden])"))
-    mctx.close(); b.close()
+    mctx.close()
+
+    # --- No page-wide horizontal scroll at the style guide's 6 widths ---
+    for wd in [360, 390, 412, 768, 1024, 1440]:
+        mob = wd < 800
+        wc = b.new_context(viewport={"width": wd, "height": 900}, is_mobile=mob, has_touch=mob); wp = wc.new_page(); watch(wp, f"w{wd}")
+        over = []
+        for r in ["", "#/week/1", "#/week/p13", "#/setup", "#/glossary", "#/cheatsheet", "#/progress", "fde.html"]:
+            wp.goto(BASE + r); wp.wait_for_selector("h1")
+            if r == "fde.html": wp.wait_for_function("document.body.dataset.mermaid", timeout=60000)
+            time.sleep(0.2); sw = wp.evaluate("document.documentElement.scrollWidth")
+            if sw > wd: over.append(f"{r or 'home'}={sw}")
+        ok(f"no horizontal scroll at {wd}px (8 pages)", not over, ", ".join(over))
+        wc.close()
+
+    # --- Export -> reset -> import round trip keeps progress identical ---
+    rc = b.new_context(viewport={"width": 1366, "height": 900}, accept_downloads=True); rp = rc.new_page(); watch(rp, "roundtrip")
+    rp.goto(BASE); rp.wait_for_selector(".week-card")
+    seed = {"version": 2, "weeks": {"1": {"done": True, "ex": True, "quizBest": 5, "code": "print('x')"}, "7": {"quizBest": 4}, "101": {"done": True, "ex": True}}, "tab": "anthropic", "updated": "2026-10-01T10:00:00Z"}
+    rp.evaluate("d => localStorage.setItem('air-progress-v1', JSON.stringify(d))", seed); rp.reload(); rp.wait_for_selector(".week-card")
+    before = rp.evaluate("JSON.parse(localStorage.getItem('air-progress-v1'))")
+    ok("saved progress still loads after restyle", before["weeks"]["1"]["done"] and before["weeks"]["7"]["quizBest"] == 4 and rp.locator(".week-card.done").count() == 2)
+    rp.goto(BASE + "fde.html"); rp.wait_for_selector("h1")
+    pct_fde = rp.inner_text("#top-progress-label"); rp.goto(BASE); rp.wait_for_selector(".week-card")
+    ok("fde.html sidebar % equals App.stats().pct", pct_fde == f"{rp.evaluate('App.stats().pct')}%", pct_fde)
+    rp.goto(BASE + "#/progress"); rp.wait_for_selector("#p-export")
+    with rp.expect_download() as dl: rp.click("#p-export")
+    path = dl.value.path(); exported = json.load(open(path))
+    rp.evaluate("localStorage.clear()"); rp.reload(); rp.wait_for_selector("#p-import", state="attached")
+    rp.set_input_files("#p-import", path); time.sleep(0.5)
+    after = rp.evaluate("JSON.parse(localStorage.getItem('air-progress-v1'))")
+    strip = lambda d: {k: v for k, v in d.items() if k != "updated"}
+    # Store.import() (unchanged code) fills missing done/ex flags with false, so compare with those defaults applied
+    norm = lambda ws: {k: {"done": False, "ex": False, **v} for k, v in ws.items()}
+    ok("export -> import round-trips progress (same weeks, scores, code, tab)", norm(after["weeks"]) == norm(exported["weeks"]) == norm(before["weeks"]) and after["tab"] == exported["tab"] == "anthropic" and after.get("version") == 2, json.dumps([strip(after), strip(exported)])[:400])
+    rc.close(); b.close()
 
 real = [e for e in errors if "fonts.g" not in e and "favicon" not in e]
 ok("no console errors", not real, "\n".join(real[:10]))

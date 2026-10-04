@@ -45,7 +45,10 @@ Weeks 1–27 across Phases 1–10. Open the site's overview for the full phase m
 ### Forward-Deployed Engineer (43 weeks)
 A follow-on 43-week plan (2 h/week, plus an optional 4-week TypeScript stage) at [`fde.html`](https://yeshwanth310.github.io/ai-engineer-roadmap/fde.html): plain-English primer, Basics/Intermediate/Advanced tiers per stage, timestamped YouTube segments, optional paid courses, four Mermaid diagrams (rendered in the browser with Mermaid 11 from jsDelivr) and two SVG infographics in `assets/fde/`.
 
-Both roadmaps sit under the **Roadmap** submenu in the top nav: *AI Engineer (27 weeks)* (`#/`) and *Forward-Deployed Engineer (43 weeks)* (`fde.html`).
+Both roadmaps sit under the **Roadmap** submenu in the left sidebar (a drawer on screens 900px wide and below): *AI Engineer (27 weeks)* (`#/`) and *Forward-Deployed Engineer (43 weeks)* (`fde.html`).
+
+## Design
+The site follows the Dify Learning Lab style guide v1.0: dark navy (`--bg #10151d`, `--panel #181f2a`), mint accent (`#b5f0cb`), DM Sans body text with Space Grotesk headings, rounded lightly outlined cards, a fixed left sidebar that becomes a focus-trapped drawer at 900px and below, 44px tap targets and `prefers-reduced-motion` support. The shared shell behaviour lives in `js/nav.js`.
 
 ## Progress & URLs
 - Core weeks: `#/week/1` … `#/week/27`.
