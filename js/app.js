@@ -64,8 +64,8 @@ function overview(){
       <div class="big-progress"><div class="bar"><div class="fill" style="width:${s.pct}%"></div></div><span class="pct">${s.pct}%</span></div>
       ${statGrid(s)}</div>
   </section>
-  <a class="card fde-card" id="fde-card" href="fde.html"><div><span class="eyebrow" style="margin-bottom:.2rem">// new · next step after the core roadmap</span>
-    <h2>Forward-deployed engineer (AI) roadmap →</h2>
+  <a class="card fde-card" id="fde-card" href="fde.html"><div><span class="eyebrow" style="margin-bottom:.2rem">// roadmap 2 of 2 · next step after AI Engineer (27 weeks)</span>
+    <h2>Forward-Deployed Engineer (43 weeks) →</h2>
     <p>43 weeks at 2 h/week: scope, integrate, secure, deploy and run an AI system for a real customer. Plain-English primer, Basics/Intermediate/Advanced tiers, timestamped videos, diagrams and optional paid courses.</p></div>
     <span class="go">open roadmap →</span></a>
   <div class="timeline stagger">${phases}</div></div>`;
@@ -154,13 +154,11 @@ function route(){
   else if (h === "/progress") { nav = "progress"; html = progress(); mount = mountProgress; title = "Progress · AI Engineer Roadmap"; }
   else html = overview();
   app.innerHTML = html; document.title = title;
-  document.querySelectorAll("[data-nav]").forEach(a => a.classList.toggle("active", a.dataset.nav === nav));
-  document.getElementById("topnav").classList.remove("open");
+  SiteNav.setActive(nav); SiteNav.closeAll();
   if (mount) cleanup = mount() || null;
   window.scrollTo(0, 0); refreshTop();
 }
 
-document.getElementById("menu-btn").addEventListener("click", () => document.getElementById("topnav").classList.toggle("open"));
 window.addEventListener("hashchange", route);
 route();
 })();

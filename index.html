@@ -18,9 +18,14 @@
       <span class="brand-mark">&gt;_</span>
       <span class="brand-name">ai-engineer<span class="accent">.roadmap</span></span>
     </a>
-    <nav class="topnav" id="topnav">
-      <a href="#/" data-nav="home">Roadmap</a>
-      <a href="fde.html" data-nav="fde">FDE</a>
+    <nav class="topnav" id="topnav" aria-label="Main">
+      <div class="nav-group" id="nav-roadmap">
+        <button type="button" class="nav-parent" id="nav-roadmap-btn" aria-expanded="false" aria-controls="nav-roadmap-menu">Roadmap <span class="caret" aria-hidden="true">▾</span></button>
+        <div class="submenu" id="nav-roadmap-menu">
+          <a href="#/" data-nav="home">AI Engineer <span class="sub-meta">(27 weeks)</span></a>
+          <a href="fde.html" data-nav="fde">Forward-Deployed Engineer <span class="sub-meta">(43 weeks)</span></a>
+        </div>
+      </div>
       <a href="#/setup" data-nav="setup">Setup</a>
       <a href="#/glossary" data-nav="glossary">Glossary</a>
       <a href="#/cheatsheet" data-nav="cheatsheet">Cheat sheet</a>
@@ -30,7 +35,7 @@
       <div class="bar"><div class="fill" id="top-progress-fill"></div></div>
       <span class="mono small" id="top-progress-label">0%</span>
     </div>
-    <button class="menu-btn" id="menu-btn" aria-label="Menu">☰</button>
+    <button class="menu-btn" id="menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="topnav">☰</button>
   </header>
 
   <main id="app" tabindex="-1"></main>
@@ -79,6 +84,7 @@
   <script src="js/py.js"></script>
   <script src="js/week.js"></script>
   <script src="js/setup.js"></script>
+  <script src="js/nav.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>

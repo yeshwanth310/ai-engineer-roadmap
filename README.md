@@ -39,11 +39,13 @@ Take each session's quiz; if you score 5/5, skip it.
 - The shell and git exercises use command-matching checkers and a small git simulator, because real shells can't run in the browser.
 - The **Cheat sheet** page (`#/cheatsheet`) puts common PowerShell and bash commands side by side.
 
-### Core roadmap
+### AI Engineer (27 weeks): the core roadmap
 Weeks 1–27 across Phases 1–10. Open the site's overview for the full phase map.
 
-### Forward-deployed engineer (AI) roadmap
+### Forward-Deployed Engineer (43 weeks)
 A follow-on 43-week plan (2 h/week, plus an optional 4-week TypeScript stage) at [`fde.html`](https://yeshwanth310.github.io/ai-engineer-roadmap/fde.html): plain-English primer, Basics/Intermediate/Advanced tiers per stage, timestamped YouTube segments, optional paid courses, four Mermaid diagrams (rendered in the browser with Mermaid 11 from jsDelivr) and two SVG infographics in `assets/fde/`.
+
+Both roadmaps sit under the **Roadmap** submenu in the top nav: *AI Engineer (27 weeks)* (`#/`) and *Forward-Deployed Engineer (43 weeks)* (`fde.html`).
 
 ## Progress & URLs
 - Core weeks: `#/week/1` … `#/week/27`.
