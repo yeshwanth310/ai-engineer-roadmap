@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="960" viewBox="0 0 1400 960" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+<title>Forward-deployed engineer roadmap week-by-week timeline</title>
+<rect width="1400" height="960" fill="#FFFFFF"/>
+<text x="700.0" y="46" text-anchor="middle" font-size="30" font-weight="700" fill="#212121">FDE Roadmap — 43 core weeks at 2 h/week (+4 optional)</text>
+<text x="700.0" y="76" text-anchor="middle" font-size="17" fill="#555">Each stage ends with a milestone a hiring manager can look at</text>
+<text x="341.06382978723406" y="110" text-anchor="middle" font-size="14" fill="#555">W1</text>
+<text x="429.5744680851064" y="110" text-anchor="middle" font-size="14" fill="#555">W5</text>
+<text x="540.2127659574468" y="110" text-anchor="middle" font-size="14" fill="#555">W10</text>
+<text x="650.8510638297872" y="110" text-anchor="middle" font-size="14" fill="#555">W15</text>
+<text x="761.4893617021277" y="110" text-anchor="middle" font-size="14" fill="#555">W20</text>
+<text x="872.1276595744681" y="110" text-anchor="middle" font-size="14" fill="#555">W25</text>
+<text x="982.7659574468086" y="110" text-anchor="middle" font-size="14" fill="#555">W30</text>
+<text x="1093.4042553191491" y="110" text-anchor="middle" font-size="14" fill="#555">W35</text>
+<text x="1204.0425531914893" y="110" text-anchor="middle" font-size="14" fill="#555">W40</text>
+<text x="1270.4255319148936" y="110" text-anchor="middle" font-size="14" fill="#555">W43</text>
+<text x="1314.6808510638298" y="110" text-anchor="middle" font-size="14" fill="#555">W45</text>
+<text x="1358.936170212766" y="110" text-anchor="middle" font-size="14" fill="#555">W47</text>
+<line x1="330.0" y1="130" x2="330.0" y2="634" stroke="#EEEEEE" stroke-width="1"/>
+<line x1="352.1276595744681" y1="130" x2="352.1276595744681" y2="634" stroke="#EEEEEE" stroke-width="1"/>
+<line x1="374.25531914893617" y1="130" x2="374.25531914893617" y2="634" stroke="#EEEEEE" stroke-width="1"/>
+<line x1="396.3829787234043" y1="130" x2="396.3829787234043" y2="634" stroke="#EEEEEE" stroke-width="1"/>
+<line x1="418.51063829787233" y1="130" x2="418.51063829787233" y2="634" stroke="#EEEEEE" stroke-width="1"/>
+<line x1="440.63829787234044" y1="130" x2="440.63829787234044" y2="634" stroke="#EEEEEE" stroke-width="1"/>
+<line x1="462.76595744680856" y1="130" x2="462.76595744680856" y2="634" stroke="#EEEEEE" stroke-width="1"/>
+<line x1="484.8936170212766" y1="130" x2="484.8936170212766" y2="634" stroke="#EEEEEE" stroke-width="1"/>
+<line x1="507.02127659574467" y1="130" x2="507.02127659574467" y2="634" stroke="#EEEEEE" stroke-width="1"/>
+<line x1="529.1489361702128" y1="130" x2="529.1489361702128" y2="634" stroke="#EEEEEE" stroke-width="1"/>
+<line x1="551.2765957446809" y1="130" x2="551.2765957446809" y2="634" stroke="#EEEEEE" stroke-width="1"/>
+<line x1="573.4042553191489" y1="130" x2="573.4042553191489" y2="634" stroke="#EEEEEE" stroke-width="1"/>
+<line x1="595.5319148936171" y1="130" x2="595.5319148936171" y2="634" stroke="#EEEEEE" stroke-width="1"/>
+<line x1="617.6595744680851" y1="130" x2="617.6595744680851" y2="634" stroke="#EEEEEE" stroke-width="1"/>
+<line x1="639.7872340425532" y1="130" x2="639.7872340425532" y2="634" stroke="#EEEEEE" stroke-width="1"/>
+<line x1="661.9148936170213" y1="130" x2="661.9148936170213" y2="634" stroke="#EEEEEE" stroke-width="1"/>
+<line x1="684.0425531914893" y1="130" x2="684.0425531914893" y2="634" stroke="#EEEEEE" stroke-width="1"/>
+<line x1="706.1702127659576" y1="130" x2="706.1702127659576" y2="634" stroke="#EEEEEE" stroke-width="1"/>
+<line x1="728.2978723404256" y1="130" x2="728.2978723404256" y2="634" stroke="#EEEEEE" stroke-width="1"/>
+<line x1="750.4255319148937" y1="130" x2="750.4255319148937" y2="634" stroke="#EEEEEE" stroke-width="1"/>
+<line x1="772.5531914893618" y1="130" x2="772.5531914893618" y2="634" stroke="#EEEEEE" stroke-width="1"/>
+<line x1="794.6808510638298" y1="130" x2="794.6808510638298" y2="634" stroke="#EEEEEE" stroke-width="1"/>
+<line x1="816.8085106382979" y1="130" x2="816.8085106382979" y2="634" stroke="#EEEEEE" stroke-width="1"/>
+<line x1="838.936170212766" y1="130" x2="838.936170212766" y2="634" stroke="#EEEEEE" stroke-width="1"/>
+<line x1="861.0638297872341" y1="130" x2="861.0638297872341" y2="634" stroke="#EEEEEE" stroke-width="1"/>
+<line x1="883.1914893617022" y1="130" x2="883.1914893617022" y2="634" stroke="#EEEEEE" stroke-width="1"/>
+<line x1="905.3191489361702" y1="130" x2="905.3191489361702" y2="634" stroke="#EEEEEE" stroke-width="1"/>
+<line x1="927.4468085106383" y1="130" x2="927.4468085106383" y2="634" stroke="#EEEEEE" stroke-width="1"/>
+<line x1="949.5744680851064" y1="130" x2="949.5744680851064" y2="634" stroke="#EEEEEE" stroke-width="1"/>
+<line x1="971.7021276595746" y1="130" x2="971.7021276595746" y2="634" stroke="#EEEEEE" stroke-width="1"/>
+<line x1="993.8297872340426" y1="130" x2="993.8297872340426" y2="634" stroke="#EEEEEE" stroke-width="1"/>
+<line x1="1015.9574468085107" y1="130" x2="1015.9574468085107" y2="634" stroke="#EEEEEE" stroke-width="1"/>
+<line x1="1038.0851063829787" y1="130" x2="1038.0851063829787" y2="634" stroke="#EEEEEE" stroke-width="1"/>
+<line x1="1060.212765957447" y1="130" x2="1060.212765957447" y2="634" stroke="#EEEEEE" stroke-width="1"/>
+<line x1="1082.3404255319151" y1="130" x2="1082.3404255319151" y2="634" stroke="#EEEEEE" stroke-width="1"/>
+<line x1="1104.4680851063831" y1="130" x2="1104.4680851063831" y2="634" stroke="#EEEEEE" stroke-width="1"/>
+<line x1="1126.595744680851" y1="130" x2="1126.595744680851" y2="634" stroke="#EEEEEE" stroke-width="1"/>
+<line x1="1148.723404255319" y1="130" x2="1148.723404255319" y2="634" stroke="#EEEEEE" stroke-width="1"/>
+<line x1="1170.8510638297873" y1="130" x2="1170.8510638297873" y2="634" stroke="#EEEEEE" stroke-width="1"/>
+<line x1="1192.9787234042553" y1="130" x2="1192.9787234042553" y2="634" stroke="#EEEEEE" stroke-width="1"/>
+<line x1="1215.1063829787236" y1="130" x2="1215.1063829787236" y2="634" stroke="#EEEEEE" stroke-width="1"/>
+<line x1="1237.2340425531916" y1="130" x2="1237.2340425531916" y2="634" stroke="#EEEEEE" stroke-width="1"/>
+<line x1="1259.3617021276596" y1="130" x2="1259.3617021276596" y2="634" stroke="#EEEEEE" stroke-width="1"/>
+<line x1="1281.4893617021278" y1="130" x2="1281.4893617021278" y2="634" stroke="#EEEEEE" stroke-width="1"/>
+<line x1="1303.6170212765958" y1="130" x2="1303.6170212765958" y2="634" stroke="#EEEEEE" stroke-width="1"/>
+<line x1="1325.744680851064" y1="130" x2="1325.744680851064" y2="634" stroke="#EEEEEE" stroke-width="1"/>
+<line x1="1347.872340425532" y1="130" x2="1347.872340425532" y2="634" stroke="#EEEEEE" stroke-width="1"/>
+<line x1="1370.0" y1="130" x2="1370.0" y2="634" stroke="#EEEEEE" stroke-width="1"/>
+<text x="318" y="154" text-anchor="end" font-size="17" font-weight="600" fill="#212121">0 Orientation</text>
+<text x="318" y="174" text-anchor="end" font-size="14" fill="#666">W1 · 2 h</text>
+<rect x="331.0" y="138" width="20.127659574468087" height="40" rx="6" fill="#90A4AE" stroke="#424242" stroke-width="1"/>
+<text x="318" y="210" text-anchor="end" font-size="17" font-weight="600" fill="#212121">1 Discovery &amp; scoping</text>
+<text x="318" y="230" text-anchor="end" font-size="14" fill="#666">W2–6 · 10 h</text>
+<rect x="353.1276595744681" y="194" width="108.63829787234043" height="40" rx="6" fill="#7E57C2" stroke="#424242" stroke-width="1"/>
+<text x="318" y="266" text-anchor="end" font-size="17" font-weight="600" fill="#212121">2 Integration &amp; data access</text>
+<text x="318" y="286" text-anchor="end" font-size="14" fill="#666">W7–16 · 20 h</text>
+<rect x="463.76595744680856" y="250" width="219.27659574468086" height="40" rx="6" fill="#1E88E5" stroke="#424242" stroke-width="1"/>
+<text x="318" y="322" text-anchor="end" font-size="17" font-weight="600" fill="#212121">3 Customer communication</text>
+<text x="318" y="342" text-anchor="end" font-size="14" fill="#666">W18–19 · 4 h</text>
+<rect x="707.1702127659576" y="306" width="42.255319148936174" height="40" rx="6" fill="#8E24AA" stroke="#424242" stroke-width="1"/>
+<text x="318" y="378" text-anchor="end" font-size="17" font-weight="600" fill="#212121">4 Security &amp; privacy</text>
+<text x="318" y="398" text-anchor="end" font-size="14" fill="#666">W20–23 · 8 h</text>
+<rect x="751.4255319148937" y="362" width="86.51063829787235" height="40" rx="6" fill="#E53935" stroke="#424242" stroke-width="1"/>
+<text x="318" y="434" text-anchor="end" font-size="17" font-weight="600" fill="#212121">5 Cloud deployment</text>
+<text x="318" y="454" text-anchor="end" font-size="14" fill="#666">W24–32 · 18 h</text>
+<rect x="839.936170212766" y="418" width="197.14893617021278" height="40" rx="6" fill="#FB8C00" stroke="#424242" stroke-width="1"/>
+<text x="318" y="490" text-anchor="end" font-size="17" font-weight="600" fill="#212121">6 Running in production</text>
+<text x="318" y="510" text-anchor="end" font-size="14" fill="#666">W34–37 · 8 h</text>
+<rect x="1061.212765957447" y="474" width="86.51063829787235" height="40" rx="6" fill="#43A047" stroke="#424242" stroke-width="1"/>
+<text x="318" y="546" text-anchor="end" font-size="17" font-weight="600" fill="#212121">7 System design &amp; case study</text>
+<text x="318" y="566" text-anchor="end" font-size="14" fill="#666">W39–43 · 10 h</text>
+<rect x="1171.8510638297873" y="530" width="108.63829787234043" height="40" rx="6" fill="#00897B" stroke="#424242" stroke-width="1"/>
+<text x="318" y="602" text-anchor="end" font-size="17" font-weight="600" fill="#212121">8 TypeScript (optional)</text>
+<text x="318" y="622" text-anchor="end" font-size="14" fill="#666">W44–47 · 8 h</text>
+<rect x="1282.4893617021278" y="586" width="86.51063829787235" height="40" rx="6" fill="#BDBDBD" stroke="#424242" stroke-width="1" stroke-dasharray="6 4"/>
+<rect x="685.0425531914893" y="130" width="20.127659574468087" height="504" fill="#F5F5F5" stroke="#9E9E9E" stroke-dasharray="4 3"/>
+<text x="695.1063829787233" y="654" text-anchor="middle" font-size="14" fill="#616161">buffer</text>
+<rect x="1039.0851063829787" y="130" width="20.127659574468087" height="504" fill="#F5F5F5" stroke="#9E9E9E" stroke-dasharray="4 3"/>
+<text x="1049.1489361702127" y="654" text-anchor="middle" font-size="14" fill="#616161">buffer</text>
+<rect x="1149.723404255319" y="130" width="20.127659574468087" height="504" fill="#F5F5F5" stroke="#9E9E9E" stroke-dasharray="4 3"/>
+<text x="1159.787234042553" y="654" text-anchor="middle" font-size="14" fill="#616161">buffer</text>
+<line x1="617.6595744680852" y1="124" x2="617.6595744680852" y2="640" stroke="#D81B60" stroke-width="3"/>
+<text x="617.6595744680852" y="676" text-anchor="middle" font-size="14" font-weight="700" fill="#D81B60">Checkpoint W13</text>
+<line x1="905.3191489361703" y1="124" x2="905.3191489361703" y2="640" stroke="#D81B60" stroke-width="3"/>
+<text x="905.3191489361703" y="676" text-anchor="middle" font-size="14" font-weight="700" fill="#D81B60">Checkpoint W26</text>
+<line x1="1192.9787234042553" y1="124" x2="1192.9787234042553" y2="640" stroke="#D81B60" stroke-width="3"/>
+<text x="1192.9787234042553" y="676" text-anchor="middle" font-size="14" font-weight="700" fill="#D81B60">Checkpoint W39</text>
+<text x="318" y="718" text-anchor="end" font-size="16" font-weight="600" fill="#212121">Weekly status note</text>
+<rect x="352.1276595744681" y="700" width="929.3617021276597" height="28" rx="14" fill="#5D4037"/>
+<text x="364.1276595744681" y="719" font-size="14" fill="#fff">5-line customer-style update in every commit (from week 2)</text>
+<text x="318" y="758" text-anchor="end" font-size="16" font-weight="600" fill="#212121">Langfuse traces on</text>
+<rect x="462.76595744680856" y="740" width="818.7234042553192" height="28" rx="14" fill="#2E7D32"/>
+<text x="474.76595744680856" y="759" font-size="14" fill="#fff">every agent call traced (from Stage 2)</text>
+<text x="318" y="798" text-anchor="end" font-size="16" font-weight="600" fill="#212121">Job-market track</text>
+<rect x="484.8936170212766" y="780" width="796.5957446808511" height="28" rx="14" fill="#283593"/>
+<text x="496.8936170212766" y="799" font-size="14" fill="#fff">30 min every other week: FDE chats · applications · mock scenarios</text>
+<text x="40" y="834" font-size="18" font-weight="700" fill="#212121">Milestones</text>
+<text x="40" y="858" font-size="15" fill="#333"><tspan font-weight="700">0:</tspan> Repo + self-assessment</text>
+<text x="490" y="858" font-size="15" fill="#333"><tspan font-weight="700">1:</tspan> Scoping doc · 50 queries · prototype video</text>
+<text x="940" y="858" font-size="15" fill="#333"><tspan font-weight="700">2:</tspan> OAuth + webhook + SQL demo</text>
+<text x="40" y="888" font-size="15" fill="#333"><tspan font-weight="700">3:</tspan> Runbook + admin handoff</text>
+<text x="490" y="888" font-size="15" fill="#333"><tspan font-weight="700">4:</tspan> Security brief + red-team evals</text>
+<text x="940" y="888" font-size="15" fill="#333"><tspan font-weight="700">5:</tspan> terraform apply · CI · Bedrock</text>
+<text x="40" y="918" font-size="15" fill="#333"><tspan font-weight="700">6:</tspan> Post-launch metrics report</text>
+<text x="490" y="918" font-size="15" fill="#333"><tspan font-weight="700">7:</tspan> Case study + walkthrough</text>
+<text x="940" y="918" font-size="15" fill="#333"><tspan font-weight="700">8:</tspan> TS front end / handler</text>
+</svg>

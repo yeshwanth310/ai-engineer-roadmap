@@ -320,3 +320,49 @@ table.cs td{width:33%} .cs-cmd{cursor:pointer;word-break:break-word} .cs-cmd:hov
 .editor-wrap .gutter{position:absolute;top:0;bottom:0;left:0;width:3.4rem;min-width:0;box-sizing:border-box}
 .editor-wrap textarea.editor{margin-left:3.4rem}
 @media (max-width:720px){ .editor-wrap textarea.editor{margin-left:0} }
+
+/* Forward-deployed engineer page (fde.html) + home card */
+.fde-card{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;margin:-1.5rem 0 2.6rem;color:var(--text);border-color:rgba(62,240,165,.35);transition:border-color .2s,transform .2s}
+.fde-card:hover{text-decoration:none;border-color:var(--accent);transform:translateY(-2px)}
+.fde-card h2{font-size:1.1rem;margin:.2rem 0 .35rem} .fde-card p{margin:0;color:var(--muted);font-size:.93rem;max-width:70ch}
+.fde-card .go{font-family:var(--mono);color:var(--accent);white-space:nowrap}
+.fde-page .side-nav{max-height:calc(100vh - 6rem);overflow-y:auto;scrollbar-width:thin}
+.fde-page .side-nav a{font-size:.82rem;line-height:1.35;padding:.32rem .7rem}
+.prose.fde{max-width:none;min-width:0;overflow-wrap:break-word}
+.prose.fde>p,.prose.fde>ul,.prose.fde>ol,.prose.fde>.callout{max-width:78ch}
+.prose.fde h2.fde-h2{font-size:1.35rem;margin:2.8rem 0 1rem;padding-top:1.2rem;border-top:1px solid var(--border);scroll-margin-top:5rem}
+.prose.fde h3{font-size:1.08rem;margin:1.8rem 0 .6rem;color:var(--text);scroll-margin-top:5rem}
+.prose.fde h3[id$="by-level"]{font-family:var(--mono);font-size:.9rem;color:var(--accent);text-transform:uppercase;letter-spacing:.06em}
+.prose.fde strong{color:var(--text)}
+.prose.fde ul ul{margin:.3rem 0 .2rem;padding-left:1.1rem}
+.prose.fde ul ul li{font-size:.93rem;color:#b9bfc7}
+.prose.fde hr{border:0;border-top:1px dashed var(--border2);margin:2.5rem 0}
+.prose.fde .table-scroll{margin:1rem 0 1.4rem;border:1px solid var(--border);border-radius:10px;background:var(--surface)}
+.fde-tbl td,.fde-tbl th{font-size:.88rem} .fde-tbl tr:last-child td{border-bottom:none}
+.fde-fig{margin:1rem 0 1.6rem} .fde-fig figcaption{margin-top:.4rem}
+.fde-img-link{display:block;border:1px solid var(--border2);border-radius:10px;overflow:hidden;background:#fff}
+.fde-img{display:block;width:100%;height:auto}
+.mmd-wrap{margin:1rem 0 1.6rem;border:1px solid var(--border);border-radius:10px;background:var(--bg2);padding:.6rem}
+.mmd-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.mmd-wrap pre.mermaid{margin:0;background:none;border:0;padding:.4rem;color:var(--muted);font:12px/1.4 var(--mono);white-space:pre;text-align:center}
+.mmd-wrap pre.mermaid svg{max-width:100%;height:auto}
+.prose .mmd-wrap pre.mermaid p,.prose .mmd-wrap pre.mermaid li{color:inherit;margin:0;font-size:inherit}
+.mmd-flow pre.mermaid{text-align:left} .mmd-flow pre.mermaid svg{max-width:none}
+.mmd-hint{margin-top:.3rem;text-align:right}
+.mmd-gantt .mmd-hint{display:none}
+@media (max-width:960px){ .fde-page .side-nav{max-height:none;overflow-y:hidden} .fde-page .side-nav a{font-size:.78rem} .prose.fde h2.fde-h2,.prose.fde h3{scroll-margin-top:7.5rem} }
+@media (max-width:720px){
+  .fde-card{margin-top:-1.8rem}
+  .mmd-wrap{padding:.4rem;margin-left:-.4rem;margin-right:-.4rem}
+  .mmd-gantt pre.mermaid{min-width:760px}
+  .mmd-gantt pre.mermaid svg{max-width:none!important;width:100%}
+  .mmd-gantt .mmd-hint{display:block}
+  .prose.fde>ul{padding-left:1.05rem}
+  .fde-tbl, .fde-tbl tbody, .fde-tbl tr, .fde-tbl td{display:block;width:100%}
+  .fde-tbl thead{display:none}
+  .fde-tbl tr{border-bottom:1px solid var(--border2);padding:.45rem .2rem}
+  .fde-tbl tr:last-child{border-bottom:none}
+  .fde-tbl td{border:none;padding:.25rem .7rem}
+  .fde-tbl td:before{content:attr(data-l);display:block;font:500 .66rem var(--mono);color:var(--dim);text-transform:uppercase;letter-spacing:.06em}
+  .fde-tbl td:first-child{font-weight:600} .fde-tbl td:first-child:before{display:none}
+}

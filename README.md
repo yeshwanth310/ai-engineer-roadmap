@@ -42,6 +42,9 @@ Take each session's quiz; if you score 5/5, skip it.
 ### Core roadmap
 Weeks 1–27 across Phases 1–10. Open the site's overview for the full phase map.
 
+### Forward-deployed engineer (AI) roadmap
+A follow-on 43-week plan (2 h/week, plus an optional 4-week TypeScript stage) at [`fde.html`](https://yeshwanth310.github.io/ai-engineer-roadmap/fde.html): plain-English primer, Basics/Intermediate/Advanced tiers per stage, timestamped YouTube segments, optional paid courses, four Mermaid diagrams (rendered in the browser with Mermaid 11 from jsDelivr) and two SVG infographics in `assets/fde/`.
+
 ## Progress & URLs
 - Core weeks: `#/week/1` … `#/week/27`.
 - Toolkit sessions: `#/week/p1` … `#/week/p13`. Internally these are ids 101–113, so they never collide with core week numbers.

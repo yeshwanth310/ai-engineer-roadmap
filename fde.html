@@ -1,0 +1,970 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Forward-Deployed Engineer (AI) roadmap · AI Engineer Roadmap</title>
+  <meta name="description" content="A 43-week, 2-hours-a-week roadmap to becoming a forward-deployed engineer (AI): primer, Basics/Intermediate/Advanced tiers, timestamped videos, diagrams and optional paid courses." />
+  <meta name="theme-color" content="#0a0b0d" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="fde-page">
+  <header class="topbar">
+    <a class="brand" href="index.html#/" aria-label="Home">
+      <span class="brand-mark">&gt;_</span>
+      <span class="brand-name">ai-engineer<span class="accent">.roadmap</span></span>
+    </a>
+    <nav class="topnav" id="topnav">
+      <a href="index.html#/" data-nav="home">Roadmap</a>
+      <a href="fde.html" data-nav="fde" class="active">FDE</a>
+      <a href="index.html#/setup" data-nav="setup">Setup</a>
+      <a href="index.html#/glossary" data-nav="glossary">Glossary</a>
+      <a href="index.html#/cheatsheet" data-nav="cheatsheet">Cheat sheet</a>
+      <a href="index.html#/progress" data-nav="progress">Progress</a>
+    </nav>
+    <button class="menu-btn" id="menu-btn" aria-label="Menu">☰</button>
+  </header>
+
+  <main id="app" tabindex="-1">
+  <div class="wrap fade-in">
+    <div class="crumbs"><a href="index.html#/">← AI Engineer Roadmap</a><span>/</span><span>Forward-deployed engineer</span></div>
+    <span class="eyebrow">// next step after the core roadmap · 43 weeks · 2h each · no maths</span>
+    <h1 class="week-title" id="top">Forward-Deployed Engineer (AI) — Learning Roadmap</h1>
+    <div class="week-layout fde-layout">
+      <nav class="side-nav" id="fde-nav" aria-label="Sections"><div class="side-title">On this page</div>
+<a href="#visual-overview" data-jump="visual-overview">Visual overview</a>
+<a href="#how-to-use-this-roadmap-tiers-videos-and-paid-courses" data-jump="how-to-use-this-roadmap-tiers-videos-and-paid-courses">How to use</a>
+<a href="#what-this-plan-is" data-jump="what-this-plan-is">The plan</a>
+<a href="#ai-ml-and-llms-in-plain-english-primer-no-maths" data-jump="ai-ml-and-llms-in-plain-english-primer-no-maths">Primer</a>
+<a href="#big-picture-diagrams" data-jump="big-picture-diagrams">Diagrams</a>
+<a href="#weekly-habits-run-across-the-whole-plan-about-1015-min-inside-the-2-h" data-jump="weekly-habits-run-across-the-whole-plan-about-1015-min-inside-the-2-h">Weekly habits</a>
+<a href="#quarterly-checkpoints-end-of-weeks-13-26-39" data-jump="quarterly-checkpoints-end-of-weeks-13-26-39">Checkpoints</a>
+<a href="#stage-0-orientation-week-1-2-h" data-jump="stage-0-orientation-week-1-2-h">Stage 0 · Orientation</a>
+<a href="#stage-1-discovery-scoping-first-prototype-weeks-26-10-h" data-jump="stage-1-discovery-scoping-first-prototype-weeks-26-10-h">Stage 1 · Discovery, scoping &amp; first prototype</a>
+<a href="#stage-2-enterprise-integration-data-access-weeks-716-20-h" data-jump="stage-2-enterprise-integration-data-access-weeks-716-20-h">Stage 2 · Enterprise integration &amp; data access</a>
+<a href="#stage-3-customer-communication-weeks-1819-4-h" data-jump="stage-3-customer-communication-weeks-1819-4-h">Stage 3 · Customer communication</a>
+<a href="#stage-4-security-privacy-compliance-weeks-2023-8-h" data-jump="stage-4-security-privacy-compliance-weeks-2023-8-h">Stage 4 · Security, privacy &amp; compliance</a>
+<a href="#stage-5-deploying-into-the-customers-cloud-weeks-2432-18-h" data-jump="stage-5-deploying-into-the-customers-cloud-weeks-2432-18-h">Stage 5 · Deploying into the customer&#x27;s cloud</a>
+<a href="#stage-6-running-it-in-production-weeks-3437-8-h" data-jump="stage-6-running-it-in-production-weeks-3437-8-h">Stage 6 · Running it in production</a>
+<a href="#stage-7-system-design-the-case-study-weeks-3943-10-h" data-jump="stage-7-system-design-the-case-study-weeks-3943-10-h">Stage 7 · System design &amp; the case study</a>
+<a href="#stage-8-optional-light-typescript-weeks-4447-8-h" data-jump="stage-8-optional-light-typescript-weeks-4447-8-h">Stage 8 · Light TypeScript (opt.)</a>
+<a href="#summary" data-jump="summary">Summary</a>
+<a href="#optional-paid-courses-at-a-glance" data-jump="optional-paid-courses-at-a-glance">Paid courses</a>
+<a href="#what-changed-after-review" data-jump="what-changed-after-review">What changed</a>
+      </nav>
+      <article class="prose fde" id="fde-content">
+
+<p><strong>For:</strong> Yeshwanth · <strong>Pace:</strong> 2 hours/week (≈1 h learn + 1 h build) · <strong>Maths:</strong> none beyond high-level intuition<br/>
+<strong>Length:</strong> 43 core weeks (~86 h, ~10 months), plus an optional 4-week TypeScript stage (47 weeks total)<br/>
+<strong>Built by:</strong> Researcher → Curriculum → Critic + Outsider → Judge · <strong>Date:</strong> 4 Oct 2026</p>
+<div class="callout why">
+<p><strong>Upgraded 4 Oct 2026:</strong> every stage now has <strong>Basics → Intermediate → Advanced</strong> tiers with plain-language explanations, free links, timestamped YouTube segments and optional paid courses. Diagrams are below and in <a href="#visual-overview"><code>assets/</code></a>. The 2 h/week pace, the 43-week timeline, and every milestone are unchanged.</p>
+</div>
+<h2 class="fde-h2" id="visual-overview" tabindex="-1">Visual overview</h2>
+<figure class="fde-fig"><a class="fde-img-link" href="assets/fde/fde-skills-map.svg" rel="noopener" target="_blank"><img alt="FDE skills map: engineering vs customer-facing skills by tier" class="fde-img" loading="lazy" src="assets/fde/fde-skills-map.svg"/></a><figcaption class="mono small muted">FDE skills map: engineering vs customer-facing skills by tier (tap to open full size)</figcaption></figure>
+<figure class="fde-fig"><a class="fde-img-link" href="assets/fde/fde-timeline.svg" rel="noopener" target="_blank"><img alt="Week-by-week stage timeline of the 43-week roadmap" class="fde-img" loading="lazy" src="assets/fde/fde-timeline.svg"/></a><figcaption class="mono small muted">Week-by-week stage timeline of the 43-week roadmap (tap to open full size)</figcaption></figure>
+<h3 id="roadmap-flow-stages-and-dependencies" tabindex="-1">Roadmap flow (stages and dependencies)</h3>
+<figure class="mmd-wrap mmd-flow"><div class="mmd-scroll"><pre class="mermaid" id="mmd-0">flowchart LR
+    PRE["Prerequisite:&lt;br/&gt;AI Engineer Roadmap core&lt;br/&gt;(Python, LLM APIs, RAG, agents, MCP)"] --&gt; S0
+    S0["Stage 0&lt;br/&gt;Orientation&lt;br/&gt;W1"] --&gt; S1["Stage 1&lt;br/&gt;Discovery and scoping&lt;br/&gt;W2-6"]
+    S1 --&gt; S2["Stage 2&lt;br/&gt;Integration and data access&lt;br/&gt;W7-16"]
+    S2 --&gt; B1(["Buffer W17"])
+    B1 --&gt; S3["Stage 3&lt;br/&gt;Customer communication&lt;br/&gt;W18-19"]
+    S3 --&gt; S4["Stage 4&lt;br/&gt;Security and privacy&lt;br/&gt;W20-23"]
+    S4 --&gt; S5["Stage 5&lt;br/&gt;Cloud deployment&lt;br/&gt;W24-32"]
+    S5 --&gt; B2(["Buffer W33"])
+    B2 --&gt; S6["Stage 6&lt;br/&gt;Running in production&lt;br/&gt;W34-37"]
+    S6 --&gt; B3(["Buffer W38"])
+    B3 --&gt; S7["Stage 7&lt;br/&gt;System design and case study&lt;br/&gt;W39-43"]
+    S7 -.-&gt;|optional| S8["Stage 8&lt;br/&gt;TypeScript&lt;br/&gt;W44-47"]
+    S1 -.-&gt;|50-query eval set| S4
+    S1 -.-&gt;|50-query eval set| S6
+    S2 -.-&gt;|Langfuse traces| S6
+    S1 -.-&gt;|scoping doc| S7
+    classDef core fill:#E3F2FD,stroke:#1565C0,color:#0D47A1
+    classDef buf fill:#F5F5F5,stroke:#9E9E9E,color:#424242
+    classDef opt fill:#FFF3E0,stroke:#E65100,color:#BF360C,stroke-dasharray: 5 5
+    class S0,S1,S2,S3,S4,S5,S6,S7 core
+    class B1,B2,B3 buf
+    class S8,PRE opt</pre></div><figcaption class="mono small muted mmd-hint">swipe sideways to see the whole diagram →</figcaption></figure>
+<h3 id="timeline-gantt-2-hweek" tabindex="-1">Timeline (Gantt, 2 h/week)</h3>
+<p>Dates assume you start on Monday 5 Oct 2026; shift them to your real start date. One bar = one stage; the Checkpoints row marks the quarterly checkpoints.</p>
+<figure class="mmd-wrap mmd-gantt"><div class="mmd-scroll"><pre class="mermaid" id="mmd-1">gantt
+    title FDE roadmap - 43 core weeks at 2 h per week
+    dateFormat YYYY-MM-DD
+    axisFormat %d %b
+    todayMarker off
+    section Core stages
+    S0 Orientation                  :s0, 2026-10-05, 7d
+    S1 Discovery and scoping        :s1, after s0, 35d
+    S2 Integration and data access  :s2, after s1, 70d
+    Buffer W17                      :b1, after s2, 7d
+    S3 Customer communication       :s3, after b1, 14d
+    S4 Security and privacy         :s4, after s3, 28d
+    S5 Cloud deployment             :s5, after s4, 63d
+    Buffer W33                      :b2, after s5, 7d
+    S6 Running in production        :s6, after b2, 28d
+    Buffer W38                      :b3, after s6, 7d
+    S7 System design and case study :s7, after b3, 35d
+    section Optional
+    S8 TypeScript                   :s8, after s7, 28d
+    section Habits
+    Weekly status note              :h1, 2026-10-12, 294d
+    Langfuse traces on              :h2, 2026-11-16, 259d
+    Job-market track                :h3, 2026-11-23, 252d
+    section Checkpoints
+    Checkpoint W13                  :milestone, c1, 2027-01-03, 0d
+    Checkpoint W26                  :milestone, c2, 2027-04-04, 0d
+    Checkpoint W39                  :milestone, c3, 2027-07-04, 0d</pre></div><figcaption class="mono small muted mmd-hint">swipe sideways to see the whole diagram →</figcaption></figure>
+<h2 class="fde-h2" id="how-to-use-this-roadmap-tiers-videos-and-paid-courses" tabindex="-1">How to use this roadmap (tiers, videos and paid courses)</h2>
+<ul>
+<li><strong>Three tiers per stage.</strong> <strong>Basics</strong> assumes nothing beyond Python. <strong>Intermediate</strong> is the core that the stage's milestone needs. <strong>Advanced (optional / stretch)</strong> is extra depth, not required for the milestone.</li>
+<li><strong>Keeping it at 2 h/week:</strong> Basics and Intermediate fit inside each stage's existing "Learn" hours. If you already know a Basics item from your AI Engineer Roadmap, skip it. Do Advanced items only in a buffer week (17, 33, 38), after week 43, or when a quarterly checkpoint says your target roles need them.</li>
+<li><strong>Every concept has at least one of:</strong> a short explanation written here, a free link, a timestamped video segment, or an optional paid course module.</li>
+<li><strong>Videos:</strong> a segment like "watch 3:00–12:00" means start at the first time and stop at the second. The link already jumps to the start. Every timestamp comes from the video's own chapter markers (checked 4 Oct 2026). Videos without chapters are labelled <strong>full video</strong>. Treat videos as a substitute for the matching reading, not an extra: watch <em>or</em> read, then build.</li>
+<li><strong>Paid courses (optional, never required):</strong> listed per stage under "Optional paid alternatives" and in one table near the end. Prices are as shown on each page on 4 Oct 2026 and can change. "Price varies" means the page doesn't show a fixed price (subscription, regional pricing or frequent sales). Prefer the free path; buy only if you learn much better from structured courses.</li>
+</ul>
+<h2 class="fde-h2" id="what-this-plan-is" tabindex="-1">What this plan is</h2>
+<p>An FDE works directly with a customer to scope, build, integrate, secure, deploy and run an AI system inside their environment. In 9 live postings (OpenAI, Anthropic, Palantir, Scale AI, Sierra, Decagon, Cohere, Mistral, Databricks) the work was roughly 60–70% engineering and 30–40% customer-facing. Skill frequency (out of 9): customer delivery 9, integration 8, scoping ~8, production LLM/agent/RAG 7, evals 7, communication 6, security 5, cloud 4, observability 4, fine-tuning 1.</p>
+<p>This is a <strong>job-entry plan, not a course</strong>. Everything runs through one engagement with a <strong>real customer</strong> (a friend's small business, a nonprofit, or a team at your current job). Fallback if you can't find one: a fictional "Customer Zero" support team that wants an agent over its Google Drive docs and ticket inbox. Every week ends with a commit to one public repo, <code>fde-customer-zero</code>, so a hiring manager sees one end-to-end deployment from discovery to post-launch.</p>
+<div class="callout analogy">
+<p><strong>Customer privacy rule:</strong> never put a real customer's data, documents, ticket text or names in the public repo, and get their written OK before publishing anything about them. Run the real engagement in a private repo and publish a cleaned-up version to <code>fde-customer-zero</code> for your portfolio.</p>
+</div>
+<p><strong>Starting assumption:</strong> you've finished (or are close to finishing) the core of your <a href="https://yeshwanth310.github.io/ai-engineer-roadmap/" rel="noopener" target="_blank">AI Engineer Roadmap</a>: Python, Git, LLM APIs, tool calling, RAG, agents, MCP, evals and FastAPI. If you're still early in it, finish it first and run only the weekly habits below alongside. Two hours a week split across two full tracks stalls both.</p>
+<p><strong>Realistic entry route:</strong> most FDE roles ask for 4–5+ years of experience. Aim the milestones first at stepping-stone roles: Palantir's junior/new-grad FDSE, deployment, implementation or solutions engineer at AI app startups (e.g. Sierra, Decagon), and solutions engineering at AI platforms.</p>
+<hr/>
+<h2 class="fde-h2" id="ai-ml-and-llms-in-plain-english-primer-no-maths" tabindex="-1">AI, ML and LLMs in plain English (primer, no maths)</h2>
+<p>Read this once before Stage 0. It's the vocabulary you'll use with customers. Explaining these simply is part of the job.</p>
+<div class="table-scroll"><table class="tbl fde-tbl">
+<thead>
+<tr>
+<th>Concept</th>
+<th>Plain-English explanation</th>
+<th>Why an FDE needs it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td data-l="Concept"><strong>AI vs ML vs deep learning</strong></td>
+<td data-l="Plain-English explanation"><em>AI</em> is any software that does tasks we'd call "smart". <em>Machine learning (ML)</em> is AI that learns patterns from examples instead of hand-written rules. <em>Deep learning</em> is ML built from large "neural networks", layers of simple units that together recognise complex patterns.</td>
+<td data-l="Why an FDE needs it">Customers mix these words up. You need to say which one their problem actually needs.</td>
+</tr>
+<tr>
+<td data-l="Concept"><strong>Training vs inference</strong></td>
+<td data-l="Plain-English explanation"><em>Training</em> is the expensive one-off process where a model learns from data. <em>Inference</em> is using the finished model to answer a request. As an FDE you almost always do inference, not training.</td>
+<td data-l="Why an FDE needs it">Sets expectations: you're integrating a model, not building one, which is cheaper and faster.</td>
+</tr>
+<tr>
+<td data-l="Concept"><strong>Large language model (LLM)</strong></td>
+<td data-l="Plain-English explanation">A deep-learning model trained on huge amounts of text to predict the next word (token). Prediction at that scale lets it write, summarise, reason and follow instructions.</td>
+<td data-l="Why an FDE needs it">It's the engine inside nearly every system you'll deploy.</td>
+</tr>
+<tr>
+<td data-l="Concept"><strong>Tokens and context window</strong></td>
+<td data-l="Plain-English explanation">Models read and write in <em>tokens</em> (word pieces, roughly ¾ of a word). The <em>context window</em> is how many tokens fit into one request: instructions, documents and conversation together.</td>
+<td data-l="Why an FDE needs it">Cost, speed and how much customer data you can send at once all depend on tokens.</td>
+</tr>
+<tr>
+<td data-l="Concept"><strong>Prompt and system prompt</strong></td>
+<td data-l="Plain-English explanation">The <em>prompt</em> is the text you send. The <em>system prompt</em> is standing instructions that set the model's role and rules.</td>
+<td data-l="Why an FDE needs it">Most behaviour fixes in a deployment start as prompt changes.</td>
+</tr>
+<tr>
+<td data-l="Concept"><strong>Pre-training, fine-tuning, RLHF</strong></td>
+<td data-l="Plain-English explanation"><em>Pre-training</em> teaches general language. <em>Fine-tuning</em> adjusts a model on narrower examples. <em>RLHF</em> (reinforcement learning from human feedback) tunes it towards answers people prefer. Only 1 of 9 FDE postings asked for fine-tuning.</td>
+<td data-l="Why an FDE needs it">When customers ask "can we train it on our data?", the honest answer is usually RAG first, not fine-tuning.</td>
+</tr>
+<tr>
+<td data-l="Concept"><strong>Hallucination</strong></td>
+<td data-l="Plain-English explanation">When a model states something false with confidence, because it's predicting plausible text, not looking facts up.</td>
+<td data-l="Why an FDE needs it">The #1 customer worry. Grounding (RAG), evals and citations are your answers.</td>
+</tr>
+<tr>
+<td data-l="Concept"><strong>Embeddings and vector store</strong></td>
+<td data-l="Plain-English explanation">An <em>embedding</em> turns text into a list of numbers so that similar meanings land close together. A <em>vector store</em> (e.g. <a href="https://github.com/pgvector/pgvector" rel="noopener" target="_blank">pgvector</a>, <a href="https://docs.trychroma.com/" rel="noopener" target="_blank">Chroma</a>) finds the closest chunks quickly.</td>
+<td data-l="Why an FDE needs it">This is how an agent finds the right paragraph in a customer's 10,000 documents.</td>
+</tr>
+<tr>
+<td data-l="Concept"><strong>RAG (retrieval-augmented generation)</strong></td>
+<td data-l="Plain-English explanation">Before answering, the system <em>retrieves</em> relevant chunks of the customer's documents and puts them in the prompt, so the model answers from their data.</td>
+<td data-l="Why an FDE needs it">The most common enterprise pattern. Most "chat with our docs" projects are RAG.</td>
+</tr>
+<tr>
+<td data-l="Concept"><strong>Tool calling and agents</strong></td>
+<td data-l="Plain-English explanation"><em>Tool calling</em> lets a model ask your code to run a function (search tickets, look up an order). An <em>agent</em> is a loop where the model decides which tools to call, step by step, until the task is done.</td>
+<td data-l="Why an FDE needs it">Agents are how AI touches real systems, so they're where integration and security work happens.</td>
+</tr>
+<tr>
+<td data-l="Concept"><strong>MCP (Model Context Protocol)</strong></td>
+<td data-l="Plain-English explanation">An open standard for plugging tools and data sources into AI apps, like a USB port for AI. You write an MCP <em>server</em> once and any MCP-aware <em>client</em> can use it.</td>
+<td data-l="Why an FDE needs it">Increasingly how customers expect integrations to be packaged.</td>
+</tr>
+<tr>
+<td data-l="Concept"><strong>Evals</strong></td>
+<td data-l="Plain-English explanation">Automated tests for AI output: a set of realistic inputs plus a way to judge if each answer is good (code checks, human labels, or another LLM as judge).</td>
+<td data-l="Why an FDE needs it">Without evals you can't prove to a customer that a change made things better.</td>
+</tr>
+<tr>
+<td data-l="Concept"><strong>Guardrails</strong></td>
+<td data-l="Plain-English explanation">Checks around the model: filtering inputs (prompt injection, PII) and outputs (unsafe or off-topic answers).</td>
+<td data-l="Why an FDE needs it">Security and compliance teams will ask about them.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Free resources (Basics → Advanced):</strong></p>
+<ul>
+<li>Basics: <a href="https://developers.google.com/machine-learning/intro-to-ml" rel="noopener" target="_blank">Google: Intro to Machine Learning</a> (conceptual, ~1 h; skip any maths).</li>
+<li>Basics video: <a href="https://www.youtube.com/watch?v=aircAruvnKk&amp;t=162s" rel="noopener" target="_blank">But what is a neural network? — 3Blue1Brown</a>, watch 2:42–8:38 for neurons and layers (stop before the notation section).</li>
+<li>Basics video: <a href="https://www.youtube.com/watch?v=LPZh9BOjkQs&amp;t=35s" rel="noopener" target="_blank">Large Language Models explained briefly — 3Blue1Brown</a>, watch 0:35–4:15 for what an LLM is, training, and pre-training vs RLHF.</li>
+<li>Intermediate video: <a href="https://www.youtube.com/watch?v=zjkBMFhNj_g&amp;t=20s" rel="noopener" target="_blank">[1hr Talk] Intro to Large Language Models — Andrej Karpathy</a>, watch 0:20–8:58 for inference and training, then <a href="https://www.youtube.com/watch?v=zjkBMFhNj_g&amp;t=854s" rel="noopener" target="_blank">14:14–17:52</a> for fine-tuning into an assistant, and <a href="https://www.youtube.com/watch?v=zjkBMFhNj_g&amp;t=1663s" rel="noopener" target="_blank">27:43–33:32</a> for tool use.</li>
+<li>Intermediate video: <a href="https://www.youtube.com/watch?v=T-D1OfcDW1M&amp;t=82s" rel="noopener" target="_blank">What is Retrieval-Augmented Generation (RAG)? — IBM Technology</a>, watch 1:22–6:35 for the two problems RAG solves and how it helps.</li>
+<li>Intermediate video: <a href="https://www.youtube.com/watch?v=cGuyrANVi4A&amp;t=48s" rel="noopener" target="_blank">How Model Context Protocol (MCP) actually works — Google Cloud Tech</a>, watch 0:48–6:43 for MCP clients, servers, tools and resources, and how MCP differs from an API.</li>
+<li>Intermediate reading: <a href="https://aws.amazon.com/what-is/retrieval-augmented-generation/" rel="noopener" target="_blank">What is RAG? (AWS)</a>, <a href="https://platform.openai.com/docs/guides/embeddings" rel="noopener" target="_blank">OpenAI embeddings guide</a>, <a href="https://platform.openai.com/docs/guides/function-calling" rel="noopener" target="_blank">OpenAI function calling guide</a>, <a href="https://modelcontextprotocol.io/docs/getting-started/intro" rel="noopener" target="_blank">MCP introduction</a>, <a href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview" rel="noopener" target="_blank">Anthropic prompt engineering overview</a>.</li>
+<li>Advanced (optional): <a href="https://jalammar.github.io/illustrated-transformer/" rel="noopener" target="_blank">The Illustrated Transformer</a> (pictures, not equations). <a href="https://www.youtube.com/watch?v=LPZh9BOjkQs&amp;t=282s" rel="noopener" target="_blank">Large Language Models explained briefly — 3Blue1Brown</a>, watch 4:42–7:05 for transformers and attention. <a href="https://www.youtube.com/watch?v=7xTGNNLPyMI&amp;t=467s" rel="noopener" target="_blank">Deep Dive into LLMs like ChatGPT — Andrej Karpathy</a>, watch 7:47–14:27 for tokenization and <a href="https://www.youtube.com/watch?v=7xTGNNLPyMI&amp;t=4832s" rel="noopener" target="_blank">1:20:32–1:41:46</a> for hallucinations, tool use and working memory. <a href="https://huggingface.co/learn/llm-course/chapter1/1" rel="noopener" target="_blank">Hugging Face LLM course, chapter 1</a>.</li>
+<li>Optional paid (Basics): <a href="https://www.coursera.org/learn/generative-ai-for-everyone" rel="noopener" target="_blank">Generative AI for Everyone (DeepLearning.AI on Coursera)</a>. Module "Introduction to Generative AI" (Week 1) maps to this primer. Price varies (see the paid table).</li>
+</ul>
+<h2 class="fde-h2" id="big-picture-diagrams" tabindex="-1">Big-picture diagrams</h2>
+<h3 id="the-fde-customer-engagement-lifecycle" tabindex="-1">The FDE customer-engagement lifecycle</h3>
+<p>Each stage of this roadmap trains one step of a real engagement. Your <code>fde-customer-zero</code> repo should show all eight.</p>
+<figure class="mmd-wrap mmd-flow"><div class="mmd-scroll"><pre class="mermaid" id="mmd-2">flowchart LR
+    D["1. Discovery&lt;br/&gt;interviews, workflow,&lt;br/&gt;50 real queries&lt;br/&gt;(Stage 1)"] --&gt; S["2. Scope&lt;br/&gt;scoping doc, success&lt;br/&gt;metrics, out of scope&lt;br/&gt;(Stage 1)"]
+    S --&gt; P["3. Prototype&lt;br/&gt;1-hour throwaway demo&lt;br/&gt;(Stage 1)"]
+    P --&gt; I["4. Integrate&lt;br/&gt;OAuth, webhooks, SQL,&lt;br/&gt;SaaS APIs&lt;br/&gt;(Stage 2)"]
+    I --&gt; SEC["5. Secure&lt;br/&gt;PII, secrets, prompt&lt;br/&gt;injection, questionnaire&lt;br/&gt;(Stage 4)"]
+    SEC --&gt; DEP["6. Deploy&lt;br/&gt;Docker, CI, Terraform,&lt;br/&gt;customer-cloud models&lt;br/&gt;(Stage 5)"]
+    DEP --&gt; OP["7. Operate&lt;br/&gt;traces, evals, cost,&lt;br/&gt;latency, fallbacks&lt;br/&gt;(Stage 6)"]
+    OP --&gt; CS["8. Case study&lt;br/&gt;write-up + walkthrough&lt;br/&gt;(Stage 7)"]
+    OP -.-&gt;|new failure modes feed the next iteration| S
+    COMMS["Communication throughout:&lt;br/&gt;weekly status notes, runbook,&lt;br/&gt;handoff README (Stage 3 + habits)"] -.-&gt; S
+    COMMS -.-&gt; OP</pre></div><figcaption class="mono small muted mmd-hint">swipe sideways to see the whole diagram →</figcaption></figure>
+<h3 id="reference-architecture-a-typical-enterprise-llm-rag-agent-deployment" tabindex="-1">Reference architecture: a typical enterprise LLM / RAG / agent deployment</h3>
+<p>This is the shape of what you'll build by Stage 5, and what you'll redraw for the Stage 5 README and the Stage 7 case study.</p>
+<figure class="mmd-wrap mmd-flow"><div class="mmd-scroll"><pre class="mermaid" id="mmd-3">flowchart TB
+    subgraph Users["Customer users"]
+        U1["Web chat / Slack / Teams"]
+        U2["Ticketing system&lt;br/&gt;(webhook events)"]
+    end
+    subgraph Identity["Identity"]
+        IDP["Customer IdP&lt;br/&gt;(Google, Entra ID, Okta)&lt;br/&gt;OAuth 2.0 / OIDC / SAML"]
+    end
+    subgraph App["Your deployment (customer's cloud account)"]
+        GW["API gateway / load balancer&lt;br/&gt;TLS, rate limits"]
+        API["FastAPI service&lt;br/&gt;(Docker container)"]
+        AG["Agent orchestrator&lt;br/&gt;tool calling, MCP clients"]
+        GR["Guardrails&lt;br/&gt;PII redaction (Presidio),&lt;br/&gt;prompt-injection checks"]
+        LLMGW["LLM gateway&lt;br/&gt;(LiteLLM): routing,&lt;br/&gt;fallbacks, cost tracking"]
+        RET["Retriever"]
+        VS[("Vector store&lt;br/&gt;pgvector / Chroma")]
+        ING["Ingestion job&lt;br/&gt;chunk + embed docs"]
+        SEC["Secrets manager"]
+    end
+    subgraph Models["Models inside the customer's cloud"]
+        M1["Amazon Bedrock"]
+        M2["Azure OpenAI"]
+        M3["Vertex AI"]
+    end
+    subgraph Systems["Customer systems of record"]
+        DOCS["Docs: Google Drive /&lt;br/&gt;SharePoint"]
+        DB[("Ticket / CRM database&lt;br/&gt;(SQL)")]
+        SAAS["SaaS APIs&lt;br/&gt;(Workspace, Graph, Salesforce)"]
+    end
+    subgraph Obs["Observability"]
+        LF["Langfuse traces + evals"]
+        OT["OpenTelemetry / logs,&lt;br/&gt;p50/p95 latency, cost"]
+    end
+    subgraph Ops["Delivery"]
+        CI["GitHub Actions CI"]
+        TF["Terraform (infra as code)"]
+    end
+    U1 --&gt; GW
+    U2 --&gt;|webhook| GW
+    U1 -.-&gt;|sign in| IDP
+    IDP -.-&gt;|tokens| GW
+    GW --&gt; API --&gt; AG
+    AG --&gt; GR --&gt; LLMGW
+    LLMGW --&gt; M1 &amp; M2 &amp; M3
+    AG --&gt; RET --&gt; VS
+    ING --&gt; VS
+    DOCS --&gt; ING
+    AG --&gt;|per-user OAuth| SAAS
+    AG --&gt;|read-only SQL| DB
+    SAAS --- DOCS
+    API -.-&gt; SEC
+    AG -.-&gt; LF
+    LLMGW -.-&gt; LF
+    API -.-&gt; OT
+    CI --&gt; TF --&gt; App</pre></div><figcaption class="mono small muted mmd-hint">swipe sideways to see the whole diagram →</figcaption></figure>
+<p><strong>Free references for the architecture (Intermediate → Advanced):</strong> <a href="https://huyenchip.com/2024/07/25/genai-platform.html" rel="noopener" target="_blank">Chip Huyen: Building a GenAI Platform</a> (also in Stage 7), <a href="https://learn.microsoft.com/en-us/azure/architecture/ai-ml/guide/rag/rag-solution-design-and-evaluation-guide" rel="noopener" target="_blank">Azure RAG solution design and evaluation guide</a>, <a href="https://docs.litellm.ai/docs/simple_proxy" rel="noopener" target="_blank">LiteLLM proxy (LLM gateway)</a>, <a href="https://eugeneyan.com/writing/llm-patterns/" rel="noopener" target="_blank">Eugene Yan: Patterns for building LLM-based systems</a>, and <a href="https://www.youtube.com/watch?v=4KiiKQ9RVvA&amp;t=285s" rel="noopener" target="_blank">How to Build a Scalable RAG System for AI Apps — ByteMonk</a>, watch 4:45–13:15 for production RAG architecture, chunking, vector + relational databases and hybrid search (Advanced, optional).</p>
+<hr/>
+<h2 class="fde-h2" id="weekly-habits-run-across-the-whole-plan-about-1015-min-inside-the-2-h" tabindex="-1">Weekly habits (run across the whole plan, about 10–15 min, inside the 2 h)</h2>
+<ul>
+<li><strong>Status note:</strong> from week 2, every commit includes a 5-line customer-style status update (done / next / blockers / risks / ask). That's about 40 real examples by the end.</li>
+<li><strong>Traces on:</strong> from Stage 2, all agent calls go through Langfuse, so you'll have months of real traces by Stage 6.</li>
+<li><strong>Job-market track (from week 8, 30 min every other week, instead of building that week):</strong> alternate between an informational chat with a working FDE or solutions engineer (LinkedIn or the <a href="https://www.presalescollective.com/" rel="noopener" target="_blank">PreSales Collective</a> community), an application to a stepping-stone role, and a mock "customer scenario" interview: break down a vague customer request into scope, risks and a plan, out loud, for 20 minutes.</li>
+</ul>
+<h2 class="fde-h2" id="quarterly-checkpoints-end-of-weeks-13-26-39" tabindex="-1">Quarterly checkpoints (end of weeks 13, 26, 39)</h2>
+<p>Spend one session re-checking 5+ current FDE, deployment-engineer and solutions-engineer postings, <strong>including India-based and remote-from-India roles</strong>. Check what you heard in your FDE chats, and whether any spec or tool has changed (MCP auth, cloud AI services). Then reorder or cut the remaining stages. This plan is a starting point, not a contract.</p>
+<hr/>
+<h2 class="fde-h2" id="stage-0-orientation-week-1-2-h" tabindex="-1">Stage 0 — Orientation (week 1 · 2 h)</h2>
+<ul>
+<li><strong>Read:</strong> <a href="https://newsletter.pragmaticengineer.com/p/forward-deployed-engineers" rel="noopener" target="_blank">Pragmatic Engineer: Forward Deployed Engineers</a>, <a href="https://blog.palantir.com/a-day-in-the-life-of-a-palantir-forward-deployed-software-engineer-45ef2de257b1" rel="noopener" target="_blank">Palantir: a day in the life of an FDSE</a>, and two postings: <a href="https://jobs.ashbyhq.com/openai/967f94aa-1706-4dba-ac89-bfbc2c38b688" rel="noopener" target="_blank">OpenAI FDE</a> and <a href="https://jobs.lever.co/palantir/e500bcf3-19d8-4d3c-b340-4d76e4a55b40" rel="noopener" target="_blank">Palantir FDSE New Grad</a>.</li>
+<li><strong>Do:</strong> start finding your real customer.</li>
+<li><strong>Milestone:</strong> a public repo <code>fde-customer-zero</code> with a README holding a one-page self-assessment against the skill list above, and the name of your customer (or "fictional fallback").</li>
+</ul>
+<h3 id="stage-0-by-level" tabindex="-1">Stage 0 by level</h3>
+<p><em>Time: fits in the week's 2 h. Advanced is optional.</em></p>
+<p><strong>Basics</strong></p>
+<ul>
+<li><strong>What an FDE is.</strong> A forward-deployed engineer is a software engineer who works <em>inside</em> a customer's world: they sit with users, find the real problem, and ship a working system into the customer's own environment. It's part engineer, part consultant, part product manager. Knowing this tells you what to practise: delivery, not research.<ul>
+<li>Video: <a href="https://www.youtube.com/watch?v=YbeJxi0Ju1A&amp;t=22s" rel="noopener" target="_blank">What is a Forward Deployed Engineer (FDE)? — Caleb Curry</a>, watch 0:22–2:38 for what forward-deployed engineering is.</li>
+</ul>
+</li>
+<li><strong>How to read a job posting.</strong> Split each posting into "engineering" and "customer" requirements and mark which you can already show evidence for. That's the self-assessment for your milestone. The two postings linked above are your templates.</li>
+</ul>
+<p><strong>Intermediate</strong></p>
+<ul>
+<li><strong>The FDE skill stack and how to learn it.</strong> Customer delivery, integration, production LLM systems, evals, communication, security and cloud, roughly in that order of frequency (see the counts above).<ul>
+<li>Video: <a href="https://www.youtube.com/watch?v=vLlIBT0HSSc&amp;t=196s" rel="noopener" target="_blank">How to Become a Forward Deployed Engineer in 2026 — Tech With Tim</a>, watch 3:16–7:01 for the skill stack and how to learn it.</li>
+<li>Video: <a href="https://www.youtube.com/watch?v=YbeJxi0Ju1A&amp;t=564s" rel="noopener" target="_blank">What is a Forward Deployed Engineer (FDE)? — Caleb Curry</a>, watch 9:24–11:16 for how to prepare and why to deploy your own software.</li>
+</ul>
+</li>
+<li><strong>Finding a real customer.</strong> Ask small businesses, nonprofits, or a team at work: "What's one repetitive question your team answers every week?" A real customer gives you real interviews and real feedback. Keep the privacy rule above in mind from day one.</li>
+</ul>
+<p><strong>Advanced (optional / stretch)</strong></p>
+<ul>
+<li><strong>The FDE interview.</strong> Interviews often include a decomposition or customer-scenario round. Start noticing what they test now; the job-market track practises it from week 8.<ul>
+<li>Video: <a href="https://www.youtube.com/watch?v=vLlIBT0HSSc&amp;t=565s" rel="noopener" target="_blank">How to Become a Forward Deployed Engineer in 2026 — Tech With Tim</a>, watch 9:25–11:34 for the fast path and what to expect in the interview.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Optional paid alternative:</strong> <a href="https://www.coursera.org/learn/generative-ai-for-everyone" rel="noopener" target="_blank">Generative AI for Everyone (Coursera)</a>, module "Generative AI in Business and Society" (Week 3) for business context. Price varies.</p>
+<h2 class="fde-h2" id="stage-1-discovery-scoping-first-prototype-weeks-26-10-h" tabindex="-1">Stage 1 — Discovery, scoping &amp; first prototype (weeks 2–6 · 10 h)</h2>
+<ul>
+<li><strong>Learn:</strong> <a href="https://www.momtestbook.com/" rel="noopener" target="_blank">The Mom Test</a>, about $10 and 3 h. It's the one paid item in the core plan, and the best single resource for the most-requested skill. Also <a href="https://www.industrialempathy.com/posts/design-docs-at-google/" rel="noopener" target="_blank">Design Docs at Google</a> (0.5 h), and optionally <a href="https://basecamp.com/shapeup" rel="noopener" target="_blank">Shape Up, chapters 1–6</a> (2 h).</li>
+<li><strong>Warm-up:</strong> <a href="https://sqlbolt.com/" rel="noopener" target="_blank">SQLBolt</a> (3 h, spread across the stage), so SQL is ready before Stage 2.</li>
+<li><strong>Do:</strong> interview your customer plus at least one other person about the workflow. From the interviews, write <strong>~50 realistic user queries</strong>. This becomes your eval set and your test traffic for the rest of the plan.</li>
+<li><strong>Build:</strong> a 1-hour throwaway prototype of the agent, using what your existing roadmap taught you, run against a few sample docs.</li>
+<li><strong>Milestone:</strong> interview notes, the 50-query set, a 2-page scoping doc (problem, success metrics, out of scope, risks, data access needs, timeline), and a 2-minute screen recording of the prototype.</li>
+</ul>
+<h3 id="stage-1-by-level" tabindex="-1">Stage 1 by level</h3>
+<p><em>Time: Basics and Intermediate fit in the stage's 10 h (The Mom Test 3 h + SQLBolt 3 h + interviews/build). Advanced is optional.</em></p>
+<p><strong>Basics</strong></p>
+<ul>
+<li><strong>Customer discovery interview.</strong> A conversation to learn how someone <em>actually</em> works today and where it hurts, before you build anything. The trick is to ask about past behaviour ("Walk me through the last time a ticket took too long") instead of opinions about your idea ("Would you use an AI bot?"), because people are polite and will say yes to anything. → <a href="https://www.momtestbook.com/" rel="noopener" target="_blank">The Mom Test</a> (core).<ul>
+<li>Video: <a href="https://www.youtube.com/watch?v=FG1Fa-t4AEQ&amp;t=1056s" rel="noopener" target="_blank">Start-up advice &amp; How to talk to customers with Rob Fitzpatrick (The Mom Test) — Digital Product School</a>, watch 17:36–23:15 for customer development (the author's own talk).</li>
+</ul>
+</li>
+<li><strong>Databases and tables.</strong> A relational database stores data in tables (rows and columns), like spreadsheets that can reference each other. Almost every customer's important data (tickets, orders, users) lives in one, so you'll query it in Stage 2.<ul>
+<li>Video: <a href="https://www.youtube.com/watch?v=HXV3zeQKqGY&amp;t=156s" rel="noopener" target="_blank">SQL Tutorial - Full Database Course for Beginners — freeCodeCamp.org</a>, watch 2:36–23:10 for what a database is.</li>
+</ul>
+</li>
+<li><strong>SQL SELECT and WHERE.</strong> <code>SELECT</code> picks columns, <code>FROM</code> picks the table, and <code>WHERE</code> filters rows. Those three cover most lookups an agent tool needs. → <a href="https://sqlbolt.com/" rel="noopener" target="_blank">SQLBolt</a> lessons 1–5.<ul>
+<li>Video: <a href="https://www.youtube.com/watch?v=7S_tz1z_5bA&amp;t=1420s" rel="noopener" target="_blank">SQL Course for Beginners [Full Course] — Programming with Mosh</a>, watch 23:40–43:35 for SELECT, the SELECT clause and WHERE.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Intermediate</strong></p>
+<ul>
+<li><strong>Turning interviews into a query set.</strong> Write each real question you heard, in the user's words, as one line of a CSV with the answer you'd expect. These ~50 queries become your eval set (Stage 4 and 6) and your test traffic, so the whole project is anchored on real needs.</li>
+<li><strong>Scoping doc.</strong> A short document that names the problem, how success will be measured (e.g. "70% of tier-1 tickets answered correctly"), what's <em>out</em> of scope, risks, data access needed and a timeline. Customers sign off on it, and it protects you from endless scope creep. → <a href="https://www.industrialempathy.com/posts/design-docs-at-google/" rel="noopener" target="_blank">Design Docs at Google</a>; optional <a href="https://basecamp.com/shapeup" rel="noopener" target="_blank">Shape Up</a> for "appetite" (fixed time, variable scope).</li>
+<li><strong>Throwaway prototype.</strong> A deliberately rough demo built in an hour to check you understood the problem, not to keep. Showing something by week 6 builds trust and surfaces misunderstandings early.<ul>
+<li>Video: <a href="https://www.youtube.com/watch?v=98o_L3jlixw&amp;t=1095s" rel="noopener" target="_blank">AI Engineering with Chip Huyen — The Pragmatic Engineer</a>, watch 18:15–24:38 for simple first steps in building AI applications.</li>
+</ul>
+</li>
+<li><strong>SQL JOINs.</strong> A JOIN combines rows from two tables that share a key (e.g. tickets and customers by <code>customer_id</code>). You'll need it for any "show me this customer's open tickets" tool. → <a href="https://sqlbolt.com/" rel="noopener" target="_blank">SQLBolt</a> lessons 6–7.<ul>
+<li>Video: <a href="https://www.youtube.com/watch?v=7S_tz1z_5bA&amp;t=5090s" rel="noopener" target="_blank">SQL Course for Beginners [Full Course] — Programming with Mosh</a>, watch 1:24:50–1:33:16 for inner joins.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Advanced (optional / stretch)</strong></p>
+<ul>
+<li><strong>Picking the right first use case.</strong> Prefer narrow, high-volume, low-risk workflows (e.g. drafting support replies for human review) over "replace the whole team". It's the difference between a pilot that ships and one that stalls.<ul>
+<li>Video: <a href="https://www.youtube.com/watch?v=98o_L3jlixw&amp;t=1780s" rel="noopener" target="_blank">AI Engineering with Chip Huyen — The Pragmatic Engineer</a>, watch 29:40–35:29 for rolling out AI customer-support solutions thoughtfully.</li>
+</ul>
+</li>
+<li><strong>Diagrams as code.</strong> Draw your workflow and architecture in Mermaid so they live in the repo, like the diagrams in this file. → <a href="https://mermaid.js.org/intro/" rel="noopener" target="_blank">Mermaid intro</a>, <a href="https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/creating-diagrams" rel="noopener" target="_blank">GitHub: creating diagrams</a>.</li>
+</ul>
+<p><strong>Optional paid alternative:</strong> <a href="https://www.coursera.org/learn/generative-ai-for-everyone" rel="noopener" target="_blank">Generative AI for Everyone (Coursera)</a>, module "Generative AI Projects" (Week 2) for scoping AI projects. Price varies.</p>
+<h2 class="fde-h2" id="stage-2-enterprise-integration-data-access-weeks-716-20-h" tabindex="-1">Stage 2 — Enterprise integration &amp; data access (weeks 7–16 · 20 h)</h2>
+<ul>
+<li><strong>Learn (~7 h):</strong><ul>
+<li><a href="https://www.oauth.com/" rel="noopener" target="_blank">OAuth 2.0 Simplified</a> (2 h) and <a href="https://jwt.io/introduction" rel="noopener" target="_blank">JWT intro</a></li>
+<li><a href="https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization" rel="noopener" target="_blank">MCP authorization spec</a> (1 h)</li>
+<li><a href="https://hookdeck.com/webhooks/guides/what-are-webhooks-how-they-work" rel="noopener" target="_blank">Webhooks explained</a></li>
+<li>A <strong>20-minute skim only</strong> of <a href="https://auth0.com/docs/authenticate/protocols/openid-connect-protocol" rel="noopener" target="_blank">OIDC</a>, <a href="https://auth0.com/intro-to-iam/what-is-saml" rel="noopener" target="_blank">SAML</a> and the <a href="https://learn.microsoft.com/en-us/entra/identity-platform/v2-oauth2-auth-code-flow" rel="noopener" target="_blank">Microsoft Entra auth-code flow</a>, so you recognise them in customer conversations</li>
+</ul>
+</li>
+<li><strong>Pick one SaaS API to go deep on:</strong> <a href="https://developers.google.com/workspace/guides/get-started" rel="noopener" target="_blank">Google Workspace APIs</a> by default, since a personal account is free. Alternatives are <a href="https://learn.microsoft.com/en-us/graph/overview" rel="noopener" target="_blank">Microsoft Graph</a> or <a href="https://trailhead.salesforce.com/content/learn/modules/api_basics" rel="noopener" target="_blank">Salesforce API Basics</a>.</li>
+<li><strong>Two gotchas to know up front:</strong><ul>
+<li><strong>Google OAuth in Testing mode:</strong> leave your Google Cloud app in "Testing" and add yourself and your customer as test users. Refresh tokens for apps in Testing expire after <strong>7 days</strong> (see <a href="https://developers.google.com/identity/protocols/oauth2" rel="noopener" target="_blank">Google's OAuth docs</a>), and Drive scopes are sensitive. Build re-consent handling and don't plan on getting the app verified.</li>
+<li><strong>Webhooks need a public URL</strong> before you deploy: use <a href="https://ngrok.com/docs/getting-started/" rel="noopener" target="_blank">ngrok</a> or a free <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/do-more-with-tunnels/trycloudflare/" rel="noopener" target="_blank">Cloudflare quick tunnel</a>.</li>
+</ul>
+</li>
+<li><strong>Build (~13 h):</strong><ul>
+<li>per-user OAuth access to Drive, including token refresh and re-consent</li>
+<li>a webhook endpoint that takes in new tickets</li>
+<li>a SQL lookup against a small ticket database</li>
+<li>Langfuse tracing switched on (see Stage 6 for the docs)</li>
+</ul>
+</li>
+<li><strong>Milestone:</strong> a 3-minute demo video showing a user logging in, getting an answer only that user is allowed to see, and a new ticket triggering the agent. Your 50 queries should run end to end.</li>
+<li><strong>Week 17: catch-up buffer.</strong></li>
+</ul>
+<h3 id="stage-2-by-level" tabindex="-1">Stage 2 by level</h3>
+<p><em>Time: Basics and Intermediate fit in the ~7 h "Learn" budget; skip Basics you already know. Advanced is optional (week 17 buffer or later).</em></p>
+<p><strong>Basics</strong></p>
+<ul>
+<li><strong>HTTP, JSON and REST APIs.</strong> Programs talk over the web by sending HTTP <em>requests</em> (GET to read, POST to create) to URLs and getting <em>responses</em> with a status code (200 OK, 401 unauthorised, 404 not found) and usually a JSON body. A REST API is a set of such URLs for one system. Every integration you build is HTTP calls, so reading status codes and JSON is the first debugging skill. → <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Overview" rel="noopener" target="_blank">MDN: HTTP overview</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status" rel="noopener" target="_blank">MDN: HTTP status codes</a>, <a href="https://developer.mozilla.org/en-US/docs/Glossary/REST" rel="noopener" target="_blank">MDN: REST</a>.</li>
+<li><strong>Calling APIs from Python.</strong> The <code>requests</code> or <code>httpx</code> library sends HTTP calls in a couple of lines. Practise one GET against a public API before touching OAuth. → <a href="https://requests.readthedocs.io/en/latest/user/quickstart/" rel="noopener" target="_blank">Requests quickstart</a>, <a href="https://www.python-httpx.org/" rel="noopener" target="_blank">HTTPX</a>.</li>
+<li><strong>Building an API with FastAPI.</strong> FastAPI turns Python functions into HTTP endpoints, with automatic validation (via Pydantic) and docs. It's the backend for your agent and your webhook. → <a href="https://fastapi.tiangolo.com/tutorial/" rel="noopener" target="_blank">FastAPI tutorial</a>, <a href="https://docs.pydantic.dev/latest/" rel="noopener" target="_blank">Pydantic</a>.</li>
+<li><strong>Authentication vs authorisation.</strong> <em>Authentication</em> = proving who you are (logging in). <em>Authorisation</em> = what you're allowed to do or see. Your milestone ("an answer only that user is allowed to see") is an authorisation problem.<ul>
+<li>Video: <a href="https://www.youtube.com/watch?v=Y2H3DXDeS3Q&amp;t=21s" rel="noopener" target="_blank">JWT Explained In Under 10 Minutes (JSON Web Tokens) — Ariel Weinberger</a>, watch 0:21–5:49 for authentication vs authorisation, JWT structure, signatures, and why JWTs are encoded, not encrypted.</li>
+</ul>
+</li>
+<li><strong>OAuth 2.0 in one sentence.</strong> OAuth lets a user give your app limited access to their account on another service (e.g. "read my Drive files") without giving you their password. The app gets an <em>access token</em> with specific <em>scopes</em>.<ul>
+<li>Video: <a href="https://www.youtube.com/watch?v=ZV5yTm4pT8g" rel="noopener" target="_blank">OAuth 2 Explained In Simple Terms — ByteByteGo</a> (full video, 4:32).</li>
+<li>Video: <a href="https://www.youtube.com/watch?v=t18YB3xDfXI&amp;t=252s" rel="noopener" target="_blank">An Illustrated Guide to OAuth and OpenID Connect — OktaDev</a>, watch 4:12–10:57 for the OAuth flow with an example.</li>
+</ul>
+</li>
+<li><strong>Webhooks.</strong> Instead of your code asking "anything new?" every minute (polling), the other system calls <em>your</em> URL the moment something happens (a new ticket). That's why your laptop needs a public URL (ngrok or a tunnel) during development. → <a href="https://hookdeck.com/webhooks/guides/what-are-webhooks-how-they-work" rel="noopener" target="_blank">Webhooks explained</a>.<ul>
+<li>Video: <a href="https://www.youtube.com/watch?v=x_jjhcDrISk&amp;t=42s" rel="noopener" target="_blank">Top 3 Things You Should Know About Webhooks! — ByteByteGo</a>, watch 0:42–3:11 for polling vs webhooks, how they work, and best practices.</li>
+</ul>
+</li>
+<li><strong>SQL from Python.</strong> Python's built-in <code>sqlite3</code> module runs SQL against a file database with no server, perfect for your small ticket DB. → <a href="https://docs.python.org/3/library/sqlite3.html" rel="noopener" target="_blank">sqlite3 docs</a>.</li>
+</ul>
+<p><strong>Intermediate</strong></p>
+<ul>
+<li><strong>Authorization-code flow, scopes and consent.</strong> The standard flow for server apps: the user is redirected to Google, approves the scopes, Google redirects back with a short-lived <em>code</em>, and your server swaps it for access and refresh tokens. You must store tokens per user and request the narrowest scopes. → <a href="https://www.oauth.com/" rel="noopener" target="_blank">OAuth 2.0 Simplified</a>, <a href="https://www.oauth.com/oauth2-servers/server-side-apps/authorization-code/" rel="noopener" target="_blank">authorization code flow</a>, <a href="https://developers.google.com/identity/protocols/oauth2" rel="noopener" target="_blank">Google's OAuth docs</a>.<ul>
+<li>Video: <a href="https://www.youtube.com/watch?v=996OiexHze0&amp;t=562s" rel="noopener" target="_blank">OAuth 2.0 and OpenID Connect (in plain English) — OktaDev</a>, watch 9:22–18:55 for the delegated-authorisation problem and OAuth high-level view, then <a href="https://www.youtube.com/watch?v=996OiexHze0&amp;t=1135s" rel="noopener" target="_blank">18:55–26:43</a> for the authorization-code flow, scopes and consent.</li>
+</ul>
+</li>
+<li><strong>Access tokens, refresh tokens and JWTs.</strong> Access tokens expire quickly; a refresh token gets a new one without bothering the user, until it's revoked or expires (7 days in Google "Testing" mode, see the gotcha above). A JWT is a signed token format you can decode to see who it's for and when it expires. → <a href="https://jwt.io/introduction" rel="noopener" target="_blank">JWT intro</a>.<ul>
+<li>Video: <a href="https://www.youtube.com/watch?v=Y2H3DXDeS3Q&amp;t=349s" rel="noopener" target="_blank">JWT Explained In Under 10 Minutes — Ariel Weinberger</a>, watch 5:49–8:13 for short-lived tokens and refresh-token rotation.</li>
+</ul>
+</li>
+<li><strong>Per-user data access (permission-aware retrieval).</strong> The agent must fetch documents <em>with the asking user's token</em>, so it can never show someone a file they couldn't open themselves. This is the single most important enterprise-integration rule. → <a href="https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html" rel="noopener" target="_blank">OWASP Authorization Cheat Sheet</a>.</li>
+<li><strong>SaaS APIs (Google Workspace by default).</strong> Each vendor wraps its data in an API with its own auth, rate limits and pagination. Learning one deeply makes the next one quick. → <a href="https://developers.google.com/workspace/guides/get-started" rel="noopener" target="_blank">Google Workspace APIs</a>, <a href="https://developers.google.com/workspace/drive/api/guides/push" rel="noopener" target="_blank">Drive push notifications</a> (Drive's own webhooks).</li>
+<li><strong>Reliable webhook handling.</strong> Verify the sender's signature, respond fast (do slow work in the background), and make handlers <em>idempotent</em>, so a retried delivery doesn't create a duplicate. → <a href="https://docs.stripe.com/webhooks" rel="noopener" target="_blank">Stripe webhooks guide</a> (a clear vendor example of signatures, retries and idempotency).</li>
+<li><strong>MCP servers and their auth.</strong> Wrap your Drive and ticket tools as an MCP server so any MCP client can use them. The MCP authorization spec builds on OAuth 2.1. → <a href="https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization" rel="noopener" target="_blank">MCP authorization spec</a>.<ul>
+<li>Video: <a href="https://www.youtube.com/watch?v=eur8dUO9mvE&amp;t=19s" rel="noopener" target="_blank">What is MCP? Integrate AI Agents with Databases &amp; APIs — IBM Technology</a>, watch 0:19–3:15 for MCP architecture and a practical workflow.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Advanced (optional / stretch)</strong></p>
+<ul>
+<li><strong>OpenID Connect, SAML and enterprise SSO.</strong> OIDC adds a standard <em>ID token</em> on top of OAuth so apps know who logged in. SAML is the older XML-based SSO that many large companies still run, and Entra ID is Microsoft's identity platform. You only need to recognise these in customer calls (the 20-minute skim above).<ul>
+<li>Video: <a href="https://www.youtube.com/watch?v=996OiexHze0&amp;t=2948s" rel="noopener" target="_blank">OAuth 2.0 and OpenID Connect (in plain English) — OktaDev</a>, watch 49:08–55:36 for OpenID Connect, ID tokens and JWTs.</li>
+</ul>
+</li>
+<li><strong>PKCE.</strong> An extra step in the auth-code flow that stops a stolen code being used. It's required for public clients and recommended everywhere in OAuth 2.1. → <a href="https://oauth.net/2/pkce/" rel="noopener" target="_blank">PKCE (oauth.net)</a>.</li>
+<li><strong>A second SaaS API.</strong> Repeat the Drive integration against <a href="https://learn.microsoft.com/en-us/graph/overview" rel="noopener" target="_blank">Microsoft Graph</a> or <a href="https://trailhead.salesforce.com/content/learn/modules/api_basics" rel="noopener" target="_blank">Salesforce</a> to prove the pattern transfers.</li>
+<li><strong>API integration patterns.</strong> Pagination, rate limits and backoff, and error handling. → <a href="https://realpython.com/api-integration-in-python/" rel="noopener" target="_blank">Real Python: Python and REST APIs</a>.</li>
+</ul>
+<p><strong>Optional paid alternative (Advanced):</strong> <a href="https://www.coursera.org/professional-certificates/ibm-rag-and-agentic-ai" rel="noopener" target="_blank">IBM RAG and Agentic AI Professional Certificate (Coursera)</a>. The page lists function calling, RAG, vector stores and Model Context Protocol among its skills, relevant to the agent side of this stage. It's a 10-course series marked "Advanced level". Price varies.</p>
+<h2 class="fde-h2" id="stage-3-customer-communication-weeks-1819-4-h" tabindex="-1">Stage 3 — Customer communication (weeks 18–19 · 4 h)</h2>
+<ul>
+<li><strong>Learn:</strong> <a href="https://developers.google.com/tech-writing" rel="noopener" target="_blank">Google Technical Writing One &amp; Two</a> (4 h, free).</li>
+<li><strong>Milestone:</strong> a runbook ("what to do when the agent gives a wrong answer") and a handoff README for a non-technical admin. Your weekly status notes (see habits) cover the rest of this skill.</li>
+</ul>
+<h3 id="stage-3-by-level" tabindex="-1">Stage 3 by level</h3>
+<p><em>Time: Basics and Intermediate fit in the stage's 4 h (Google Technical Writing). Advanced is optional.</em></p>
+<p><strong>Basics</strong></p>
+<ul>
+<li><strong>Writing for a non-technical reader.</strong> Lead with the outcome, use short sentences and plain words, and define any term the reader might not know. A customer admin who can't follow your README will call you instead, and every call costs trust. → <a href="https://developers.google.com/tech-writing" rel="noopener" target="_blank">Google Technical Writing One</a>.<ul>
+<li>Video: <a href="https://www.youtube.com/watch?v=vT5pcc30Ffw&amp;t=51s" rel="noopener" target="_blank">Technical Writing Course for Beginners — freeCodeCamp.org</a>, watch 0:51–7:02 for what technical writing is.</li>
+</ul>
+</li>
+<li><strong>The weekly status note.</strong> Five lines: done / next / blockers / risks / ask. It's the most-used FDE writing format, because it lets a busy customer sponsor see progress in 30 seconds (already a habit from week 2).</li>
+</ul>
+<p><strong>Intermediate</strong></p>
+<ul>
+<li><strong>Runbooks.</strong> A step-by-step "if X happens, do Y" guide for someone on call, e.g. "the agent gave a wrong answer: 1) find the trace, 2) check the source doc, 3) ...". Good runbooks let the customer operate the system without you. → <a href="https://developers.google.com/tech-writing" rel="noopener" target="_blank">Google Technical Writing Two</a>.<ul>
+<li>Video: <a href="https://www.youtube.com/watch?v=vT5pcc30Ffw&amp;t=2179s" rel="noopener" target="_blank">Technical Writing Course for Beginners — freeCodeCamp.org</a>, watch 36:19–46:10 for writing user instructions and describing a process.</li>
+</ul>
+</li>
+<li><strong>Handoff README.</strong> What the system does, who owns it, how to log in, how to change common settings, and who to contact. It's written for the person who inherits the system.</li>
+</ul>
+<p><strong>Advanced (optional / stretch)</strong></p>
+<ul>
+<li><strong>Incident write-ups (postmortems).</strong> A blameless account of what broke, the impact, the cause and what will prevent it next time. Customers judge you as much on how you handle failures as on the launch. → <a href="https://www.atlassian.com/incident-management/postmortem" rel="noopener" target="_blank">Atlassian: incident postmortems</a>.</li>
+<li><strong>Formal reports and architecture diagrams for executives.</strong> The post-launch report (Stage 6) and case study (Stage 7) are formal reports. The C4 model gives a simple zoom-level vocabulary for system diagrams. → <a href="https://c4model.com/" rel="noopener" target="_blank">C4 model</a>.<ul>
+<li>Video: <a href="https://www.youtube.com/watch?v=vT5pcc30Ffw&amp;t=2770s" rel="noopener" target="_blank">Technical Writing Course for Beginners — freeCodeCamp.org</a>, watch 46:10–1:07:19 for formal report types and the main body.</li>
+</ul>
+</li>
+</ul>
+<h2 class="fde-h2" id="stage-4-security-privacy-compliance-weeks-2023-8-h" tabindex="-1">Stage 4 — Security, privacy &amp; compliance (weeks 20–23 · 8 h)</h2>
+<ul>
+<li><strong>Learn:</strong><ul>
+<li><a href="https://genai.owasp.org/llm-top-10/" rel="noopener" target="_blank">OWASP Top 10 for LLM Applications</a> (2 h)</li>
+<li><a href="https://simonwillison.net/tags/prompt-injection/" rel="noopener" target="_blank">Simon Willison on prompt injection</a> (1 h)</li>
+<li><a href="https://microsoft.github.io/presidio/" rel="noopener" target="_blank">Microsoft Presidio</a>, hands-on PII redaction (1 h)</li>
+<li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html" rel="noopener" target="_blank">OWASP Secrets Management Cheat Sheet</a></li>
+</ul>
+</li>
+<li><strong>Skim for awareness (~1 h):</strong><ul>
+<li><a href="https://www.vanta.com/collection/soc-2" rel="noopener" target="_blank">SOC 2 overview</a> (vendor marketing content, but a clear explainer)</li>
+<li><a href="https://commission.europa.eu/law/law-topic/data-protection_en" rel="noopener" target="_blank">EU data protection / GDPR</a></li>
+<li><a href="https://www.meity.gov.in/data-protection-framework" rel="noopener" target="_blank">India data protection framework (DPDP)</a> (a government overview page, not the Act's full text)</li>
+</ul>
+</li>
+<li><strong>Build:</strong> redact PII before anything is sent to the LLM, move secrets out of the code, and add about 15 prompt-injection cases to your evals.</li>
+<li><strong>Milestone:</strong> a one-page security brief answering a mock customer security questionnaire (data flow, where data lives, retention, PII handling), plus your red-team eval results.</li>
+</ul>
+<h3 id="stage-4-by-level" tabindex="-1">Stage 4 by level</h3>
+<p><em>Time: Basics and Intermediate fit in the stage's 8 h. Advanced is optional.</em></p>
+<p><strong>Basics</strong></p>
+<ul>
+<li><strong>PII (personally identifiable information).</strong> Data that identifies a person: names, emails, phone numbers, ID numbers, addresses. Laws and customer contracts restrict where it can go, and sending it to a third-party model is often the first thing a security reviewer checks.</li>
+<li><strong>Secrets.</strong> API keys, passwords and tokens. They must never be in code or Git history. Load them from environment variables or a secrets manager, and rotate any that leak. → <a href="https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html" rel="noopener" target="_blank">OWASP Secrets Management Cheat Sheet</a>.</li>
+<li><strong>Prompt injection.</strong> Text that tricks the model into ignoring your instructions, typed by a user (<em>direct</em>) or hidden in a document or email the agent reads (<em>indirect</em>). It can't be fully prevented, only contained, so agents must have limited permissions. → <a href="https://simonwillison.net/tags/prompt-injection/" rel="noopener" target="_blank">Simon Willison on prompt injection</a>.<ul>
+<li>Video: <a href="https://www.youtube.com/watch?v=jrHRe9lSqqA&amp;t=15s" rel="noopener" target="_blank">What Is a Prompt Injection Attack? — IBM Technology</a>, watch 0:15–6:52 for what prompt injection is, techniques, types and consequences.</li>
+</ul>
+</li>
+<li><strong>Least privilege.</strong> Give every token, service and agent tool only the access it needs. If the agent only needs to read tickets, it must not be able to delete them. This one principle limits the damage of most attacks.</li>
+</ul>
+<p><strong>Intermediate</strong></p>
+<ul>
+<li><strong>OWASP Top 10 for LLM applications.</strong> The industry checklist of LLM-specific risks: prompt injection, sensitive information disclosure, insecure output handling, excessive agency and more. Security teams use it as a shared vocabulary. → <a href="https://genai.owasp.org/llm-top-10/" rel="noopener" target="_blank">OWASP Top 10 for LLM Applications</a>.<ul>
+<li>Video: <a href="https://www.youtube.com/watch?v=cYuesqIKf9A&amp;t=85s" rel="noopener" target="_blank">Explained: The OWASP Top 10 for Large Language Model Applications — IBM Technology</a>, watch 1:25–8:55 for direct and indirect prompt injection and insecure output handling.</li>
+<li>Video: <a href="https://www.youtube.com/watch?v=zjkBMFhNj_g&amp;t=3090s" rel="noopener" target="_blank">[1hr Talk] Intro to Large Language Models — Andrej Karpathy</a>, watch 51:30–56:23 for prompt-injection examples.</li>
+</ul>
+</li>
+<li><strong>PII redaction before the model.</strong> Detect and mask PII (e.g. "Ravi" → <code>&lt;PERSON&gt;</code>) before text leaves the customer boundary, and restore it afterwards if needed. → <a href="https://microsoft.github.io/presidio/" rel="noopener" target="_blank">Microsoft Presidio</a>.<ul>
+<li>Video: <a href="https://www.youtube.com/watch?v=RPJ3-kEUybU" rel="noopener" target="_blank">Presidio PII detection and anonymization demo — omri374ms</a> (full video, 3:05; from a Presidio maintainer's channel).</li>
+</ul>
+</li>
+<li><strong>Prompt-injection defences and red-team evals.</strong> Separate trusted instructions from untrusted content, require confirmation for risky tool calls, filter outputs, and keep ~15 attack cases in your eval set so regressions show up.<ul>
+<li>Video: <a href="https://www.youtube.com/watch?v=jrHRe9lSqqA&amp;t=412s" rel="noopener" target="_blank">What Is a Prompt Injection Attack? — IBM Technology</a>, watch 6:52–10:57 for solutions and defences.</li>
+</ul>
+</li>
+<li><strong>Security questionnaires and data flow.</strong> Enterprises send long questionnaires: where does data go, where is it stored, for how long, who can access it, is it used for training? Answering them clearly is often what unblocks the deal. That's why your milestone is a one-page security brief.</li>
+</ul>
+<p><strong>Advanced (optional / stretch)</strong></p>
+<ul>
+<li><strong>Excessive agency and LLM application architecture.</strong> The risk that an agent with too many tools or permissions does real damage when it's tricked or wrong.<ul>
+<li>Video: <a href="https://www.youtube.com/watch?v=de9UPN7yD5U&amp;t=344s" rel="noopener" target="_blank">OWASP Top 10 for LLMs — OWASP Foundation</a>, watch 5:44–9:01 for LLM application architecture, then <a href="https://www.youtube.com/watch?v=de9UPN7yD5U&amp;t=1297s" rel="noopener" target="_blank">21:37–28:32</a> for excessive agency risks.</li>
+</ul>
+</li>
+<li><strong>Compliance frameworks (awareness only).</strong> SOC 2 is the audit US customers ask vendors for. GDPR is the EU privacy law, and DPDP is India's. You don't implement these; you recognise them and route questions to the right people. → <a href="https://www.vanta.com/collection/soc-2" rel="noopener" target="_blank">SOC 2 overview</a> (vendor content), <a href="https://commission.europa.eu/law/law-topic/data-protection_en" rel="noopener" target="_blank">GDPR</a>, <a href="https://www.meity.gov.in/data-protection-framework" rel="noopener" target="_blank">DPDP</a>.</li>
+<li><strong>AI risk management.</strong> → <a href="https://www.nist.gov/itl/ai-risk-management-framework" rel="noopener" target="_blank">NIST AI Risk Management Framework</a> (skim the overview), and the classic web risks in <a href="https://owasp.org/www-project-top-ten/" rel="noopener" target="_blank">OWASP Top 10</a>.</li>
+</ul>
+<p><strong>Optional paid alternative (Advanced):</strong> <a href="https://maven.com/parlance-labs/evals" rel="noopener" target="_blank">AI Evals For Engineers &amp; PMs (Maven)</a>. The course page lists "Red-team for safety before users do" (prompt injection, jailbreaks, unsafe tool calls). It's also the Stage 6 pick; see the paid table for price.</p>
+<h2 class="fde-h2" id="stage-5-deploying-into-the-customers-cloud-weeks-2432-18-h" tabindex="-1">Stage 5 — Deploying into the customer's cloud (weeks 24–32 · 18 h)</h2>
+<ul>
+<li><strong>Learn:</strong><ul>
+<li><a href="https://docs.docker.com/get-started/" rel="noopener" target="_blank">Docker Get Started</a> (3 h)</li>
+<li><a href="https://docs.github.com/en/actions/get-started/quickstart" rel="noopener" target="_blank">GitHub Actions quickstart</a> (1 h)</li>
+<li><a href="https://developer.hashicorp.com/terraform/tutorials/aws-get-started" rel="noopener" target="_blank">Terraform: Get Started on AWS</a> (2 h)</li>
+</ul>
+</li>
+<li><strong>Models inside the customer's cloud:</strong><ul>
+<li><a href="https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html" rel="noopener" target="_blank">Amazon Bedrock</a> (1 h). Enable model access in your region early, since approval can take time.</li>
+<li>Skim <a href="https://learn.microsoft.com/en-us/azure/ai-foundry/openai/overview" rel="noopener" target="_blank">Azure OpenAI</a> and <a href="https://cloud.google.com/vertex-ai/generative-ai/docs/overview" rel="noopener" target="_blank">Vertex AI</a>. Enterprises often must use the models their own cloud provides, and Azure is common with Indian enterprise clients.</li>
+</ul>
+</li>
+<li><strong>Optional:</strong> <a href="https://aws.amazon.com/training/digital/aws-cloud-practitioner-essentials/" rel="noopener" target="_blank">AWS Cloud Practitioner Essentials</a>, <a href="https://docs.aws.amazon.com/vpc/latest/privatelink/what-is-privatelink.html" rel="noopener" target="_blank">AWS PrivateLink</a> (concepts only), and <a href="https://kubernetes.io/docs/tutorials/kubernetes-basics/" rel="noopener" target="_blank">Kubernetes Basics</a>.</li>
+<li><strong>Build in steps:</strong><ol>
+<li>Put the app in a container and run it locally.</li>
+<li>Deploy it to AWS with CI.</li>
+<li>Switch model calls to Bedrock.</li>
+<li>Codify everything in Terraform.</li>
+</ol>
+</li>
+<li><strong>Cost safety:</strong> AWS needs a card on file. Set a <strong>$5 budget alarm on day 1</strong>, and run <code>terraform destroy</code> at the end of each week's build, not after every short session.</li>
+<li><strong>Milestone:</strong> <code>terraform apply</code> brings the whole stack up from scratch, CI is green, and the README has an architecture diagram.</li>
+<li><strong>Week 33: catch-up buffer.</strong></li>
+</ul>
+<h3 id="stage-5-by-level" tabindex="-1">Stage 5 by level</h3>
+<p><em>Time: Basics and Intermediate fit in the stage's 18 h (Docker 3 h, Actions 1 h, Terraform 2 h, Bedrock 1 h, plus the build). Advanced is optional.</em></p>
+<p><strong>Basics</strong></p>
+<ul>
+<li><strong>Containers and Docker.</strong> A container packages your app with its exact Python version and libraries so it runs the same on your laptop and in the customer's cloud. An <em>image</em> is the recipe-built package; a <em>container</em> is a running copy of it. It's how almost every customer deployment is shipped. → <a href="https://docs.docker.com/get-started/docker-overview/" rel="noopener" target="_blank">Docker overview</a>, <a href="https://docs.docker.com/get-started/" rel="noopener" target="_blank">Docker Get Started</a>.<ul>
+<li>Video: <a href="https://www.youtube.com/watch?v=pg19Z8LL06w&amp;t=174s" rel="noopener" target="_blank">Docker Crash Course for Absolute Beginners [NEW] — TechWorld with Nana</a>, watch 2:54–17:19 for what Docker is, the problems it solves, and VMs vs Docker, then <a href="https://www.youtube.com/watch?v=pg19Z8LL06w&amp;t=1296s" rel="noopener" target="_blank">21:36–29:38</a> for images vs containers and registries.</li>
+</ul>
+</li>
+<li><strong>The cloud in plain terms.</strong> Renting computers, storage and managed services by the hour from AWS, Azure or Google. Enterprises run AI inside <em>their own</em> cloud account for security and billing reasons, so you deploy there.</li>
+<li><strong>Config via environment.</strong> Keep settings and secrets in environment variables, not code, so the same image runs in dev and prod. This is one of the "twelve-factor" rules. → <a href="https://12factor.net/" rel="noopener" target="_blank">The Twelve-Factor App</a>.</li>
+<li><strong>Continuous integration (CI).</strong> A robot that runs your tests (and evals) on every push, so you find breakage before the customer does. → <a href="https://docs.github.com/en/actions/get-started/quickstart" rel="noopener" target="_blank">GitHub Actions quickstart</a>.<ul>
+<li>Video: <a href="https://www.youtube.com/watch?v=BQrohJ3PT7I&amp;t=30s" rel="noopener" target="_blank">How to use GitHub Actions | GitHub for Beginners — GitHub</a>, watch 0:30–6:16 for what Actions are and building your first workflow.</li>
+</ul>
+</li>
+<li><strong>Cost safety.</strong> Cloud bills surprise people. Set a budget alarm before creating anything (the $5 rule above). → <a href="https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html" rel="noopener" target="_blank">AWS Budgets</a>.</li>
+</ul>
+<p><strong>Intermediate</strong></p>
+<ul>
+<li><strong>Writing a Dockerfile.</strong> A short file of steps: start from a Python base image, copy code, install requirements, set the start command. Build it, run it locally, then push it to a registry.<ul>
+<li>Video: <a href="https://www.youtube.com/watch?v=pg19Z8LL06w&amp;t=2949s" rel="noopener" target="_blank">Docker Crash Course for Absolute Beginners [NEW] — TechWorld with Nana</a>, watch 49:09–1:02:39 for writing a Dockerfile and building the image.</li>
+</ul>
+</li>
+<li><strong>CI/CD workflows.</strong> A YAML file in <code>.github/workflows/</code> defines triggers, jobs and steps. Extend it to build and push your image (CD = continuous delivery).<ul>
+<li>Video: <a href="https://www.youtube.com/watch?v=R8_veQiYBjI&amp;t=784s" rel="noopener" target="_blank">GitHub Actions Tutorial - Basic Concepts and CI/CD Pipeline with Docker — TechWorld with Nana</a>, watch 13:04–20:40 for workflow syntax, then <a href="https://www.youtube.com/watch?v=R8_veQiYBjI&amp;t=1475s" rel="noopener" target="_blank">24:35–32:30</a> for building a Docker image and pushing it to a private repo.</li>
+</ul>
+</li>
+<li><strong>Infrastructure as code (Terraform).</strong> You describe the cloud resources you want in files. <code>terraform apply</code> creates them and <code>terraform destroy</code> removes them. It makes a deployment repeatable for the next customer, and it's how you keep the bill near zero. → <a href="https://developer.hashicorp.com/terraform/intro" rel="noopener" target="_blank">Terraform intro</a>, <a href="https://developer.hashicorp.com/terraform/tutorials/aws-get-started" rel="noopener" target="_blank">Terraform: Get Started on AWS</a>.<ul>
+<li>Video: <a href="https://www.youtube.com/watch?v=l5k1ai_GBDE&amp;t=30s" rel="noopener" target="_blank">Terraform explained in 15 mins — TechWorld with Nana</a>, watch 0:30–3:22 for what Terraform is, <a href="https://www.youtube.com/watch?v=l5k1ai_GBDE&amp;t=498s" rel="noopener" target="_blank">8:18–12:01</a> for how it works, and <a href="https://www.youtube.com/watch?v=l5k1ai_GBDE&amp;t=923s" rel="noopener" target="_blank">15:23–18:15</a> for the basic commands.</li>
+<li>Video: <a href="https://www.youtube.com/watch?v=7xngnjfIlK4&amp;t=1712s" rel="noopener" target="_blank">Complete Terraform Course - From BEGINNER to PRO! — DevOps Directive</a>, watch 28:32–58:23 for basic Terraform usage and the demo.</li>
+</ul>
+</li>
+<li><strong>Models inside the customer's cloud (Bedrock).</strong> Amazon Bedrock serves models from several vendors through one AWS API, so data stays in the customer's AWS account and on their bill. Azure OpenAI and Vertex AI are the Microsoft and Google equivalents. → <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html" rel="noopener" target="_blank">Amazon Bedrock</a>, <a href="https://learn.microsoft.com/en-us/azure/ai-foundry/openai/overview" rel="noopener" target="_blank">Azure OpenAI</a>, <a href="https://cloud.google.com/vertex-ai/generative-ai/docs/overview" rel="noopener" target="_blank">Vertex AI</a>.<ul>
+<li>Video: <a href="https://www.youtube.com/watch?v=FAgmR9VV0GQ&amp;t=61s" rel="noopener" target="_blank">Amazon Bedrock for Beginners – From First Prompt to AI Agent (Full Tutorial) — AWS Developers</a>, watch 1:01–5:21 for what Bedrock is, choosing a model, and system prompts, then <a href="https://www.youtube.com/watch?v=FAgmR9VV0GQ&amp;t=339s" rel="noopener" target="_blank">5:39–13:34</a> for the Converse API, boto3, and tokens and billing.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Advanced (optional / stretch)</strong></p>
+<ul>
+<li><strong>Tool use, knowledge bases and guardrails on Bedrock.</strong> Managed versions of what you built by hand. Useful when a customer prefers AWS-native services.<ul>
+<li>Video: <a href="https://www.youtube.com/watch?v=FAgmR9VV0GQ&amp;t=859s" rel="noopener" target="_blank">Amazon Bedrock for Beginners — AWS Developers</a>, watch 14:19–21:06 for tool use, <a href="https://www.youtube.com/watch?v=FAgmR9VV0GQ&amp;t=1266s" rel="noopener" target="_blank">21:06–30:18</a> for RAG and Bedrock Knowledge Bases, and <a href="https://www.youtube.com/watch?v=FAgmR9VV0GQ&amp;t=1818s" rel="noopener" target="_blank">30:18–37:44</a> for guardrails.</li>
+</ul>
+</li>
+<li><strong>Terraform modules and multiple environments.</strong> Reusable building blocks, and separate dev and prod stacks from the same code.<ul>
+<li>Video: <a href="https://www.youtube.com/watch?v=7xngnjfIlK4&amp;t=4802s" rel="noopener" target="_blank">Complete Terraform Course — DevOps Directive</a>, watch 1:20:02–1:56:05 for project organisation, modules and managing multiple environments.</li>
+</ul>
+</li>
+<li><strong>Private image registries on AWS.</strong><ul>
+<li>Video: <a href="https://www.youtube.com/watch?v=3c-iBn73dDE&amp;t=7476s" rel="noopener" target="_blank">Docker Tutorial for Beginners [FULL COURSE in 3 Hours] — TechWorld with Nana</a>, watch 2:04:36–2:19:06 for pushing an image to a private registry on AWS.</li>
+</ul>
+</li>
+<li><strong>Private networking, Kubernetes and the AWS basics.</strong> PrivateLink keeps traffic to model APIs off the public internet, which big customers often require. Kubernetes runs many containers at scale. → <a href="https://docs.aws.amazon.com/vpc/latest/privatelink/what-is-privatelink.html" rel="noopener" target="_blank">AWS PrivateLink</a>, <a href="https://kubernetes.io/docs/tutorials/kubernetes-basics/" rel="noopener" target="_blank">Kubernetes Basics</a>, <a href="https://aws.amazon.com/training/digital/aws-cloud-practitioner-essentials/" rel="noopener" target="_blank">AWS Cloud Practitioner Essentials</a> (all optional, as above).</li>
+</ul>
+<p><strong>Optional paid alternatives:</strong></p>
+<ul>
+<li>Basics: <a href="https://www.coursera.org/learn/aws-cloud-technical-essentials" rel="noopener" target="_blank">AWS Cloud Technical Essentials (Coursera)</a>: "Week 1: AWS Overview and Security" (IAM), "Week 2: Compute &amp; Networking", "Week 3: Storage &amp; Databases on AWS". The page shows "Enroll for free"; a certificate needs a paid subscription (price varies).</li>
+<li>Intermediate: <a href="https://www.udemy.com/course/docker-kubernetes-the-practical-guide/" rel="noopener" target="_blank">Docker &amp; Kubernetes: The Practical Guide (Udemy, Academind)</a>: sections "Docker Images &amp; Containers: The Core Building Blocks" (Dockerfile) and "Deploying Docker Containers" (cloud deploy). Price varies (not shown in the page source; Udemy prices change with sales).</li>
+<li>Intermediate: <a href="https://www.udemy.com/course/aws-certified-cloud-practitioner-new/" rel="noopener" target="_blank">Ultimate AWS Certified Cloud Practitioner CLF-C02 (Udemy, Stephane Maarek)</a>: sections "IAM - Identity and Access Management" and "Other Compute Services: ECS, Lambda, Batch, Lightsail". Price varies.</li>
+</ul>
+<h2 class="fde-h2" id="stage-6-running-it-in-production-weeks-3437-8-h" tabindex="-1">Stage 6 — Running it in production (weeks 34–37 · 8 h)</h2>
+<ul>
+<li><strong>Learn:</strong><ul>
+<li><a href="https://langfuse.com/docs" rel="noopener" target="_blank">Langfuse docs</a> (1.5 h)</li>
+<li><a href="https://hamel.dev/blog/posts/evals/" rel="noopener" target="_blank">Hamel Husain: Your AI product needs evals</a> (1 h)</li>
+<li><a href="https://docs.litellm.ai/docs/" rel="noopener" target="_blank">LiteLLM</a> for fallbacks and cost tracking (1 h)</li>
+<li><a href="https://platform.openai.com/docs/guides/latency-optimization" rel="noopener" target="_blank">OpenAI latency optimization</a> and <a href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-caching" rel="noopener" target="_blank">Anthropic prompt caching</a> (1 h)</li>
+<li>Skim the <a href="https://opentelemetry.io/docs/specs/semconv/gen-ai/" rel="noopener" target="_blank">OpenTelemetry GenAI conventions</a></li>
+</ul>
+</li>
+<li><strong>Build:</strong> error analysis on at least 50 traces (from your real customer, or the 50-query set replayed), a fallback model, and cost tracking.</li>
+<li><strong>Milestone:</strong> a post-launch report with before-and-after numbers for p50/p95 latency, cost per query and eval pass rate, plus the top three failure types and how you fixed each.</li>
+<li><strong>Week 38: catch-up buffer.</strong></li>
+</ul>
+<h3 id="stage-6-by-level" tabindex="-1">Stage 6 by level</h3>
+<p><em>Time: Basics and Intermediate fit in the stage's 8 h. Advanced is optional (week 38 buffer or later).</em></p>
+<p><strong>Basics</strong></p>
+<ul>
+<li><strong>Observability and traces.</strong> A <em>trace</em> records everything one request did: the prompt, retrieved chunks, each tool call, the model's answer, time taken and cost. When a customer says "it gave a weird answer yesterday", the trace is how you find out why. → <a href="https://langfuse.com/docs" rel="noopener" target="_blank">Langfuse docs</a>.<ul>
+<li>Video: <a href="https://www.youtube.com/watch?v=pTneXS_m1rk&amp;t=64s" rel="noopener" target="_blank">Langfuse Intro - Observability &amp; Tracing Deep Dive — Langfuse</a>, watch 1:04–4:42 for the demo, exploring trace data, and the data model.</li>
+</ul>
+</li>
+<li><strong>Latency, p50 and p95.</strong> Latency is how long a response takes. <em>p50</em> is the typical (median) request, and <em>p95</em> is the slow tail that 1 in 20 users hit. Customers feel p95, so your report shows both.</li>
+<li><strong>Cost per query.</strong> Tokens in plus tokens out, times the model's price. Multiplied by daily volume, it becomes a number the customer's finance team will ask for.</li>
+<li><strong>Monitoring basics.</strong> Watch a few "golden signals" (latency, traffic, errors, saturation) instead of everything. → <a href="https://sre.google/sre-book/monitoring-distributed-systems/" rel="noopener" target="_blank">Google SRE book: Monitoring distributed systems</a>.</li>
+</ul>
+<p><strong>Intermediate</strong></p>
+<ul>
+<li><strong>Evals for your application (not benchmarks).</strong> Public leaderboards don't tell you whether <em>this customer's</em> agent works. Build pass/fail checks from real traces and your 50-query set, and rerun them after every change. → <a href="https://hamel.dev/blog/posts/evals/" rel="noopener" target="_blank">Hamel Husain: Your AI product needs evals</a>.<ul>
+<li>Video: <a href="https://www.youtube.com/watch?v=GL0XhAj5LPE&amp;t=51s" rel="noopener" target="_blank">LLM Evals: Common Mistakes — Hamel Husain</a>, watch 0:51–4:00 for why benchmarks and generic evals don't measure your app, then <a href="https://www.youtube.com/watch?v=GL0XhAj5LPE&amp;t=925s" rel="noopener" target="_blank">15:25–23:41</a> for binary labels and looking at your data.</li>
+</ul>
+</li>
+<li><strong>Error analysis.</strong> Read 50+ traces, note what went wrong in each, group the notes into failure types, and fix the biggest group first. It's the highest-value hour in AI engineering. → <a href="https://hamel.dev/blog/posts/field-guide/" rel="noopener" target="_blank">Hamel Husain: A field guide to rapidly improving AI products</a>.<ul>
+<li>Video: <a href="https://www.youtube.com/watch?v=uiza7wp1KrE&amp;t=85s" rel="noopener" target="_blank">AI Evaluations Clearly Explained in 50 Minutes (Real Example) — Hamel Husain | Peter Yang</a>, watch 1:25–9:50 for a live analysis of real production traces, then <a href="https://www.youtube.com/watch?v=uiza7wp1KrE&amp;t=590s" rel="noopener" target="_blank">9:50–24:44</a> for building eval criteria in a spreadsheet.</li>
+</ul>
+</li>
+<li><strong>Tracing and evaluating an agent in Langfuse.</strong><ul>
+<li>Video: <a href="https://www.youtube.com/watch?v=THfB4p2xCFY&amp;t=117s" rel="noopener" target="_blank">Langfuse Walkthrough - Full Demo of Agent Tracing, Evals, Experiments and Prompt Management — Langfuse</a>, watch 1:57–7:11 for tracing and evaluating an agent.</li>
+</ul>
+</li>
+<li><strong>Fallbacks and cost tracking via an LLM gateway.</strong> Route calls through one layer that retries on a backup model when the main one fails or is slow, and logs spend per request. → <a href="https://docs.litellm.ai/docs/" rel="noopener" target="_blank">LiteLLM</a>.</li>
+<li><strong>Prompt caching and latency tricks.</strong> Providers can cache the repeated start of a prompt (system prompt, long documents), cutting cost and time to first token. Streaming, smaller models for easy steps, and fewer round trips help too. → <a href="https://platform.openai.com/docs/guides/latency-optimization" rel="noopener" target="_blank">OpenAI latency optimization</a>, <a href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-caching" rel="noopener" target="_blank">Anthropic prompt caching</a>.<ul>
+<li>Video: <a href="https://www.youtube.com/watch?v=u57EnkQaUTY&amp;t=118s" rel="noopener" target="_blank">What is Prompt Caching? Optimize LLM Latency with AI Transformers — IBM Technology</a>, watch 1:58–7:55 for how prompt caching works, what can be cached, and prefix matching.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Advanced (optional / stretch)</strong></p>
+<ul>
+<li><strong>Continuous evals in production and in CI.</strong> Run evals automatically on live samples and on every pull request, so model, prompt or tool changes can't silently regress.<ul>
+<li>Video: <a href="https://www.youtube.com/watch?v=uiza7wp1KrE&amp;t=2160s" rel="noopener" target="_blank">AI Evaluations Clearly Explained in 50 Minutes — Hamel Husain | Peter Yang</a>, watch 36:00–52:30 for setting up continuous evals in production.</li>
+<li>Video: <a href="https://www.youtube.com/watch?v=THfB4p2xCFY&amp;t=539s" rel="noopener" target="_blank">Langfuse Walkthrough — Langfuse</a>, watch 8:59–10:05 for experiments in CI/CD.</li>
+</ul>
+</li>
+<li><strong>OpenTelemetry GenAI conventions.</strong> A vendor-neutral standard for traces, so your telemetry works with whatever tool the customer already uses (Datadog, Grafana and others). → <a href="https://opentelemetry.io/docs/specs/semconv/gen-ai/" rel="noopener" target="_blank">OpenTelemetry GenAI conventions</a>.<ul>
+<li>Video: <a href="https://www.youtube.com/watch?v=iEEIabOha8U&amp;t=41s" rel="noopener" target="_blank">What is OTel? | OTel for Beginners - The JavaScript Journey — OpenTelemetry</a>, watch 0:41–7:45 for what OpenTelemetry is and why to use it (concepts apply to Python).</li>
+</ul>
+</li>
+<li><strong>Why evaluating AI is hard.</strong><ul>
+<li>Video: <a href="https://www.youtube.com/watch?v=98o_L3jlixw&amp;t=2224s" rel="noopener" target="_blank">AI Engineering with Chip Huyen — The Pragmatic Engineer</a>, watch 37:04–43:09 for the challenge of evaluating AI systems and evaluation use cases.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Optional paid alternatives:</strong></p>
+<ul>
+<li>Basics: <a href="https://www.coursera.org/learn/aws-cloud-technical-essentials" rel="noopener" target="_blank">AWS Cloud Technical Essentials (Coursera)</a>, "Week 4: Monitoring &amp; Optimization". See Stage 5 for price.</li>
+<li>Advanced: <a href="https://maven.com/parlance-labs/evals" rel="noopener" target="_blank">AI Evals For Engineers &amp; PMs (Maven, Hamel Husain and Shreya Shankar)</a>. The page lists error analysis, building evaluators (LLM-as-judge and code-based), catching regressions with CI/CD, and production monitoring. The syllabus starts with "L1: Building Agents You Can Evaluate" and "L2: Building Agents, Synthetic Data &amp; Scenarios". <strong>$4,200 USD</strong> as shown on 4 Oct 2026 (next cohort 10 Oct – 21 Nov 2026). This is a big spend; the free Hamel posts and videos above cover the core.</li>
+</ul>
+<h2 class="fde-h2" id="stage-7-system-design-the-case-study-weeks-3943-10-h" tabindex="-1">Stage 7 — System design &amp; the case study (weeks 39–43 · 10 h)</h2>
+<ul>
+<li><strong>Learn:</strong> <a href="https://huyenchip.com/2024/07/25/genai-platform.html" rel="noopener" target="_blank">Chip Huyen: Building a GenAI Platform</a> and <a href="https://www.anthropic.com/engineering/building-effective-agents" rel="noopener" target="_blank">Anthropic: Building Effective Agents</a>.</li>
+<li><strong>Milestone:</strong> a case study of about 1,500 words plus a 10-minute recorded walkthrough of the whole engagement (discovery, scope, integration, security, deployment, results). This is your portfolio centrepiece and what you send with applications.</li>
+</ul>
+<h3 id="stage-7-by-level" tabindex="-1">Stage 7 by level</h3>
+<p><em>Time: Basics and Intermediate fit in the stage's 10 h, most of which is writing and recording. Advanced is optional.</em></p>
+<p><strong>Basics</strong></p>
+<ul>
+<li><strong>What "system design" means here.</strong> Explaining how the pieces fit together (users, auth, API, agent, models, data, monitoring) and <em>why</em> you chose each one. The reference architecture diagram above is your template.<ul>
+<li>Video: <a href="https://www.youtube.com/watch?v=F2FmTdLtb_4&amp;t=262s" rel="noopener" target="_blank">System Design Concepts Course and Interview Prep — freeCodeCamp.org</a>, watch 4:22–7:12 for production app architecture (CI/CD, load balancers, logging and monitoring).</li>
+</ul>
+</li>
+<li><strong>Workflows vs agents.</strong> A <em>workflow</em> follows steps you wrote; an <em>agent</em> decides its own steps. Start with the simplest thing that works, and add autonomy only when it clearly pays off, because it's easier to test and cheaper to run. → <a href="https://www.anthropic.com/engineering/building-effective-agents" rel="noopener" target="_blank">Anthropic: Building Effective Agents</a>.<ul>
+<li>Video: <a href="https://www.youtube.com/watch?v=D7_ipDqhtwk&amp;t=151s" rel="noopener" target="_blank">How We Build Effective Agents: Barry Zhang, Anthropic — AI Engineer</a>, watch 2:31–8:01 for when to build an agent and keeping agents simple.</li>
+</ul>
+</li>
+<li><strong>The case study format.</strong> Problem → constraints → what you built → results with numbers → what you'd do next. Hiring managers skim for the numbers and your judgement calls.</li>
+</ul>
+<p><strong>Intermediate</strong></p>
+<ul>
+<li><strong>Design requirements: latency, throughput, SLOs.</strong> An SLO is a target you promise (e.g. "95% of answers in under 4 seconds"). Requirements like these drive every design trade-off you'll explain in the walkthrough.<ul>
+<li>Video: <a href="https://www.youtube.com/watch?v=F2FmTdLtb_4&amp;t=432s" rel="noopener" target="_blank">System Design Concepts Course and Interview Prep — freeCodeCamp.org</a>, watch 7:12–14:40 for design requirements, then <a href="https://www.youtube.com/watch?v=F2FmTdLtb_4&amp;t=1441s" rel="noopener" target="_blank">24:01–29:19</a> for API design.</li>
+</ul>
+</li>
+<li><strong>GenAI platform components.</strong> Context construction (RAG), guardrails, model router/gateway, caching, and observability. Name each in your case study and say whether you used it. → <a href="https://huyenchip.com/2024/07/25/genai-platform.html" rel="noopener" target="_blank">Chip Huyen: Building a GenAI Platform</a>.</li>
+<li><strong>Agent design patterns.</strong> Orchestrator and sub-agents, parallel tool calls, common failure modes, and context engineering.<ul>
+<li>Video: <a href="https://www.youtube.com/watch?v=uhJJgc-0iTQ&amp;t=400s" rel="noopener" target="_blank">Building more effective AI agents — Anthropic</a>, watch 6:40–9:30 for workflows vs agents and why simple architectures win, then <a href="https://www.youtube.com/watch?v=uhJJgc-0iTQ&amp;t=855s" rel="noopener" target="_blank">14:15–17:15</a> for common failure modes and best practices.</li>
+</ul>
+</li>
+<li><strong>Recording a walkthrough.</strong> Ten minutes: two on the customer problem, five on a live demo with the architecture diagram, three on results and lessons. Rehearse once; don't edit endlessly.</li>
+</ul>
+<p><strong>Advanced (optional / stretch)</strong></p>
+<ul>
+<li><strong>Production RAG at scale.</strong> Chunking strategy, metadata, hybrid (keyword + semantic) search, validation layers, and retrieval metrics. → <a href="https://www.anthropic.com/news/contextual-retrieval" rel="noopener" target="_blank">Anthropic: Contextual Retrieval</a>.<ul>
+<li>Video: <a href="https://www.youtube.com/watch?v=4KiiKQ9RVvA&amp;t=285s" rel="noopener" target="_blank">How to Build a Scalable RAG System for AI Apps (Full Architecture) — ByteMonk</a>, watch 4:45–15:52 for production RAG architecture through evaluation and red teaming.</li>
+</ul>
+</li>
+<li><strong>Classic system-design depth.</strong> Caching, CDNs, proxies, load balancers and databases, for interview loops that include a general system-design round. → <a href="https://github.com/donnemartin/system-design-primer" rel="noopener" target="_blank">System Design Primer</a>.<ul>
+<li>Video: <a href="https://www.youtube.com/watch?v=F2FmTdLtb_4&amp;t=1759s" rel="noopener" target="_blank">System Design Concepts Course and Interview Prep — freeCodeCamp.org</a>, watch 29:19–36:33 for caching and CDNs.</li>
+</ul>
+</li>
+</ul>
+<h2 class="fde-h2" id="stage-8-optional-light-typescript-weeks-4447-8-h" tabindex="-1">Stage 8 (optional) — Light TypeScript (weeks 44–47 · 8 h)</h2>
+<p>About 6 of the 9 postings mention TypeScript or full-stack work, but most say "Python <em>or</em> TypeScript". Do this stage if your quarterly checkpoints show your target roles want it.</p>
+<ul>
+<li><a href="https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html" rel="noopener" target="_blank">TypeScript in 5 Minutes</a>, then the <a href="https://www.typescriptlang.org/docs/handbook/intro.html" rel="noopener" target="_blank">TypeScript Handbook</a> sections on everyday types, narrowing and functions.</li>
+<li><strong>Milestone:</strong> a small TypeScript chat frontend or webhook handler that calls your FastAPI backend.</li>
+</ul>
+<h3 id="stage-8-by-level" tabindex="-1">Stage 8 by level</h3>
+<p><em>Time: the stage's 8 h. The whole stage is optional.</em></p>
+<p><strong>Basics</strong></p>
+<ul>
+<li><strong>What TypeScript is.</strong> JavaScript plus types. The compiler catches mistakes like passing a string where a number is expected before the code runs, then outputs plain JavaScript. Many customer front ends and webhook handlers are written in it, which is why ~6 of 9 postings mention it. → <a href="https://www.typescriptlang.org/docs/handbook/typescript-from-scratch.html" rel="noopener" target="_blank">TypeScript for the New Programmer / from scratch</a>, <a href="https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html" rel="noopener" target="_blank">TypeScript in 5 Minutes</a>.<ul>
+<li>Video: <a href="https://www.youtube.com/watch?v=zQnBQ4tB3ZA" rel="noopener" target="_blank">TypeScript in 100 Seconds — Fireship</a> (full video, 2:25).</li>
+</ul>
+</li>
+</ul>
+<p><strong>Intermediate</strong></p>
+<ul>
+<li><strong>Everyday types, functions and narrowing.</strong> Annotating variables and function signatures, arrays and objects, and <code>if</code> checks that narrow a union type. This is enough to read and write a small handler. → <a href="https://www.typescriptlang.org/docs/handbook/intro.html" rel="noopener" target="_blank">TypeScript Handbook</a>.<ul>
+<li>Video: <a href="https://www.youtube.com/watch?v=ahCwqrYpIuM&amp;t=314s" rel="noopener" target="_blank">TypeScript - The Basics — Fireship</a>, watch 5:14–12:01 for type annotations, typed functions, typed arrays and generics.</li>
+<li>Video: <a href="https://www.youtube.com/watch?v=d56mG7DezGs&amp;t=1403s" rel="noopener" target="_blank">TypeScript Tutorial for Beginners — Programming with Mosh</a>, watch 23:23–47:57 for built-in types, arrays, tuples, enums, functions and objects.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Advanced (optional / stretch)</strong></p>
+<ul>
+<li><strong>Advanced types.</strong> Type aliases, union and intersection types, literal and nullable types, and optional chaining. Common in API client code.<ul>
+<li>Video: <a href="https://www.youtube.com/watch?v=d56mG7DezGs&amp;t=2877s" rel="noopener" target="_blank">TypeScript Tutorial for Beginners — Programming with Mosh</a>, watch 47:57–1:04:28 for advanced types.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Optional paid alternative (Intermediate → Advanced):</strong> <a href="https://master.dev/courses/typescript-v4/" rel="noopener" target="_blank">TypeScript 5+ Fundamentals, v4 — Mike North (Frontend Masters, now Master.dev)</a>. Sections "Variables and Values" and "Objects, Arrays and Tuples" map to Intermediate; "Union and Intersection Types", "Interfaces and Type Aliases" and "Generics" map to Advanced. Subscription: <strong>$39/month or $390/year</strong> as shown on the <a href="https://master.dev/join/" rel="noopener" target="_blank">pricing page</a> on 4 Oct 2026.</p>
+<hr/>
+<h2 class="fde-h2" id="summary" tabindex="-1">Summary</h2>
+<div class="table-scroll"><table class="tbl fde-tbl">
+<thead>
+<tr>
+<th>Stage</th>
+<th>Weeks</th>
+<th>Hours</th>
+<th>Milestone</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td data-l="Stage">0 Orientation</td>
+<td data-l="Weeks">1</td>
+<td data-l="Hours">2</td>
+<td data-l="Milestone">Repo + self-assessment</td>
+</tr>
+<tr>
+<td data-l="Stage">1 Discovery &amp; scoping</td>
+<td data-l="Weeks">2–6</td>
+<td data-l="Hours">10</td>
+<td data-l="Milestone">Scoping doc, 50 queries, prototype video</td>
+</tr>
+<tr>
+<td data-l="Stage">2 Integration</td>
+<td data-l="Weeks">7–16 (+17 buffer)</td>
+<td data-l="Hours">22</td>
+<td data-l="Milestone">OAuth + webhook + SQL demo</td>
+</tr>
+<tr>
+<td data-l="Stage">3 Communication</td>
+<td data-l="Weeks">18–19</td>
+<td data-l="Hours">4</td>
+<td data-l="Milestone">Runbook + admin handoff</td>
+</tr>
+<tr>
+<td data-l="Stage">4 Security</td>
+<td data-l="Weeks">20–23</td>
+<td data-l="Hours">8</td>
+<td data-l="Milestone">Security brief + red-team evals</td>
+</tr>
+<tr>
+<td data-l="Stage">5 Cloud deploy</td>
+<td data-l="Weeks">24–32 (+33 buffer)</td>
+<td data-l="Hours">20</td>
+<td data-l="Milestone">Terraform + CI + Bedrock</td>
+</tr>
+<tr>
+<td data-l="Stage">6 Production</td>
+<td data-l="Weeks">34–37 (+38 buffer)</td>
+<td data-l="Hours">10</td>
+<td data-l="Milestone">Post-launch metrics report</td>
+</tr>
+<tr>
+<td data-l="Stage">7 Case study</td>
+<td data-l="Weeks">39–43</td>
+<td data-l="Hours">10</td>
+<td data-l="Milestone">Case study + walkthrough</td>
+</tr>
+<tr>
+<td data-l="Stage">8 TypeScript (optional)</td>
+<td data-l="Weeks">44–47</td>
+<td data-l="Hours">8</td>
+<td data-l="Milestone">TS frontend/handler</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Total:</strong> 43 weeks core (~86 h); 47 with TypeScript. <strong>Costs:</strong> The Mom Test (~$10); AWS usage capped by a $5 budget alarm; everything else is free.</p>
+<h2 class="fde-h2" id="optional-paid-courses-at-a-glance" tabindex="-1">Optional paid courses at a glance</h2>
+<p>All optional. The free path above is complete without them. Prices as shown on each page on 4 Oct 2026. "Price varies" = no fixed price shown (subscription or sale pricing). For Coursera, the <a href="https://www.coursera.org/courseraplus" rel="noopener" target="_blank">Coursera Plus page</a> shows <strong>$59/month or $399/year</strong>, and single courses at $49–$79/month (US pricing; may differ in India).</p>
+<div class="table-scroll"><table class="tbl fde-tbl">
+<thead>
+<tr>
+<th>Tier</th>
+<th>Course (provider)</th>
+<th>Price as shown</th>
+<th>Modules / sections → roadmap concepts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td data-l="Tier">Basics</td>
+<td data-l="Course (provider)"><a href="https://www.coursera.org/learn/generative-ai-for-everyone" rel="noopener" target="_blank">Generative AI for Everyone</a> (DeepLearning.AI on Coursera)</td>
+<td data-l="Price as shown">Price varies (Coursera subscription; financial aid available)</td>
+<td data-l="Modules / sections → roadmap concepts">"Introduction to Generative AI" → Primer · "Generative AI Projects" → Stage 1 scoping · "Generative AI in Business and Society" → Stage 0</td>
+</tr>
+<tr>
+<td data-l="Tier">Basics</td>
+<td data-l="Course (provider)"><a href="https://www.coursera.org/learn/aws-cloud-technical-essentials" rel="noopener" target="_blank">AWS Cloud Technical Essentials</a> (AWS on Coursera)</td>
+<td data-l="Price as shown">"Enroll for free" shown; certificate via subscription, price varies</td>
+<td data-l="Modules / sections → roadmap concepts">"Week 1: AWS Overview and Security" → Stage 4–5 IAM · "Week 2: Compute &amp; Networking" and "Week 3: Storage &amp; Databases on AWS" → Stage 5 · "Week 4: Monitoring &amp; Optimization" → Stage 6</td>
+</tr>
+<tr>
+<td data-l="Tier">Intermediate</td>
+<td data-l="Course (provider)"><a href="https://www.udemy.com/course/docker-kubernetes-the-practical-guide/" rel="noopener" target="_blank">Docker &amp; Kubernetes: The Practical Guide</a> (Udemy, Academind)</td>
+<td data-l="Price as shown">Price varies</td>
+<td data-l="Modules / sections → roadmap concepts">"Docker Images &amp; Containers: The Core Building Blocks" → Stage 5 Dockerfile · "Deploying Docker Containers" → Stage 5 deploy</td>
+</tr>
+<tr>
+<td data-l="Tier">Intermediate</td>
+<td data-l="Course (provider)"><a href="https://www.udemy.com/course/aws-certified-cloud-practitioner-new/" rel="noopener" target="_blank">Ultimate AWS Certified Cloud Practitioner CLF-C02</a> (Udemy, Stephane Maarek)</td>
+<td data-l="Price as shown">Price varies</td>
+<td data-l="Modules / sections → roadmap concepts">"IAM - Identity and Access Management" → Stage 4–5 · "Other Compute Services: ECS, Lambda, Batch, Lightsail" → Stage 5</td>
+</tr>
+<tr>
+<td data-l="Tier">Intermediate → Advanced</td>
+<td data-l="Course (provider)"><a href="https://master.dev/courses/typescript-v4/" rel="noopener" target="_blank">TypeScript 5+ Fundamentals, v4</a> (Frontend Masters, now Master.dev)</td>
+<td data-l="Price as shown">$39/month or $390/year (<a href="https://master.dev/join/" rel="noopener" target="_blank">pricing</a>)</td>
+<td data-l="Modules / sections → roadmap concepts">"Variables and Values", "Objects, Arrays and Tuples" → Stage 8 Intermediate · "Union and Intersection Types", "Interfaces and Type Aliases", "Generics" → Stage 8 Advanced</td>
+</tr>
+<tr>
+<td data-l="Tier">Advanced</td>
+<td data-l="Course (provider)"><a href="https://www.coursera.org/professional-certificates/ibm-rag-and-agentic-ai" rel="noopener" target="_blank">IBM RAG and Agentic AI Professional Certificate</a> (IBM on Coursera)</td>
+<td data-l="Price as shown">Price varies</td>
+<td data-l="Modules / sections → roadmap concepts">10-course series. The page lists function calling, RAG, vector stores, LangGraph and Model Context Protocol → Primer, Stage 2 (MCP), Stage 7 (agents). Individual course names weren't captured, so check the page.</td>
+</tr>
+<tr>
+<td data-l="Tier">Advanced</td>
+<td data-l="Course (provider)"><a href="https://maven.com/parlance-labs/evals" rel="noopener" target="_blank">AI Evals For Engineers &amp; PMs</a> (Maven, Hamel Husain and Shreya Shankar)</td>
+<td data-l="Price as shown">$4,200 USD (cohort 10 Oct – 21 Nov 2026)</td>
+<td data-l="Modules / sections → roadmap concepts">"L1: Building Agents You Can Evaluate", "L2: Building Agents, Synthetic Data &amp; Scenarios"; page outcomes: error analysis, evaluators, CI/CD regressions, production monitoring → Stage 6; red-teaming → Stage 4</td>
+</tr>
+</tbody>
+</table></div>
+<h2 class="fde-h2" id="what-changed-after-review" tabindex="-1">What changed after review</h2>
+<ol>
+<li><strong>Real customer is the default</strong> (Outsider). The fictional Customer Zero is now only a fallback. Added a privacy rule (Critic): the real engagement goes in a private repo, and only a cleaned-up version goes public, with the customer's consent.</li>
+<li><strong>Job-market track added from week 8</strong> (Outsider): FDE chats, early applications to stepping-stone roles, and mock customer-scenario interviews.</li>
+<li><strong>Quarterly checkpoints added</strong> (Outsider), including India and remote-from-India postings, since the 9 sampled roles were US and Europe.</li>
+<li><strong>Stepping-stone roles named</strong> (Outsider), and a starting-point rule added: finish your existing roadmap's core first.</li>
+<li><strong>Stage 2 slimmed and lengthened</strong> to 10 weeks (Critic). Entra, SAML and OIDC are now a skim, SQLBolt moved to Stage 1, and the build gets about 13 h.</li>
+<li><strong>Google OAuth 7-day refresh-token gotcha</strong> documented, and a <strong>tunnel tool</strong> (ngrok or Cloudflare) added for webhooks before deployment (Critic). I checked both links myself.</li>
+<li><strong>Traffic problem fixed</strong> (Critic): a 50-query set built from interviews in Stage 1, and Langfuse switched on from Stage 2.</li>
+<li><strong>First demo moved from week 13 to week 6</strong> (Critic), with a throwaway prototype in Stage 1.</li>
+<li><strong>The Mom Test made core</strong> (Critic). No free resource taught discovery interviewing.</li>
+<li><strong>Communication turned into weekly habits</strong> (Critic and Outsider). Stage 3 cut to 2 weeks.</li>
+<li><strong>Stage 5 extended to 9 weeks</strong> and built in steps, with weekly rather than per-session <code>terraform destroy</code> (Critic).</li>
+<li><strong>Three buffer weeks added</strong> (Critic), and <strong>TypeScript moved to an optional final stage</strong>.</li>
+<li>Vendor-content and source-type labels added to the SOC 2 and DPDP links (Critic).</li>
+<li><strong>Upgrade, 4 Oct 2026</strong> (requested by Yeshwanth): added a no-maths AI/ML/LLM primer. Every stage now has Basics / Intermediate / Advanced tiers with a plain-language explanation or link for every concept, plus timestamped YouTube segments (times taken from each video's own chapters) and optional paid courses. Added four Mermaid diagrams (roadmap flow, engagement lifecycle, reference architecture, Gantt) and two SVG infographics in <code>assets/</code>. Timings, milestones and existing links are unchanged; Advanced and paid items are optional, so the plan still runs at 2 h/week.</li>
+</ol>
+<p><strong>Rejected or deferred:</strong> an extra Researcher round for India-based postings and a free discovery guide. Making The Mom Test core and running the quarterly posting re-check cover both without delaying the plan.</p>
+        <div class="pager"><a href="index.html#/"><small>back to</small>← AI Engineer Roadmap home</a><a class="next" href="#top"><small>jump</small>Back to top ↑</a></div>
+      </article>
+    </div>
+  </div>
+  </main>
+
+  <footer class="footer">
+    <span class="mono small muted">// built for 2 hours a week · no maths required · <a href="index.html#/">back to the AI Engineer Roadmap</a></span>
+  </footer>
+
+  <script>
+    document.getElementById("menu-btn").addEventListener("click", () => document.getElementById("topnav").classList.toggle("open"));
+    // highlight the current section in the side nav / pill bar
+    (function(){
+      const links = [...document.querySelectorAll("#fde-nav a")];
+      const heads = links.map(a => document.getElementById(a.dataset.jump));
+      let cur = null;
+      function onScroll(){
+        let idx = 0; const y = window.innerWidth <= 960 ? 140 : 100;
+        heads.forEach((h, i) => { if (h.getBoundingClientRect().top < y) idx = i; });
+        if (cur === idx) return; cur = idx;
+        links.forEach((a, i) => a.classList.toggle("active", i === idx));
+        const a = links[idx], n = a.parentElement;
+        if (getComputedStyle(n).flexDirection === "row") n.scrollLeft = a.offsetLeft - n.offsetLeft - 16;
+      }
+      window.addEventListener("scroll", onScroll, {passive: true}); onScroll();
+    })();
+  </script>
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({ startOnLoad: false, theme: "dark", securityLevel: "strict",
+      fontFamily: "Inter, system-ui, sans-serif", flowchart: { useMaxWidth: false },
+      themeVariables: { background: "#0e1013", primaryColor: "#171b21", primaryTextColor: "#e6e8eb", lineColor: "#8b93a1" } });
+    try {
+      await mermaid.run({ querySelector: "pre.mermaid" });
+      // flowcharts render at natural size; shrink to ~70% (still readable) and let the box scroll sideways
+      document.querySelectorAll(".mmd-flow pre.mermaid svg").forEach(svg => {
+        const vb = svg.viewBox && svg.viewBox.baseVal; if (!vb || !vb.width) return;
+        const box = svg.closest(".mmd-scroll").clientWidth - 12;
+        const w = Math.max(Math.min(vb.width, box), Math.round(vb.width * 0.7));
+        svg.style.width = w + "px"; svg.style.height = Math.round(vb.height * w / vb.width) + "px"; svg.style.maxWidth = "none";
+      });
+      document.body.dataset.mermaid = "done";
+    }
+    catch (e) { console.warn("Mermaid render failed", e); document.body.dataset.mermaid = "error"; }
+  </script>
+</body>
+</html>

@@ -148,6 +148,16 @@ with sync_playwright() as p:
     ok("overview toolkit line shows 1/13", "1/13 done" in pg.inner_text(".tk-line"))
     ok("Phase 0 has a GitHub API group with P13", "GitHub API" in pg.inner_text("#phase-0") and pg.locator("#phase-0 .week-card").count() == 13)
     pg.evaluate("window.scrollTo({top: document.getElementById('phase-0').getBoundingClientRect().top + window.scrollY - 90, behavior: 'instant'})"); time.sleep(0.9); pg.screenshot(path=SS + "phase0.png")
+    # --- Forward-deployed engineer roadmap page ---
+    pg.goto(BASE); pg.wait_for_selector("#fde-card")
+    ok("home has FDE roadmap card + nav link", pg.is_visible("#fde-card") and pg.locator("#topnav a[href='fde.html']").count() == 1)
+    pg.click("#fde-card"); pg.wait_for_function("document.body.dataset.mermaid", timeout=60000)
+    ok("FDE page renders 4 Mermaid diagrams", pg.evaluate("document.body.dataset.mermaid") == "done" and pg.locator("pre.mermaid svg").count() == 4)
+    imgs = pg.evaluate("""async () => { const im = [...document.querySelectorAll('img.fde-img')]; for (const i of im) { i.loading = 'eager'; if (!i.complete) await new Promise(r => { i.onload = i.onerror = r; }); } return im.map(i => i.naturalWidth); }""")
+    ok("FDE page SVG infographics load", len(imgs) == 2 and all(imgs), str(imgs))
+    t = pg.inner_text("#fde-content")
+    ok("FDE page has primer, stages 0-8, privacy rule and review list", all(x in t for x in ["AI, ML and LLMs in plain English", "Stage 0", "Stage 8 (optional)", "Customer privacy rule", "What changed after review"]))
+    ok("FDE page links back home", pg.locator(".crumbs a[href='index.html#/']").count() == 1)
     ctx.close()
 
     # --- Migration: a v1 progress object from before Phase 0 existed ---
@@ -244,6 +254,8 @@ with sync_playwright() as p:
     m.evaluate("""() => { const w = window.ROADMAP.weeks.find(w=>w.id===113); const ed = document.getElementById('editor'); ed.value = w.exercise.solution; ed.dispatchEvent(new Event('input')); }""")
     m.tap("#btn-check"); m.wait_for_selector("#console .ok", timeout=60000); ok("mobile P13 GitHub API exercise passes", True); no_hscroll("p13 exercise")
     m.locator(".tab[data-tab=gh]").tap(); ok("mobile P13 gh tab renders", "gh issue list" in m.inner_text(".tab-panel:not([hidden])")); no_hscroll("p13 gh tab")
+    m.goto(BASE + "fde.html"); m.wait_for_function("document.body.dataset.mermaid", timeout=60000); no_hscroll("fde page")
+    ok("mobile FDE page renders 4 Mermaid diagrams", m.locator("pre.mermaid svg").count() == 4)
     m.goto(BASE + "#/week/p9"); m.wait_for_selector(".tabs")
     ok("PowerShell project tab renders", "Activate.ps1" in m.inner_text(".tab-panel:not([hidden])"))
     mctx.close(); b.close()
