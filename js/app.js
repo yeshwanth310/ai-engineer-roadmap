@@ -68,6 +68,10 @@ function overview(){
     <h2>Forward-Deployed Engineer (43 weeks) →</h2>
     <p>43 weeks at 2 h/week: scope, integrate, secure, deploy and run an AI system for a real customer. Plain-English primer, Basics/Intermediate/Advanced tiers, timestamped videos, diagrams and optional paid courses.</p></div>
     <span class="go">open roadmap →</span></a>
+  <a class="card fde-card" id="pyb1-card" href="lessons/py-b1.html"><div><span class="eyebrow" style="margin-bottom:.2rem">// new lesson · python basics 1</span>
+    <h2>New: Python Basics 1 lesson (PY-B1) →</h2>
+    <p>Values, types, strings and money with Decimal: setup, a full lesson with code, a 10-question quiz, an exercise and downloadable lesson files.</p></div>
+    <span class="go">open lesson →</span></a>
   <div class="timeline stagger">${phases}</div></div>`;
 }
 

@@ -1,0 +1,585 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PY-B1 · Values, types, strings and money · AI Engineer Roadmap</title>
+  <meta name="description" content="Python Basics 1 (PY-B1): values, types, strings and money with Decimal. Setup, lesson, quiz, exercise and downloadable lesson files." />
+  <meta name="theme-color" content="#10151d" />
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    /* page-scoped additions for the PY-B1 lesson page; everything else comes from ../css/style.css */
+    .lesson-page .prose.fde pre.code{margin:.8rem 0 1.1rem;white-space:pre}
+    .lesson-page .prose.fde h3{margin-top:2rem}
+    .lesson-page .prose.fde h4{margin-top:1.3rem}
+    .lesson-page .section{margin:2.2rem 0}
+    .lesson-page .section-h h2{scroll-margin-top:5rem}
+    .lesson-q{margin:.8rem 0}
+    .lesson-opts{margin:.4rem 0 .2rem;padding-left:1.2rem}
+    .lesson-answer{padding:.6rem 0 0;margin-top:.4rem}
+    .lesson-answer p{margin:.5rem 0 0}
+    .dl-card{display:flex;flex-wrap:wrap;align-items:center;gap:1rem;justify-content:space-between}
+  </style>
+</head>
+<body class="fde-page lesson-page">
+  <a class="skip-link" href="#app">Skip to content</a>
+  <header class="topbar">
+    <a class="brand" href="../#/" aria-label="Home">
+      <span class="brand-mark">&gt;_</span>
+      <span class="brand-name">ai-engineer<span class="accent">.roadmap</span></span>
+    </a>
+    <button type="button" class="menu-btn" id="menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="sidebar"><span aria-hidden="true">☰</span></button>
+  </header>
+  <div class="backdrop" id="backdrop" hidden></div>
+  <aside class="sidebar" id="sidebar" aria-label="Site navigation">
+    <div class="sb-head">
+      <a class="brand" href="../#/" aria-label="Home">
+        <span class="brand-mark">&gt;_</span>
+        <span class="brand-name">ai-engineer<span class="accent">.roadmap</span></span>
+      </a>
+      <button type="button" class="drawer-close" id="drawer-close" aria-label="Close menu"><span aria-hidden="true">✕</span></button>
+    </div>
+    <nav class="topnav" id="topnav" aria-label="Main">
+      <div class="nav-group" id="nav-roadmap">
+        <button type="button" class="nav-parent" id="nav-roadmap-btn" aria-expanded="false" aria-controls="nav-roadmap-menu">Roadmap <span class="caret" aria-hidden="true">▾</span></button>
+        <div class="submenu" id="nav-roadmap-menu">
+          <a href="../#/" data-nav="home">AI Engineer <span class="sub-meta">(27 weeks)</span></a>
+          <a href="../fde.html" data-nav="fde">Forward-Deployed Engineer <span class="sub-meta">(43 weeks)</span></a>
+        </div>
+      </div>
+      <a href="../#/setup" data-nav="setup">Setup</a>
+      <a href="../#/glossary" data-nav="glossary">Glossary</a>
+      <a href="../#/cheatsheet" data-nav="cheatsheet">Cheat sheet</a>
+      <a href="../#/progress" data-nav="progress">Progress</a>
+    </nav>
+    <div class="sb-progress top-progress" title="Overall progress">
+      <div class="sb-progress-row"><span>Core roadmap progress</span><span class="sb-pct" id="top-progress-label">0%</span></div>
+      <div class="bar"><div class="fill" id="top-progress-fill"></div></div>
+      <p class="sb-note">27 core weeks · saved in this browser</p>
+    </div>
+  </aside>
+
+  <div class="workspace">
+  <main id="app" tabindex="-1">
+  <div class="wrap wrap-wide fade-in">
+    <div class="crumbs"><span>Lessons</span><span>/</span><span>Python Basics 1</span><span class="muted">·</span><a href="../#/">← AI Engineer (27 weeks)</a></div>
+    <span class="eyebrow">// new · python basics 1 of 6 · ~2 h · windows + git bash + python 3.14 (py)</span>
+    <h1 class="week-title" id="top">PY-B1 · Values, types, strings and money</h1>
+    <div class="week-layout">
+      <nav class="side-nav" id="lesson-nav" aria-label="Sections"><div class="side-title">On this page</div>
+<a href="#setup">Setup</a>
+<a href="#lesson">Lesson</a>
+<a href="#quiz">Quiz</a>
+<a href="#exercise">Exercise</a>
+<a href="#download">Download</a>
+<a href="#build">Build (skipped)</a>
+      </nav>
+      <article class="prose fde" id="lesson-article">
+
+<section class="section" id="setup"><div class="section-h"><span class="num">01</span><h2>Setup</h2></div>
+<p class="muted">One time, about 10 minutes. Time it separately from the lesson.</p>
+<div class="callout"><b>Using the downloaded zip?</b> Unzip it inside your <code>o2c-agent</code> folder; it creates a <code>py-b1/</code> folder. <code>requirements.txt</code> is inside <code>py-b1/</code>, so for step 3 run <code>py -m pip install -r py-b1/requirements.txt</code> (or copy the file up into <code>o2c-agent</code> first).</div>
+<p>In Git Bash, in your <code>o2c-agent</code> folder (outside OneDrive):</p>
+<ol>
+<li><code>py -3.14 -m venv .venv</code></li>
+<li><code>source .venv/Scripts/activate</code>  (prompt shows <code>(.venv)</code>; do this at the start of every session, then <code>py</code> uses the venv)</li>
+<li><code>py -m pip install -r requirements.txt</code></li>
+<li><code>py -c "import sys; print(sys.prefix)"</code>  → must end in <code>.venv</code></li>
+<li><code>py -m pytest --version</code>  → must print <code>pytest 9.1.1</code></li>
+</ol>
+<p>If <code>python</code> ever hangs, use <code>winpty python</code> (fallback only).
+The build step (<code>build.md</code>) needs the S0 data generator, which isn't written yet: skip it for this pilot.</p>
+</section>
+
+<section class="section" id="lesson"><div class="section-h"><span class="num">02</span><h2>Lesson</h2></div>
+<p><strong>Week 6 · Python ladder, Basics, session 1 of 6 · Pilot written to the locked standing quality bar</strong></p>
+<div class="table-scroll"><table class="tbl">
+<thead>
+<tr>
+<th>Block</th>
+<th>Minutes</th>
+<th>What you do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Learn (this page)</td>
+<td>40</td>
+<td>Read and type every example into <code>py</code></td>
+</tr>
+<tr>
+<td>Quiz</td>
+<td>10</td>
+<td><code>quiz.md</code>, 10 questions, auto-checked</td>
+</tr>
+<tr>
+<td><strong>HALFWAY: stop here on a busy week. Learn + Quiz is the minimum week.</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Exercise</td>
+<td>30</td>
+<td><code>exercise/line_item.py</code>, checked by <code>py -m pytest</code></td>
+</tr>
+<tr>
+<td>Build</td>
+<td>40</td>
+<td><code>build.md</code>: the first real piece of the order-to-cash agent, plus a commit</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Before you start.</strong> Setup (S0) is done: Python 3.14 is installed, your <code>o2c-agent</code> folder exists outside OneDrive, and the virtual environment is active (<code>source .venv/Scripts/activate</code> in Git Bash, so your prompt shows <code>(.venv)</code>). Activate first, every session; then <code>py</code> uses the venv (without activation <code>py</code> runs the global Python, which has no pytest). Open the Python prompt with <code>py</code>. You'll see <code>&gt;&gt;&gt;</code>. Type each example yourself instead of copying it, because typing is how the syntax sticks. Leave the prompt with <code>exit()</code>.</p>
+<p><strong>What you'll be able to do by the end.</strong> Read one sales-order item typed in as text, turn it into the right Python types, calculate a net value to the paisa with the right rounding rule, and print a clean, aligned line, the kind of line the agent will later hand to Gemini. Every later session builds on these exact skills. Python reads every LLM reply, every database row and every API response as one of the types on this page.</p>
+<p><strong>Python prerequisites:</strong> none. This is the first Python session. Everything used on this page, including the single <code>import</code> line, is explained here.</p>
+<p><strong>Levels on this page.</strong> Each topic is labelled. <strong>Beginner</strong> and <strong>Intermediate</strong> are taught here in full. <strong>Advanced</strong> gets one line saying where it's taught, just before you need it, so this page doesn't turn into months of theory.</p>
+<hr />
+<h3 id="lesson-1-values-types-and-variables">1. Values, types and variables</h3>
+<h4 id="lesson-beginner">Beginner</h4>
+<p><strong>What it is.</strong> A <em>value</em> is a piece of data: <code>42</code>, <code>"4500012"</code>, <code>19.99</code>. Every value has a <em>type</em>, which decides what you can do with it. A <em>variable</em> is a name you attach to a value with <code>=</code>.</p>
+<pre class="code"><code class="language-python">&gt;&gt;&gt; quantity = 3
+&gt;&gt;&gt; order_number = &quot;4500012&quot;
+&gt;&gt;&gt; type(quantity)
+&lt;class 'int'&gt;
+&gt;&gt;&gt; type(order_number)
+&lt;class 'str'&gt;
+</code></pre>
+<p><strong>Why it matters.</strong> <code>3</code> and <code>"3"</code> look alike on screen but behave completely differently. <code>3 + 3</code> is <code>6</code>. <code>"3" + "3"</code> is <code>"33"</code>. <code>"3" + 3</code> is an error. Almost everything that reaches your agent arrives as text: a user's question, a CSV cell, an LLM's JSON. Turning text into the right type is the first job in nearly every script you'll write.</p>
+<p><strong>Worked example.</strong></p>
+<pre class="code"><code class="language-python">&gt;&gt;&gt; &quot;5&quot; + &quot;5&quot;
+'55'
+&gt;&gt;&gt; 5 + 5
+10
+&gt;&gt;&gt; &quot;5&quot; * 3          # repeat the text three times
+'555'
+&gt;&gt;&gt; int(&quot;5&quot;) + 5     # convert first, then add
+10
+</code></pre>
+<h4 id="lesson-intermediate">Intermediate</h4>
+<p><strong>How it works underneath.</strong> In Python, the type belongs to the <em>value</em>, not to the variable. A variable is a label stuck onto an object in memory, and you can move the same label to a different object of a different type:</p>
+<pre class="code"><code class="language-python">&gt;&gt;&gt; x = 3
+&gt;&gt;&gt; type(x)
+&lt;class 'int'&gt;
+&gt;&gt;&gt; x = &quot;three&quot;      # legal: the label x now points at a str
+&gt;&gt;&gt; type(x)
+&lt;class 'str'&gt;
+</code></pre>
+<p>This is called <em>dynamic typing</em>. Python checks types while the code runs, not before. The upside is short code. The downside is that a wrong type only blows up on the line that uses it, which may be far from where the bad value came in. Type hints (PY-I3) and Pydantic (PY-A1) exist to catch that earlier.</p>
+<p>Assigning one variable to another copies the <em>label</em>, not the object:</p>
+<pre class="code"><code class="language-python">&gt;&gt;&gt; a = &quot;4500012&quot;
+&gt;&gt;&gt; b = a           # b points at the same str object as a
+&gt;&gt;&gt; a = a.zfill(10) # a now points at a NEW str; b is unchanged
+&gt;&gt;&gt; a, b
+('0004500012', '4500012')
+</code></pre>
+<p><code>b</code> didn't change because strings can't be changed in place (section 4). With lists, which <em>can</em> change in place, the same pattern causes the most common bug in agent code: a shared message history edited by accident. PY-B2 covers that in depth, so keep this picture of labels and objects in mind.</p>
+<p><strong>Common mistakes.</strong>
+- Treating anything read from <code>input()</code>, a file or an API as a number. It's a <code>str</code> until you convert it.
+- Reusing one variable name for different kinds of thing (<code>order = "4500012"</code>, later <code>order = 3</code>). It's legal and confusing. One name, one meaning.
+- Names that hide built-ins: <code>str = "abc"</code> breaks <code>str()</code> for the rest of the session. Avoid <code>str</code>, <code>list</code>, <code>type</code>, <code>input</code>, <code>sum</code> and <code>id</code> as names.</p>
+<p><strong>In the order-to-cash agent.</strong> Every tool the agent calls (TOOL-1) receives its arguments from Gemini as JSON text. Your code converts them into <code>int</code>, <code>Decimal</code> and <code>str</code> values before it touches the database. Getting the type wrong there means a wrong SQL filter or a wrong amount shown to a user.</p>
+<p><strong>Analogy.</strong> Types are like SAP data elements and domains. A <code>CURR</code> field, a <code>QUAN</code> field and a <code>CHAR</code> field can all display "100", but the system treats them differently: currency gets currency decimals, quantity gets a unit, and characters are just text. <strong>Where it breaks down:</strong> SAP checks a field's type when the program is activated and the field is fixed to it. Python checks types only when the line runs, and a variable can switch type at any time.</p>
+<p><strong>Advanced (later):</strong> static type checking with mypy or pyright comes in PY-I3, and runtime validation with Pydantic in PY-A1.</p>
+<hr />
+<h3 id="lesson-2-numbers-int-and-float">2. Numbers: <code>int</code> and <code>float</code></h3>
+<h4 id="lesson-beginner_1">Beginner</h4>
+<p><strong>What it is.</strong> <code>int</code> holds whole numbers of any size. <code>float</code> holds numbers with a decimal point. The main operators are <code>+ - * /</code>, plus <code>//</code> (whole-number division), <code>%</code> (remainder) and <code>**</code> (power).</p>
+<pre class="code"><code class="language-python">&gt;&gt;&gt; 7 / 2      # true division ALWAYS gives a float
+3.5
+&gt;&gt;&gt; 7 // 2     # floor division: rounds DOWN to a whole number
+3
+&gt;&gt;&gt; 7 % 2      # remainder
+1
+&gt;&gt;&gt; 2 ** 10
+1024
+&gt;&gt;&gt; 1_000_000  # underscores are allowed for readability
+1000000
+</code></pre>
+<p><strong>Why it matters.</strong> Quantities, line-item numbers, counts and token counts are <code>int</code>. Scores, probabilities and an LLM's temperature setting are <code>float</code>. Money is neither, as section 3 explains.</p>
+<p><strong>Worked example: splitting a delivery.</strong> 1,250 pieces go on pallets that hold 200 each.</p>
+<pre class="code"><code class="language-python">&gt;&gt;&gt; pieces = 1250
+&gt;&gt;&gt; full_pallets = pieces // 200
+&gt;&gt;&gt; leftover = pieces % 200
+&gt;&gt;&gt; full_pallets, leftover
+(6, 50)
+</code></pre>
+<p>Converting text into numbers:</p>
+<pre class="code"><code class="language-python">&gt;&gt;&gt; int(&quot;007&quot;)      # leading zeros are fine
+7
+&gt;&gt;&gt; int(&quot; 42 &quot;)     # surrounding spaces are fine
+42
+&gt;&gt;&gt; int(&quot;12.5&quot;)     # but not a decimal point
+ValueError: invalid literal for int() with base 10: '12.5'
+&gt;&gt;&gt; float(&quot;12.5&quot;)
+12.5
+</code></pre>
+<h4 id="lesson-intermediate_1">Intermediate</h4>
+<p><strong>How it works underneath.</strong> A Python <code>int</code> has no size limit. <code>10**20 + 1</code> is exact. A <code>float</code> is a 64-bit IEEE 754 binary number: about 15–17 significant digits, stored in base 2. Most decimal fractions, including 0.1, <em>can't be stored exactly in base 2</em>, just as 1/3 can't be written exactly in base 10. So Python stores the nearest binary value:</p>
+<pre class="code"><code class="language-python">&gt;&gt;&gt; 0.1 + 0.2
+0.30000000000000004
+&gt;&gt;&gt; 0.1 * 3 == 0.3
+False
+</code></pre>
+<p>This isn't a Python bug. Excel, JavaScript and Java <code>double</code> all do the same thing. It also explains a surprise in the built-in <code>round()</code>:</p>
+<pre class="code"><code class="language-python">&gt;&gt;&gt; round(2.675, 2)
+2.67                # you expected 2.68
+</code></pre>
+<p>2.675 is actually stored as 2.67499999…, so it rounds down. On top of that, <code>round()</code> uses <em>banker's rounding</em> (round half to even) for exact halves: <code>round(2.5)</code> is <code>2</code> and <code>round(3.5)</code> is <code>4</code>.</p>
+<p><strong>Common mistakes.</strong>
+- Expecting <code>/</code> to give an <code>int</code>. It never does. Use <code>//</code> when you want a whole number, and remember <code>//</code> rounds toward minus infinity, so <code>-7 // 2</code> is <code>-4</code>.
+- Comparing floats with <code>==</code>. For scores, compare with a tolerance instead (<code>math.isclose</code>, later).
+- Using <code>float</code> for money. That's the next section.</p>
+<p><strong>In the order-to-cash agent.</strong> Order quantities, <code>POSNR</code>-style item numbers and token counts are <code>int</code>. Similarity scores in RAG (RAG-1) and model temperature are <code>float</code>. Amounts are never <code>float</code>.</p>
+<p><strong>Analogy.</strong> A <code>float</code> is like a measuring tape marked in inches when your drawing is in centimetres. You can always get <em>close</em>, but almost no centimetre value lands exactly on a mark. <strong>Where it breaks down:</strong> the error is far smaller than any tape (around the 16th digit), but it adds up in sums and decides which way rounding goes, which is exactly what matters for money.</p>
+<p><strong>Advanced (later):</strong> <code>math.isclose</code>, <code>fractions</code> and numeric precision for embeddings come up in RAG-1.</p>
+<hr />
+<h3 id="lesson-3-money-with-decimal">3. Money with <code>Decimal</code></h3>
+<h4 id="lesson-beginner_2">Beginner</h4>
+<p><strong>What it is.</strong> <code>Decimal</code> is a number type from Python's standard library that stores numbers <em>in base 10, exactly as written</em>. It isn't built into the language like <code>int</code>, so you bring it in with an <strong>import line</strong>:</p>
+<pre class="code"><code class="language-python">&gt;&gt;&gt; from decimal import Decimal
+</code></pre>
+<p>Read it as "from the <code>decimal</code> module, give me the name <code>Decimal</code>". A <em>module</em> is a file of ready-made Python code. You'll learn how modules work, and how to write your own, in PY-I1. For now, an import line goes at the top of a script and makes a name available.</p>
+<pre class="code"><code class="language-python">&gt;&gt;&gt; Decimal(&quot;0.1&quot;) + Decimal(&quot;0.2&quot;)
+Decimal('0.3')
+&gt;&gt;&gt; Decimal(&quot;0.1&quot;) * 3 == Decimal(&quot;0.3&quot;)
+True
+</code></pre>
+<p><strong>Why it matters.</strong> Billing is the core of order-to-cash. A net value that's off by one paisa on one line becomes a reconciliation problem across ten thousand invoices, and an agent that says "the open amount is 3,333.14" when SAP says 3,333.15 loses the user's trust in one answer.</p>
+<p><strong>Worked example: a line net value.</strong></p>
+<pre class="code"><code class="language-python">&gt;&gt;&gt; from decimal import Decimal
+&gt;&gt;&gt; quantity = 3
+&gt;&gt;&gt; net_price = Decimal(&quot;1234.50&quot;)
+&gt;&gt;&gt; discount_percent = Decimal(&quot;10&quot;)
+&gt;&gt;&gt; net_value = quantity * net_price * (100 - discount_percent) / 100
+&gt;&gt;&gt; net_value
+Decimal('3333.150')
+</code></pre>
+<p>An <code>int</code> times a <code>Decimal</code> gives a <code>Decimal</code>, so mixing those two is safe.</p>
+<h4 id="lesson-intermediate_2">Intermediate</h4>
+<p><strong>How it works underneath.</strong> A <code>Decimal</code> stores a sign, a list of decimal digits and an exponent, so <code>Decimal("3333.150")</code> remembers that it has three decimal places. Arithmetic follows a <em>context</em> that sets the precision (28 significant digits by default) and the rounding rule. To round to a fixed number of places, you use <code>quantize</code> with an example of the places you want:</p>
+<pre class="code"><code class="language-python">&gt;&gt;&gt; from decimal import Decimal, ROUND_HALF_UP
+&gt;&gt;&gt; Decimal(&quot;0.125&quot;).quantize(Decimal(&quot;0.01&quot;))
+Decimal('0.12')                 # default rule: ROUND_HALF_EVEN (banker's)
+&gt;&gt;&gt; Decimal(&quot;0.125&quot;).quantize(Decimal(&quot;0.01&quot;), rounding=ROUND_HALF_UP)
+Decimal('0.13')                 # commercial rounding
+</code></pre>
+<p>Commercial rounding (<code>ROUND_HALF_UP</code>: a 5 always rounds away from zero) is what most invoices and most SAP pricing setups use. <strong>Always name the rounding rule you mean.</strong> Here's what the three approaches do with one realistic line, 4 × 19.99 with 12.5% off:</p>
+<pre class="code"><code class="language-python">&gt;&gt;&gt; 4 * 19.99 * 0.875                    # float
+69.96499999999999
+&gt;&gt;&gt; round(4 * 19.99 * 0.875, 2)          # float + round()
+69.96                                    # wrong by one paisa
+&gt;&gt;&gt; (4 * Decimal(&quot;19.99&quot;) * (100 - Decimal(&quot;12.5&quot;)) / 100).quantize(
+...     Decimal(&quot;0.01&quot;), rounding=ROUND_HALF_UP)
+Decimal('69.97')                         # correct
+</code></pre>
+<p><strong>Common mistakes.</strong>
+- <strong>Building a <code>Decimal</code> from a float</strong>: <code>Decimal(0.1)</code> gives <code>Decimal('0.1000000000000000055511151231257827021181583404541015625')</code>. It faithfully copies the float's error. Always build from a <strong>string</strong>: <code>Decimal("0.1")</code>.
+- <strong>Mixing with float</strong>: <code>Decimal("1.5") + 1.5</code> raises <code>TypeError: unsupported operand type(s)</code>. That's a good thing, because Python refuses to quietly lose your precision. Convert at the edge, once.
+- <strong>Thousands separators in input</strong>: <code>Decimal("1,234.50")</code> raises <code>decimal.InvalidOperation</code>. Strip the separator first (<code>.replace(",", "")</code>), but only once you know which separator the source uses. In India and the US the comma groups thousands. In much of Europe it's the decimal mark.
+- <strong>Rounding at every step instead of once at the end.</strong> Round the line total, not each intermediate result, unless the business rule says otherwise. In SAP, the pricing procedure decides this. In your code, <em>you</em> do.</p>
+<p><strong>In the order-to-cash agent.</strong> Every amount the agent reads from <code>o2c.db</code> becomes a <code>Decimal</code>. Every amount it shows is quantized with <code>ROUND_HALF_UP</code>. Q2 in the fixed SD question set ("total net value of open orders") is marked wrong if it's off by a paisa. When Gemini returns structured output in SO-1, amount fields are validated as <code>Decimal</code>, never <code>float</code>.</p>
+<p><strong>Analogy.</strong> <code>Decimal</code> is the <code>CURR</code> field paired with its currency key: the amount is stored exactly, and the number of decimals is a deliberate setting (like currency decimals in table TCURX), not an accident of storage. <code>float</code> is like keeping amounts in a floating-point (<code>FLTP</code>) field. <strong>Where it breaks down:</strong> SAP stores currency amounts as packed decimals with fixed places tied to the currency. A Python <code>Decimal</code> carries whatever places you give it, so <em>you</em> must quantize to the currency's decimals. Nothing does it for you.</p>
+<p><strong>Advanced (later):</strong> custom decimal contexts, rounding at document level versus item level, and multi-currency totals come in API-3 (cost tracking) and in DATA-1, where the generator produces currency-specific decimals.</p>
+<hr />
+<h3 id="lesson-4-strings-and-string-methods">4. Strings and string methods</h3>
+<h4 id="lesson-beginner_3">Beginner</h4>
+<p><strong>What it is.</strong> A <code>str</code> is a sequence of Unicode characters inside quotes: <code>'single'</code>, <code>"double"</code>, or <code>"""triple"""</code> for text spanning several lines. You can measure, index and slice it:</p>
+<pre class="code"><code class="language-python">&gt;&gt;&gt; material = &quot;Steel coil&quot;
+&gt;&gt;&gt; len(material)
+10
+&gt;&gt;&gt; material[0]       # first character (counting starts at 0)
+'S'
+&gt;&gt;&gt; material[-4:]     # last four characters
+'coil'
+</code></pre>
+<p>Methods are functions attached to a value and called with a dot. These are the ones you'll use every week:</p>
+<div class="table-scroll"><table class="tbl">
+<thead>
+<tr>
+<th>Method</th>
+<th>What it does</th>
+<th>Example</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>strip()</code></td>
+<td>remove spaces/newlines at both ends</td>
+<td><code>"  inr \n".strip()</code></td>
+<td><code>'inr'</code></td>
+</tr>
+<tr>
+<td><code>upper()</code> / <code>lower()</code></td>
+<td>change case</td>
+<td><code>"inr".upper()</code></td>
+<td><code>'INR'</code></td>
+</tr>
+<tr>
+<td><code>replace(a, b)</code></td>
+<td>replace every <code>a</code> with <code>b</code></td>
+<td><code>"1,234.50".replace(",", "")</code></td>
+<td><code>'1234.50'</code></td>
+</tr>
+<tr>
+<td><code>split(sep)</code></td>
+<td>cut into a list of pieces</td>
+<td><code>"a;b;c".split(";")</code></td>
+<td><code>['a', 'b', 'c']</code></td>
+</tr>
+<tr>
+<td><code>startswith(x)</code></td>
+<td>test the beginning</td>
+<td><code>"4500012".startswith("45")</code></td>
+<td><code>True</code></td>
+</tr>
+<tr>
+<td><code>zfill(n)</code></td>
+<td>pad with leading zeros to length n</td>
+<td><code>"4500012".zfill(10)</code></td>
+<td><code>'0004500012'</code></td>
+</tr>
+<tr>
+<td><code>lstrip("0")</code></td>
+<td>remove leading zeros</td>
+<td><code>"0004500012".lstrip("0")</code></td>
+<td><code>'4500012'</code></td>
+</tr>
+<tr>
+<td><code>find(x)</code></td>
+<td>position of x, or -1</td>
+<td><code>"abc".find("z")</code></td>
+<td><code>-1</code></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Why it matters.</strong> Users type document numbers with and without leading zeros, with spaces, and in any case. A database lookup for <code>"4500012"</code> won't find <code>"0004500012"</code>. Most "the agent says the order doesn't exist" bugs are string-cleaning bugs.</p>
+<p><strong>Worked example: normalising a document number the way SAP does.</strong></p>
+<pre class="code"><code class="language-python">&gt;&gt;&gt; typed = &quot;  4500012 &quot;
+&gt;&gt;&gt; vbeln = typed.strip().zfill(10)
+&gt;&gt;&gt; vbeln
+'0004500012'
+</code></pre>
+<p>Methods can be <em>chained</em> because each one returns a new string that the next one works on.</p>
+<h4 id="lesson-intermediate_3">Intermediate</h4>
+<p><strong>How it works underneath.</strong> Strings are <strong>immutable</strong>: no method changes the original. <code>strip()</code>, <code>upper()</code> and the rest all return a <em>new</em> string.</p>
+<pre class="code"><code class="language-python">&gt;&gt;&gt; currency = &quot; inr &quot;
+&gt;&gt;&gt; currency.upper()
+' INR '
+&gt;&gt;&gt; currency            # unchanged!
+' inr '
+&gt;&gt;&gt; currency = currency.strip().upper()   # rebind the name to keep the result
+&gt;&gt;&gt; currency
+'INR'
+&gt;&gt;&gt; currency[0] = &quot;X&quot;
+TypeError: 'str' object does not support item assignment
+</code></pre>
+<p>Immutability makes strings safe to share. Nobody can change your copy behind your back, and it's why they can be used as dictionary keys (PY-B2).</p>
+<p>Characters are Unicode code points, not bytes. <code>len("₹")</code> is <code>1</code>, but stored as UTF-8 it takes 3 bytes. That difference matters when you write files on Windows (PY-B5 teaches <code>encoding="utf-8"</code>) and when LLMs count tokens (LLM-1). Case-changing is also Unicode-aware: <code>"Straße".upper()</code> gives <code>'STRASSE'</code>. Faker's German customer names will produce exactly this in DATA-1.</p>
+<p><strong>Common mistakes.</strong>
+- Calling a method and throwing away the result: <code>currency.strip()</code> on its own line does nothing useful.
+- <code>lstrip("0")</code> on <code>"0000000000"</code> returns <code>''</code>, an empty string, not <code>"0"</code>. Check that edge case when you strip zeros.
+- Comparing without normalising: <code>"INR" == "inr"</code> is <code>False</code>. Normalise both sides (<code>.strip().upper()</code>) before comparing codes.
+- Building long text with <code>+</code> in many steps. Use an f-string (section 5).</p>
+<p><strong>In the order-to-cash agent.</strong> Every tool that takes a document number (<code>order_status</code>, <code>doc_flow</code> in TOOL-1) starts with <code>.strip().zfill(10)</code>, because Gemini will pass <code>"4500012"</code> when the user typed it that way. Currency and sales-org codes are normalised with <code>.strip().upper()</code>. Chunking in RAG-2 is string slicing at scale.</p>
+<p><strong>Analogy.</strong> <code>zfill(10)</code> is SAP's ALPHA conversion exit: the user sees <code>4500012</code>, and the database stores <code>0004500012</code>. Immutability is like a posted billing document: you never edit it, you create a new document (a cancellation and re-billing) and point at that instead. <strong>Where it breaks down:</strong> ALPHA conversion runs automatically on screen fields. In Python nothing is automatic, so every entry point has to call <code>zfill</code> itself. And making new strings costs nothing, unlike creating cancellation documents.</p>
+<p><strong>Advanced (later):</strong> regular expressions for pulling document numbers out of free text come in PY-B6. Unicode normalisation and token-aware splitting come in RAG-2.</p>
+<hr />
+<h3 id="lesson-5-f-strings-building-text-from-values">5. f-strings: building text from values</h3>
+<h4 id="lesson-beginner_4">Beginner</h4>
+<p><strong>What it is.</strong> An f-string is a string with <code>f</code> before the quote. Anything inside <code>{}</code> is evaluated and inserted:</p>
+<pre class="code"><code class="language-python">&gt;&gt;&gt; vbeln = &quot;0004500012&quot;
+&gt;&gt;&gt; quantity = 3
+&gt;&gt;&gt; f&quot;Order {vbeln} has {quantity} items&quot;
+'Order 0004500012 has 3 items'
+</code></pre>
+<p><strong>Why it matters.</strong> Prompts for Gemini (API-1), log lines (API-3) and every answer the agent prints are text built from values. f-strings are the clearest and fastest way to do it.</p>
+<p><strong>Worked example: the format mini-language.</strong> After a colon inside the braces, a <em>format spec</em> controls how the value looks:</p>
+<pre class="code"><code class="language-python">&gt;&gt;&gt; net = Decimal(&quot;1234567.5&quot;)
+&gt;&gt;&gt; f&quot;{net:,.2f}&quot;          # thousands separator, 2 decimals
+'1,234,567.50'
+&gt;&gt;&gt; f&quot;{12:06}&quot;             # pad a number with zeros to width 6 (an item number like POSNR)
+'000012'
+&gt;&gt;&gt; f&quot;{'VBELN':&lt;10}|&quot;      # left-align in 10 characters
+'VBELN     |'
+&gt;&gt;&gt; f&quot;{42:&gt;6}|&quot;            # right-align in 6
+'    42|'
+&gt;&gt;&gt; f&quot;{0.5:.0%}&quot;           # percentage
+'50%'
+&gt;&gt;&gt; f&quot;{quantity * 2 = }&quot;   # debug form: shows the expression and its value
+'quantity * 2 = 6'
+</code></pre>
+<h4 id="lesson-intermediate_4">Intermediate</h4>
+<p><strong>How it works underneath.</strong> Python evaluates each <code>{expression}</code> when that line runs, then calls <code>format(value, spec)</code> on the result. The <em>type</em> decides what the spec means. That's why <code>f"{Decimal('1234.50'):,}"</code> gives <code>'1,234.50'</code> and keeps the value's own two decimals, while <code>:.2f</code> forces two. One trap matters for money: <strong>formatting rounds with the type's own rule</strong>, and for a <code>Decimal</code> that's banker's rounding: <code>f"{Decimal('0.125'):.2f}"</code> gives <code>'0.12'</code>. So quantize with <code>ROUND_HALF_UP</code> first, then format.</p>
+<p>Triple-quoted f-strings span several lines. This is how you'll write prompts:</p>
+<pre class="code"><code class="language-python">&gt;&gt;&gt; prompt = f&quot;&quot;&quot;You are an SAP SD assistant.
+... Order: {vbeln}
+... Net value: {net:,.2f} INR
+... Answer in one sentence.&quot;&quot;&quot;
+</code></pre>
+<p><strong>Common mistakes.</strong>
+- Forgetting the <code>f</code>: <code>"Order {vbeln}"</code> prints the braces literally.
+- Letting the format spec do your money rounding. Quantize first.
+- Literal braces in a prompt that shows JSON: inside an f-string, write <code>{{</code> and <code>}}</code> to get <code>{</code> and <code>}</code>. This will bite you in LLM-2 when prompts include JSON examples.
+- Quotes inside quotes. Since Python 3.12 you may reuse the same quote type inside <code>{}</code>, but <code>f"{d['key']}"</code> (single inside double) is easier to read and works everywhere.
+- Note that <code>,</code> in the format spec always groups in threes (1,234,567). Indian lakh/crore grouping (12,34,567) isn't built in. If a report needs it, that's a deliberate later choice, not a format spec.</p>
+<p><strong>In the order-to-cash agent.</strong> Your build step today produces the first prompt template. In LLM-3 it moves into a versioned prompt file, but the f-string thinking stays the same.</p>
+<p><strong>Analogy.</strong> An f-string is like an SD output form (an invoice layout in SmartForms or Adobe Forms): fixed text with fields that get filled from the document at print time, each field with its own format (amount with separators, date in your locale). <strong>Where it breaks down:</strong> an output form is designed once and filled many times. An f-string is filled immediately on the line where it's written. Reusable templates that are filled later are <code>str.format</code> and prompt files (LLM-3).</p>
+<p><strong>Advanced (later):</strong> reusable templates and prompt versioning in LLM-3; structured logging instead of f-strings in log calls in API-3.</p>
+<hr />
+<h3 id="lesson-6-none-and-truthiness">6. <code>None</code> and truthiness</h3>
+<h4 id="lesson-beginner_5">Beginner</h4>
+<p><strong>What it is.</strong> <code>None</code> is Python's single value for "nothing here": no discount, no block reason, no result found. Its type is <code>NoneType</code>. Test for it with <code>is</code>:</p>
+<pre class="code"><code class="language-python">&gt;&gt;&gt; block_reason = None
+&gt;&gt;&gt; block_reason is None
+True
+</code></pre>
+<p><em>Truthiness</em> means every value counts as true or false when Python needs a yes/no answer. These count as <strong>false</strong>: <code>None</code>, <code>False</code>, <code>0</code>, <code>0.0</code>, <code>Decimal("0")</code>, <code>""</code> (the empty string), and empty collections. Almost everything else counts as true, including the string <code>"0"</code> and the string <code>" "</code>.</p>
+<pre class="code"><code class="language-python">&gt;&gt;&gt; bool(&quot;&quot;)
+False
+&gt;&gt;&gt; bool(&quot;0&quot;)       # a non-empty string, so True!
+True
+&gt;&gt;&gt; bool(Decimal(&quot;0.00&quot;))
+False
+</code></pre>
+<p><strong>Why it matters.</strong> Missing data is everywhere in SD data: no billing block, no PO number, a blank discount field. Your code has to tell "missing" apart from "zero" and "empty text".</p>
+<p><strong>Worked example: a default for a blank field with <code>or</code>.</strong> <code>a or b</code> gives <code>a</code> if <code>a</code> is truthy, otherwise <code>b</code>:</p>
+<pre class="code"><code class="language-python">&gt;&gt;&gt; discount_text = &quot;&quot;             # user left it blank
+&gt;&gt;&gt; discount_text or &quot;0&quot;
+'0'
+&gt;&gt;&gt; discount_text = &quot;12.5&quot;
+&gt;&gt;&gt; discount_text or &quot;0&quot;
+'12.5'
+</code></pre>
+<h4 id="lesson-intermediate_5">Intermediate</h4>
+<p><strong>How it works underneath.</strong> <code>None</code> is a <em>singleton</em>: there is exactly one <code>None</code> object in a running program. That's why <code>is None</code> (same object?) is the correct test and the idiomatic one. <code>== None</code> usually gives the same answer, but a class can redefine <code>==</code>, and <code>is</code> can't be fooled. <code>or</code> doesn't return <code>True</code>/<code>False</code>. It returns one of its two operands, which is what makes the default pattern above work. <code>and</code> works the same way, the other way round.</p>
+<p>The trap: <strong><code>or</code> treats every falsy value as missing.</strong> That's fine for text from <code>input()</code>, where <code>"0"</code> is truthy. It's wrong for a value that's already a number:</p>
+<pre class="code"><code class="language-python">&gt;&gt;&gt; discount = Decimal(&quot;0&quot;)        # a REAL zero discount
+&gt;&gt;&gt; discount or Decimal(&quot;5&quot;)       # meant as &quot;default if missing&quot;
+Decimal('5')                       # wrong: the zero was replaced
+</code></pre>
+<p>Here you need to test for <code>None</code> explicitly, which needs <code>if</code> from PY-B2. For now: <strong>use <code>or</code> for defaults only on text, before converting it.</strong> That's exactly the order the exercise uses.</p>
+<p><strong>Common mistakes.</strong>
+- <code>if value:</code> when you mean <code>if value is not None:</code> (PY-B2). Zero amounts and empty strings silently go down the wrong branch.
+- Returning <code>None</code> by accident and then calling a method on it: <code>AttributeError: 'NoneType' object has no attribute 'strip'</code>. You'll learn to read that traceback in PY-B4.
+- Thinking <code>None</code>, <code>0</code> and <code>""</code> are interchangeable. In a database they're <code>NULL</code>, <code>0</code> and an empty string, three different facts.</p>
+<p><strong>In the order-to-cash agent.</strong> "Is this order blocked?" is a question about whether <code>billing_block</code> is <code>None</code>. Q3 ("why is order 4500012 blocked?") depends on telling "no block" (<code>None</code>) apart from a block code. When Gemini omits an optional field in structured output (SO-1), Pydantic fills it with <code>None</code>, and your code has to handle that.</p>
+<p><strong>Analogy.</strong> <code>None</code> is an SAP field left at its <em>initial</em> value, for example an empty billing-block field on the order header. Truthiness is like a selection screen treating a blank field as "no restriction". <strong>Where it breaks down:</strong> SAP fields have no real "null". An empty <code>CHAR</code> field and an initial field are the same thing, and an initial <code>CURR</code> field is <code>0.00</code>. Python keeps <code>None</code>, <code>""</code> and <code>0</code> as three separate values, and good code keeps them separate.</p>
+<p><strong>Advanced (later):</strong> <code>Optional</code>/<code>X | None</code> type hints in PY-I3, and Pydantic defaults and missing fields in PY-A1.</p>
+<hr />
+<h3 id="lesson-7-reading-input-and-putting-it-together">7. Reading input and putting it together</h3>
+<p><code>input()</code> pauses, reads one line that the user types (or that a test feeds in), and returns it <strong>as a <code>str</code> without the trailing newline</strong>. <code>print()</code> writes values to the screen. Here's the whole session in one script, with a comment (<code>#</code> to end of line) on each step:</p>
+<pre class="code"><code class="language-python">from decimal import Decimal, ROUND_HALF_UP
+
+quantity_text = input()              # e.g. &quot;3&quot;
+price_text = input()                 # e.g. &quot;1234.50&quot;
+currency_text = input()              # e.g. &quot; inr &quot;
+
+quantity = int(quantity_text)                    # str -&gt; int
+net_price = Decimal(price_text.strip())          # str -&gt; Decimal, never float
+currency = currency_text.strip().upper()         # normalise the code
+
+net_value = (quantity * net_price).quantize(Decimal(&quot;0.01&quot;), rounding=ROUND_HALF_UP)
+print(f&quot;qty {quantity} | {net_price:,} {currency} each | net {net_value:,.2f} {currency}&quot;)
+</code></pre>
+<p>Run it with <code>py script.py</code> and type three lines. Try <code>3</code>, <code>1234.50</code>, <code>inr</code>, then try <code>3.5</code> as the quantity and read the error's last line: <code>ValueError</code>. Python fails loudly on bad input instead of guessing, and that's what you want in billing. Handling the error politely comes in PY-B4.</p>
+<p><strong>Analogy for the whole flow.</strong> It's an inbound IDoc: raw segments arrive as text, each field is converted and checked against its data element, and only then is the document posted. <strong>Where it breaks down:</strong> an IDoc has a status record and can be reprocessed. Here a failed conversion simply stops the script.</p>
+<hr />
+<h3 id="lesson-what-changed-in-python-314-that-touches-this-page">What changed in Python 3.14 that touches this page</h3>
+<p>Nothing on this page changed in 3.14. Two things to know for later: Windows still opens text files with the system code page unless you pass <code>encoding="utf-8"</code> (PY-B5), and Python 3.12+ allows the same quote type inside f-string braces.</p>
+<h3 id="lesson-recap-the-six-things-to-remember">Recap: the six things to remember</h3>
+<ol>
+<li>Text from outside is always <code>str</code> until you convert it.</li>
+<li><code>int</code> for counts, <code>Decimal</code> (built from strings) for money, <code>float</code> for scores, never for money.</li>
+<li>Quantize once, at the end, with an explicit rule: <code>ROUND_HALF_UP</code>.</li>
+<li>String methods return new strings. Rebind the name to keep the result.</li>
+<li>f-strings with format specs build every line and prompt. Quantize before formatting money.</li>
+<li><code>None</code>, <code>0</code> and <code>""</code> are different facts. <code>or</code> defaults are for text only.</li>
+</ol>
+<h3 id="lesson-further-reading-optional-after-the-session">Further reading (optional, after the session)</h3>
+<ul>
+<li>Python tutorial: <a target="_blank" rel="noopener" href="https://docs.python.org/3/tutorial/introduction.html#numbers">Numbers</a> and <a target="_blank" rel="noopener" href="https://docs.python.org/3/tutorial/introduction.html#text">Text</a> (~20 m)</li>
+<li><a target="_blank" rel="noopener" href="https://docs.python.org/3/library/decimal.html#quick-start-tutorial">decimal: Quick-start tutorial</a> (~15 m)</li>
+<li><a target="_blank" rel="noopener" href="https://docs.python.org/3/library/string.html#format-specification-mini-language">Format specification mini-language</a> (~10 m, use as reference)</li>
+<li><a target="_blank" rel="noopener" href="https://docs.python.org/3/tutorial/floatingpoint.html">Floating-point arithmetic: issues and limitations</a> (~10 m)</li>
+<li><a target="_blank" rel="noopener" href="https://cs50.harvard.edu/python/weeks/0/">CS50P Week 0</a>, the lecture as a second explanation (time to be confirmed from the lecture's chapter list)</li>
+</ul>
+</section>
+
+<section class="section" id="quiz"><div class="section-h"><span class="num">03</span><h2>Quiz</h2></div>
+<p>10 questions, about 10 minutes. Answer each one yourself first (in your head or on paper), then click <b>Show answer</b> to check. Pass mark: 8/10.</p>
+<div class="q lesson-q"><div class="q-title"><span class="qn">Q1</span> What does <code>"3" + "3"</code> give?</div>
+<ul class="lesson-opts"><li>a) <code>6</code></li><li>b) <code>"33"</code></li><li>c) error</li></ul>
+<details class="solution lesson-answer"><summary>Show answer</summary><p><b>Answer: b.</b> <code>+</code> on two strings joins them.</p></details></div><div class="q lesson-q"><div class="q-title"><span class="qn">Q2</span> What type does <code>7 / 7</code> return?</div>
+<ul class="lesson-opts"><li>a) <code>int</code></li><li>b) <code>float</code></li></ul>
+<details class="solution lesson-answer"><summary>Show answer</summary><p><b>Answer: b.</b> <code>/</code> always returns a float (<code>1.0</code>).</p></details></div><div class="q lesson-q"><div class="q-title"><span class="qn">Q3</span> Which builds an exact 0.1?</div>
+<ul class="lesson-opts"><li>a) <code>Decimal(0.1)</code></li><li>b) <code>Decimal("0.1")</code></li></ul>
+<details class="solution lesson-answer"><summary>Show answer</summary><p><b>Answer: b.</b> A float argument copies the float's binary error.</p></details></div><div class="q lesson-q"><div class="q-title"><span class="qn">Q4</span> <code>Decimal("0.125").quantize(Decimal("0.01"))</code> gives?</div>
+<ul class="lesson-opts"><li>a) <code>0.12</code></li><li>b) <code>0.13</code></li></ul>
+<details class="solution lesson-answer"><summary>Show answer</summary><p><b>Answer: a.</b> The default is ROUND_HALF_EVEN. You need <code>rounding=ROUND_HALF_UP</code> to get 0.13.</p></details></div><div class="q lesson-q"><div class="q-title"><span class="qn">Q5</span> After <code>c = " inr "</code> and then <code>c.upper()</code>, what is <code>c</code>? (type it)</div>
+
+<details class="solution lesson-answer"><summary>Show answer</summary><p><b>Answer: <code>" inr "</code>.</b> Strings are immutable, so the result was thrown away.</p></details></div><div class="q lesson-q"><div class="q-title"><span class="qn">Q6</span> <code>"4500012".zfill(10)</code> gives? (type it)</div>
+
+<details class="solution lesson-answer"><summary>Show answer</summary><p><b>Answer: <code>"0004500012"</code>.</b></p></details></div><div class="q lesson-q"><div class="q-title"><span class="qn">Q7</span> Which of these is truthy?</div>
+<ul class="lesson-opts"><li>a) <code>""</code></li><li>b) <code>"0"</code></li><li>c) <code>Decimal("0")</code></li><li>d) <code>None</code></li></ul>
+<details class="solution lesson-answer"><summary>Show answer</summary><p><b>Answer: b.</b> It's a non-empty string.</p></details></div><div class="q lesson-q"><div class="q-title"><span class="qn">Q8</span> <code>Decimal("0") or Decimal("5")</code> gives?</div>
+<ul class="lesson-opts"><li>a) <code>Decimal('0')</code></li><li>b) <code>Decimal('5')</code></li></ul>
+<details class="solution lesson-answer"><summary>Show answer</summary><p><b>Answer: b.</b> This is why <code>or</code> defaults are only for text.</p></details></div><div class="q lesson-q"><div class="q-title"><span class="qn">Q9</span> <code>f"{Decimal('1234567.5'):,.2f}"</code> gives? (type it)</div>
+
+<details class="solution lesson-answer"><summary>Show answer</summary><p><b>Answer: <code>"1,234,567.50"</code>.</b></p></details></div><div class="q lesson-q"><div class="q-title"><span class="qn">Q10</span> What happens with <code>Decimal("1.5") + 1.5</code>?</div>
+<ul class="lesson-opts"><li>a) <code>3.0</code></li><li>b) <code>Decimal('3.0')</code></li><li>c) <code>TypeError</code></li></ul>
+<details class="solution lesson-answer"><summary>Show answer</summary><p><b>Answer: c.</b> Python refuses to mix the two, so you convert at the edge.</p></details></div>
+</section>
+
+<section class="section" id="exercise"><div class="section-h"><span class="num">04</span><h2>Exercise</h2></div>
+<div class="callout">The starter file <code>line_item.py</code> and the checks <code>test_line_item.py</code> are in the zip under <code>py-b1/exercise/</code>. Run the checks from inside that folder: <code>cd py-b1/exercise</code>, then <code>py -m pytest -q</code>.</div>
+<p>Fill in <code>line_item.py</code> so that it reads <strong>five lines</strong> from input, in this order:
+1. material description (may have extra spaces)
+2. quantity, a whole number (may have leading zeros or spaces)
+3. net price per unit, a decimal like <code>1234.50</code> (may have spaces)
+4. currency code (any case, may have spaces)
+5. discount percent, like <code>10</code> or <code>12.5</code>. <strong>It may be blank, meaning 0.</strong></p>
+<p>It must print exactly one line in this format:</p>
+<pre class="code"><code>Steel coil | qty 3 | 1,234.50 INR each | 10% off | net 3,333.15 INR
+</code></pre>
+<p>Rules:
+- net value = quantity × price × (100 − discount) / 100, rounded <strong>once</strong> at the end to 2 places with <code>ROUND_HALF_UP</code>
+- the unit price is shown with thousands separators and <strong>its own decimals</strong> (format spec <code>,</code>)
+- the net value is shown with <code>,.2f</code>
+- <strong>no <code>float</code> and no <code>round()</code> anywhere</strong>: money is <code>Decimal</code>
+- bad input (a quantity of <code>2.5</code>, a price of <code>1,234.50</code>) must <strong>crash with Python's own error</strong>. Don't hide it; handling errors comes in PY-B4.</p>
+<p>Check your work. Activate the venv first (<code>source .venv/Scripts/activate</code>), then <code>py</code> uses it:</p>
+<pre class="code"><code class="language-bash">py -m pytest -q
+</code></pre>
+<p>You haven't learned pytest yet (that's PY-I5). For now, read only the last line: <code>9 passed</code> means you're done. A failure prints the input it tried and the line it expected, which is your hint. Starting point: 8 of 9 tests fail (the "no float" check already passes). If you're stuck for more than 10 minutes, compare with <code>../solution/line_item.py</code>.</p>
+</section>
+
+<section class="section" id="download"><div class="section-h"><span class="num">05</span><h2>Download</h2></div>
+<div class="card dl-card"><div><p style="margin:0 0 .3rem"><b>All PY-B1 lesson files</b> (lesson, quiz, setup, exercise starter + checks, solution, build, requirements.txt).</p>
+<p class="muted" style="margin:0">py-b1.zip · about 20 KB</p></div>
+<a class="btn primary" id="zip-link" href="py-b1.zip" download>Download lesson files (zip)</a></div>
+<div class="callout"><b>Heads up: the zip also contains the solution</b> in <code>py-b1/solution/line_item.py</code>. Don't open it until you've had a real go at the exercise. The exercise only points you there if you've been stuck for more than 10 minutes.</div>
+</section>
+
+<section class="section" id="build"><div class="section-h"><span class="num">06</span><h2>Build (skipped for now)</h2></div>
+<div class="callout"><b>Skip <code>build.md</code> for now.</b> The build step needs the S0 data generator (<code>data/order_items.csv</code>), which isn't written yet. It's included in the zip so it's ready when that lands; this week, Learn + Quiz + Exercise is the whole session.</div>
+</section>
+
+      </article>
+    </div>
+  </div>
+  </main>
+
+  <footer class="footer">
+    <span class="mono small muted">// built for 2 hours a week · no maths required · progress saved in your browser</span>
+  </footer>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="../js/nav.js"></script>
+</body>
+</html>
